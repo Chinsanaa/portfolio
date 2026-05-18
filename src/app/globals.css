@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+:root {
+  --soft-navy: #1e2a3a;
+  --soft-navy-light: #2d3f54;
+  --soft-sage: #a8bda8;
+  --soft-sage-dark: #8fa88f;
+  --soft-cream: #ebe6dc;
+  --soft-cream-dark: #d8d2c6;
+  --soft-mustard: #c9b87a;
+  --soft-periwinkle: #8fa4c4;
+  --soft-lavender: #b8a8c4;
+  --soft-terracotta: #c4a090;
+  --soft-ink: #2c3440;
+  --soft-ink-muted: #5a6570;
+  --soft-sky-top: #3d5a73;
+  --soft-sky-bottom: #6b8fa8;
+  --background: var(--soft-sky-bottom);
+  --foreground: var(--soft-ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-pixel: var(--font-press-start);
+  --color-soft-navy: var(--soft-navy);
+  --color-soft-sage: var(--soft-sage);
+  --color-soft-cream: var(--soft-cream);
+  --color-soft-ink: var(--soft-ink);
+  --color-soft-ink-muted: var(--soft-ink-muted);
+  --color-soft-mustard: var(--soft-mustard);
+  --color-soft-periwinkle: var(--soft-periwinkle);
+  --animate-soft-blink: soft-blink 1.2s ease-in-out infinite;
+  --animate-float: gentle-float 4s ease-in-out infinite;
+}
+
+@keyframes soft-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes gentle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    var(--soft-sky-top) 0%,
+    var(--soft-sky-bottom) 55%,
+    #8fadbc 100%
+  );
+  color: var(--soft-ink);
+  font-family: var(--font-press-start), monospace;
+}
+
+.font-pixel {
+  font-family: var(--font-press-start), monospace;
+}
+
+/* Retro device bezel */
+.device-frame {
+  border: 6px solid var(--soft-sage);
+  box-shadow:
+    inset 0 0 0 2px var(--soft-sage-dark),
+    0 8px 0 var(--soft-sage-dark),
+    0 12px 24px rgba(30, 42, 58, 0.25);
+  background: var(--soft-sage);
+}
+
+/* Desktop screen with dither shadow on top-left */
+.desktop-screen {
+  background-color: var(--soft-navy);
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 255, 255, 0.06) 75%,
+      transparent 75%
+    );
+  background-size: 4px 4px;
+  position: relative;
+}
+
+.desktop-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.pixel-window {
+  border: 3px solid var(--soft-ink);
+  box-shadow: 4px 4px 0 rgba(44, 52, 64, 0.35);
+  background: var(--soft-cream);
+}
+
+.pixel-window-title {
+  background: var(--soft-ink);
+  color: var(--soft-cream);
+  border-bottom: 3px solid var(--soft-ink);
+}
+
+.pixel-btn-soft {
+  border: 2px solid var(--soft-ink);
+  background: var(--soft-cream-dark);
+  color: var(--soft-ink);
+  box-shadow: 2px 2px 0 var(--soft-ink-muted);
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+}
+
+.pixel-btn-soft:hover {
+  background: var(--soft-cream);
+}
+
+.pixel-btn-soft:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--soft-ink-muted);
+}
+
+.pixel-card {
+  border: 2px solid var(--soft-ink-muted);
+  background: var(--soft-cream);
+  box-shadow: 2px 2px 0 rgba(44, 52, 64, 0.15);
+}
+
+.scroll-soft {
+  scrollbar-width: thin;
+  scrollbar-color: var(--soft-sage-dark) var(--soft-cream-dark);
+}
+
+.scroll-soft::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll-soft::-webkit-scrollbar-track {
+  background: var(--soft-cream-dark);
+  border-left: 2px solid var(--soft-ink-muted);
+}
+
+.scroll-soft::-webkit-scrollbar-thumb {
+  background: repeating-linear-gradient(
+    0deg,
+    var(--soft-sage) 0px,
+    var(--soft-sage) 2px,
+    var(--soft-sage-dark) 2px,
+    var(--soft-sage-dark) 4px
+  );
+  border: 2px solid var(--soft-ink-muted);
+}
+
+/* Pixel scrollbar arrows (decorative track) */
+.pixel-scrollbar-track {
+  background: var(--soft-cream);
+  border-left: 2px solid var(--soft-ink);
+}
+
+.title-screen-bg {
+  background: linear-gradient(
+    180deg,
+    #2a4058 0%,
+    #4a6b85 40%,
+    #7a9bb0 70%,
+    #9eb5c4 100%
+  );
+}
