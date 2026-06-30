@@ -7,28 +7,29 @@ export function About() {
           <p>
             I&apos;m a Data Science student at NYU Shanghai with a concentration in Finance,
             driven by the intersection of data analysis and financial markets. I combine
-            technical depth in Python, SQL, and machine learning with practical experience
-            in financial modeling and AI workflows.
+            technical depth in Python, SQL, and Excel-based financial modeling with hands-on
+            business experience at Next Group, where I&apos;ve worked across HR, sales,
+            operations, and financial analysis.
           </p>
           <p>
-            I&apos;ve worked as an HR Intern optimizing recruitment processes, built data
-            pipelines for financial analysis, and led initiatives as Entrepreneur Club
-            President. My goal: to leverage data science to uncover market inefficiencies
-            and build intelligent financial tools.
+            Outside the classroom, I founded and led the Entrepreneur Club at Orchlon
+            International School, organizing fundraisers and mentoring peers on sales and
+            marketing strategy. My goal: to leverage data science to uncover market
+            inefficiencies and build intelligent financial tools.
           </p>
         </div>
         <div className="about-facts">
           <div className="fact scroll-reveal">
             <div className="fact-label">Education</div>
-            <div className="fact-value">NYU Shanghai, Class of 2026</div>
+            <div className="fact-value">NYU Shanghai, Class of 2029</div>
           </div>
           <div className="fact scroll-reveal">
             <div className="fact-label">Concentration</div>
-            <div className="fact-value">Data Science + Finance</div>
+            <div className="fact-value">Data Science + Finance (GPA 3.58)</div>
           </div>
           <div className="fact scroll-reveal">
-            <div className="fact-label">Languages</div>
-            <div className="fact-value">English, Mongolian, Mandarin</div>
+            <div className="fact-label">Location</div>
+            <div className="fact-value">Shanghai, China</div>
           </div>
         </div>
       </div>
