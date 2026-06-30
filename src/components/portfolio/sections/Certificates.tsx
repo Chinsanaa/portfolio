@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { certificates } from "./data";
+import { certificates } from "../content";
 
 function CertThumbnail({ title, emoji, image }: { title: string; emoji: string; image: string }) {
   const [imageFailed, setImageFailed] = useState(false);

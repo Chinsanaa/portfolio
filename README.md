@@ -13,15 +13,15 @@ top to bottom:
 
 | Section | Component | Description |
 | --- | --- | --- |
-| Hero | `Hero.tsx` + `HeroCanvas.tsx` | Full-viewport intro with name, tagline, "View Projects" / "Download CV" CTAs, a syntax-highlighted code snippet, and an interactive `<canvas>` particle trail that follows the cursor. |
-| About | `About.tsx` | Bio plus quick facts (education, concentration, languages). |
-| Projects | `Projects.tsx` | Card grid of projects with client-side tag filtering (All / Machine Learning / Finance / Data Analysis / Web Dev). |
-| Certifications | `Certificates.tsx` | Cards linking out to verified certificates (Claude Code, Bloomberg, Google AI). |
-| Skills | `Skills.tsx` | Grouped skill chips across Programming Languages, Tools & Platforms, Data & Finance, and Soft Skills. |
-| Experience | `Experience.tsx` | Vertical timeline of roles and internships. |
-| Contact | `Contact.tsx` | Email, LinkedIn, and GitHub links. |
+| Hero | `sections/Hero.tsx` + `sections/HeroCanvas.tsx` | Full-viewport intro with name, tagline, "View Projects" / "Download CV" CTAs, a syntax-highlighted code snippet, and an interactive `<canvas>` particle trail that follows the cursor. |
+| About | `sections/About.tsx` | Bio plus quick facts (education, concentration, languages). |
+| Projects | `sections/Projects.tsx` | Card grid of projects. |
+| Certifications | `sections/Certificates.tsx` | Cards linking out to verified certificates (Claude Code, Bloomberg, Google AI), with photo thumbnails that fall back to an emoji if the image isn't available yet. |
+| Skills | `sections/Skills.tsx` | Grouped skill chips across Programming Languages, Tools & Platforms, Data & Finance, and Soft Skills. |
+| Experience | `sections/Experience.tsx` | Vertical timeline of roles and internships. |
+| Contact | `sections/Contact.tsx` | Email, LinkedIn, and GitHub links. |
 
-All sections reveal on scroll using an `IntersectionObserver` (`useScrollReveal.ts`).
+All sections reveal on scroll using an `IntersectionObserver` (`hooks/useScrollReveal.ts`).
 
 ## Tech stack
 
@@ -58,17 +58,19 @@ src/
     globals.css           # Base reset, CSS variables, keyframes
   components/portfolio/
     Portfolio.tsx         # Composes all sections
-    Hero.tsx               # Hero copy + CTAs
-    HeroCanvas.tsx          # Particle trail canvas effect
-    About.tsx
-    Projects.tsx            # Filterable project grid
-    Certificates.tsx
-    Skills.tsx
-    Experience.tsx
-    Contact.tsx
-    data.ts                  # Content: projects, certificates, skills, experience
-    portfolio.css             # All section styling
-    useScrollReveal.ts        # IntersectionObserver hook
+    content.ts             # Content: projects, certificates, skills, experience
+    portfolio.css           # All section styling
+    sections/
+      Hero.tsx               # Hero copy + CTAs
+      HeroCanvas.tsx          # Particle trail canvas effect
+      About.tsx
+      Projects.tsx
+      Certificates.tsx
+      Skills.tsx
+      Experience.tsx
+      Contact.tsx
+    hooks/
+      useScrollReveal.ts       # IntersectionObserver hook
   config/
     resources.ts               # Centralized external URLs and asset paths
 public/
@@ -100,9 +102,10 @@ npm run lint    # eslint
 
 ## Editing content
 
-- **Projects, certificates, skills, experience:** edit `src/components/portfolio/data.ts`.
-- **External links (email, GitHub, LinkedIn, project repos, certificate URLs) and the CV file
-  path:** edit `src/config/resources.ts`.
-- **Copy in the Hero/About/Contact sections:** edit the respective component directly.
+- **Projects, certificates, skills, experience:** edit `src/components/portfolio/content.ts`.
+- **External links (email, GitHub, LinkedIn, project repos, certificate URLs), asset paths (CV,
+  certificate images), and the CV file path:** edit `src/config/resources.ts`.
+- **Copy in the Hero/About/Contact sections:** edit the respective component in
+  `src/components/portfolio/sections/`.
 - **Styling:** all section styles live in `src/components/portfolio/portfolio.css`; global
   resets and fonts are in `src/app/globals.css` and `src/app/layout.tsx`.

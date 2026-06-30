@@ -1,4 +1,4 @@
-import { skillCategories } from "./data";
+import { skillCategories } from "../content";
 
 export function Skills() {
   return (
