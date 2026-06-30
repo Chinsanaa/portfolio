@@ -20,6 +20,8 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -27,7 +29,17 @@ body {
   background: var(--dark);
   color: #e5e7eb;
   line-height: 1.6;
+  width: 100%;
   overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 @keyframes fadeInUp {
