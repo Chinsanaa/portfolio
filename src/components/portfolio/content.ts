@@ -73,22 +73,22 @@ export const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
     emoji: "\u{1F4BB}",
-    skills: ["Python", "SQL"],
+    skills: ["Python", "SQL","HTML","CSS","C++", "Git"],
   },
   {
     title: "Tools",
     emoji: "\u{1F6E0}\u{FE0F}",
-    skills: ["Excel (Financial Modeling)", "Power BI"],
+    skills: ["Excel (Financial Modeling)", "Power BI", "PostgresSQL", "Docker", "VS Code"],
   },
   {
-    title: "AI Workflows",
+    title: "AI skills",
     emoji: "\u{1F4CA}",
-    skills: ["AI Prompting", "Generative AI Workflows", "Claude Code"],
+    skills: ["AI Prompting", "GenAI Workflows", "Claude Code"],
   },
   {
     title: "Soft Skills",
     emoji: "\u{1F91D}",
-    skills: ["Leadership", "Communication", "Problem Solving"],
+    skills: ["Initiative", "Detail-Oriented", "Adaptable"],
   },
 ];
 
