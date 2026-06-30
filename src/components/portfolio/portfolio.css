@@ -87,13 +87,15 @@
 }
 
 .hero h1 {
-  font-size: clamp(36px, 7vw, 72px);
+  font-size: clamp(28px, 7vw, 72px);
   font-weight: 900;
   font-family: var(--font-fraunces), serif;
   line-height: 1.1;
   margin-bottom: 16px;
   color: #f1f5f9;
   letter-spacing: -2px;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .hero-subtitle {
