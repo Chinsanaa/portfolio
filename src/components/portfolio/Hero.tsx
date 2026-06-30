@@ -1,6 +1,7 @@
 "use client";
 
 import { HeroCanvas } from "./HeroCanvas";
+import { FILES } from "@/config/resources";
 
 export function Hero() {
   const scrollToProjects = () => {
@@ -25,7 +26,7 @@ export function Hero() {
             <button className="btn btn-primary" onClick={scrollToProjects}>
               View Projects
             </button>
-            <a href="/Chinsanaa_Chuluunbold_CV.pdf" download className="btn btn-secondary">
+            <a href={FILES.cvPdf} download className="btn btn-secondary">
               Download CV
             </a>
           </div>

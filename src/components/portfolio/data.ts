@@ -1,3 +1,5 @@
+import { URLS } from "@/config/resources";
+
 export type ProjectTag = "ML" | "Finance" | "Data" | "Web";
 
 export interface Project {
@@ -15,7 +17,7 @@ export const projects: Project[] = [
     impact:
       "Full-stack financial platform for income tracking, budgeting, and wealth analytics with real-time data visualization.",
     emoji: "\u{1F4B0}",
-    href: "https://github.com/chinsanaa/Earnio",
+    href: URLS.projects.earnio,
     tags: ["Web", "Data"],
     tagLabels: ["Web Dev", "Python", "Finance"],
   },
@@ -24,7 +26,7 @@ export const projects: Project[] = [
     impact:
       "Real-time messaging application with user authentication, database persistence, and interactive chat interface.",
     emoji: "\u{1F4AC}",
-    href: "https://github.com/chinsanaa/ChatSystem",
+    href: URLS.projects.chatSystem,
     tags: ["Web"],
     tagLabels: ["Web Dev", "HTML/CSS", "Database"],
   },
@@ -33,7 +35,7 @@ export const projects: Project[] = [
     impact:
       "Algorithmic trading system with ML-based strategy optimization, backtesting framework, and live market analysis.",
     emoji: "\u{1F4C8}",
-    href: "https://github.com/chinsanaa/Trading",
+    href: URLS.projects.trading,
     tags: ["ML", "Finance"],
     tagLabels: ["Python", "Machine Learning", "Finance"],
   },
@@ -60,21 +62,21 @@ export const certificates: Certificate[] = [
     title: "Claude Code in Action",
     issuer: "Anthropic Education",
     date: "June 2026",
-    href: "https://www.anthropic.com/claude",
+    href: URLS.certificates.claudeCodeInAction,
     emoji: "\u{1F4DC}",
   },
   {
     title: "Bloomberg Finance Fundamentals",
     issuer: "Bloomberg for Education",
     date: "May 2026",
-    href: "https://www.bloomberg.com/",
+    href: URLS.certificates.bloombergFinanceFundamentals,
     emoji: "\u{1F4BC}",
   },
   {
     title: "Google AI Essentials",
     issuer: "Google via Coursera",
     date: "June 2026",
-    href: "https://www.coursera.org/learn/google-ai-essentials",
+    href: URLS.certificates.googleAiEssentials,
     emoji: "\u{1F537}",
   },
 ];
