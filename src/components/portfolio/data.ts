@@ -1,13 +1,10 @@
 import { URLS } from "@/config/resources";
 
-export type ProjectTag = "ML" | "Finance" | "Data" | "Web";
-
 export interface Project {
   title: string;
   impact: string;
   emoji: string;
   href: string;
-  tags: ProjectTag[];
   tagLabels: string[];
 }
 
@@ -18,7 +15,6 @@ export const projects: Project[] = [
       "UGC monetization platform connecting Mongolian Gen Z creators with brand sponsorships. Full-stack system for earnings tracking, sponsorship applications, and MNT withdrawals, shipped as both a web app and a native iOS app.",
     emoji: "\u{1F4B0}",
     href: URLS.projects.earnio,
-    tags: ["Web", "Finance"],
     tagLabels: ["Next.js", "Express", "Supabase", "SwiftUI (iOS)"],
   },
   {
@@ -27,17 +23,8 @@ export const projects: Project[] = [
       "TCP socket-based distributed chat application with an LLM-powered chatbot and TextBlob sentiment analysis, plus built-in multiplayer games (Snake, Tic-Tac-Toe) and an emoji picker.",
     emoji: "\u{1F4AC}",
     href: URLS.projects.chatSystem,
-    tags: ["ML", "Data"],
     tagLabels: ["Python", "Tkinter", "Ollama", "TextBlob", "TCP Sockets"],
   },
-];
-
-export const filterTags: { label: string; value: ProjectTag | "all" }[] = [
-  { label: "All", value: "all" },
-  { label: "Machine Learning", value: "ML" },
-  { label: "Finance", value: "Finance" },
-  { label: "Data Analysis", value: "Data" },
-  { label: "Web Dev", value: "Web" },
 ];
 
 export interface Certificate {
