@@ -19,8 +19,7 @@ export function Hero() {
             Chuluunbold
           </h1>
           <p className="hero-subtitle">
-            Data Scientist + Finance enthusiast building data-driven solutions that move
-            markets
+            Data Scientist + Finance major building data-driven solutions 
           </p>
           <div className="hero-ctas">
             <button className="btn btn-primary" onClick={scrollToProjects}>
