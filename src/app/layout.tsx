@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Press_Start_2P } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
-const pressStart = Press_Start_2P({
-  weight: "400",
+const fraunces = Fraunces({
+  weight: ["600", "700", "900"],
   subsets: ["latin"],
-  variable: "--font-press-start",
+  variable: "--font-fraunces",
+});
+
+const inter = Inter({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "Chinsanaa Chuluunbold | Portfolio",
+  title: "Chinsanaa Chuluunbold | Data Science & Finance",
   description:
-    "Soft pixel-art portfolio — Data Science student at NYU Shanghai.",
+    "Data Scientist + Finance enthusiast building data-driven solutions that move markets.",
 };
 
 export default function RootLayout({
@@ -20,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${pressStart.variable} h-full`}>
-      <body className="min-h-full font-pixel antialiased">{children}</body>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
