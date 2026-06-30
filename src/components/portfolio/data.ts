@@ -1,4 +1,4 @@
-import { URLS } from "@/config/resources";
+import { IMAGES, URLS } from "@/config/resources";
 
 export interface Project {
   title: string;
@@ -33,6 +33,7 @@ export interface Certificate {
   date: string;
   href: string;
   emoji: string;
+  image: string;
 }
 
 export const certificates: Certificate[] = [
@@ -42,6 +43,7 @@ export const certificates: Certificate[] = [
     date: "June 2026",
     href: URLS.certificates.claudeCodeInAction,
     emoji: "\u{1F4DC}",
+    image: IMAGES.certificates.claudeCodeInAction,
   },
   {
     title: "Bloomberg Finance Fundamentals",
@@ -49,6 +51,7 @@ export const certificates: Certificate[] = [
     date: "May 2026",
     href: URLS.certificates.bloombergFinanceFundamentals,
     emoji: "\u{1F4BC}",
+    image: IMAGES.certificates.bloombergFinanceFundamentals,
   },
   {
     title: "Google AI Essentials",
@@ -56,6 +59,7 @@ export const certificates: Certificate[] = [
     date: "June 2026",
     href: URLS.certificates.googleAiEssentials,
     emoji: "\u{1F537}",
+    image: IMAGES.certificates.googleAiEssentials,
   },
 ];
 

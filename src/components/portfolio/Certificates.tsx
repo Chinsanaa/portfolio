@@ -1,4 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import { certificates } from "./data";
+
+function CertThumbnail({ title, emoji, image }: { title: string; emoji: string; image: string }) {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  if (imageFailed) {
+    return <div className="cert-thumbnail">{emoji}</div>;
+  }
+
+  return (
+    <div className="cert-thumbnail cert-thumbnail-image">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={image} alt={title} onError={() => setImageFailed(true)} />
+    </div>
+  );
+}
 
 export function Certificates() {
   return (
@@ -13,7 +31,7 @@ export function Certificates() {
             rel="noreferrer"
             className="cert-card scroll-reveal"
           >
-            <div className="cert-thumbnail">{cert.emoji}</div>
+            <CertThumbnail title={cert.title} emoji={cert.emoji} image={cert.image} />
             <div className="cert-content">
               <h3 className="cert-title">{cert.title}</h3>
               <p className="cert-issuer">{cert.issuer}</p>
