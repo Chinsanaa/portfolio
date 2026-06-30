@@ -1,4 +1,4 @@
-import { projects } from "./data";
+import { projects } from "../content";
 
 export function Projects() {
   return (

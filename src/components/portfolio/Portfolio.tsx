@@ -1,14 +1,14 @@
 "use client";
 
 import "./portfolio.css";
-import { Hero } from "./Hero";
-import { About } from "./About";
-import { Projects } from "./Projects";
-import { Certificates } from "./Certificates";
-import { Skills } from "./Skills";
-import { Experience } from "./Experience";
-import { Contact } from "./Contact";
-import { useScrollReveal } from "./useScrollReveal";
+import { Hero } from "./sections/Hero";
+import { About } from "./sections/About";
+import { Projects } from "./sections/Projects";
+import { Certificates } from "./sections/Certificates";
+import { Skills } from "./sections/Skills";
+import { Experience } from "./sections/Experience";
+import { Contact } from "./sections/Contact";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 
 export function Portfolio() {
   useScrollReveal();

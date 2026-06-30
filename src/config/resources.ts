@@ -3,18 +3,6 @@ export const FILES = {
 } as const;
 
 export const IMAGES = {
-  icons: {
-    github: "/icons/github.svg",
-    linkedin: "/icons/linkedin.svg",
-    instagram: "/icons/instagram.svg",
-    youtube: "/icons/youtube.svg",
-    tiktok: "/icons/tiktok.svg",
-    pinterest: "/icons/pinterest.svg",
-  },
-  work: {
-    photoshopExample1: "/images/work/photoshop-example-1.svg",
-    photoshopExample2: "/images/work/photoshop-example-2.svg",
-  },
   certificates: {
     claudeCodeInAction: "/images/certificates/claudecode_in_action.jfif",
     bloombergFinanceFundamentals: "/images/certificates/bloomberg_finance_fundamentals.jfif",

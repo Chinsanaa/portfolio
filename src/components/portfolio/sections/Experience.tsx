@@ -1,4 +1,4 @@
-import { experience } from "./data";
+import { experience } from "../content";
 
 export function Experience() {
   return (
