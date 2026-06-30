@@ -32,29 +32,35 @@ export function Hero() {
         </div>
         <div className="hero-code">
           <div className="code-line">
-            <span className="code-comment">{"// Data-driven decision making"}</span>
+            <span className="code-comment">{"// About me, as data"}</span>
+          </div>
+          <div className="code-line">student = {"{"}</div>
+          <div className="code-line">
+            &nbsp;&nbsp;<span className="code-string">&quot;school&quot;</span>:{" "}
+            <span className="code-string">&quot;NYU Shanghai&quot;</span>,
           </div>
           <div className="code-line">
-            <span className="code-keyword">def</span>{" "}
-            <span className="code-function">analyze_market</span>(data):
+            &nbsp;&nbsp;<span className="code-string">&quot;focus&quot;</span>: [
+            <span className="code-string">&quot;Data Science&quot;</span>,{" "}
+            <span className="code-string">&quot;Finance&quot;</span>],
           </div>
           <div className="code-line">
-            &nbsp;&nbsp;<span className="code-keyword">return</span> insights
+            &nbsp;&nbsp;<span className="code-string">&quot;tools&quot;</span>: [
+            <span className="code-string">&quot;SQL&quot;</span>,{" "}
+            <span className="code-string">&quot;Excel&quot;</span>,{" "}
+            <span className="code-string">&quot;Power BI&quot;</span>],
           </div>
+          <div className="code-line">
+            &nbsp;&nbsp;<span className="code-string">&quot;languages&quot;</span>: [
+            <span className="code-string">&quot;English&quot;</span>,{" "}
+            <span className="code-string">&quot;Mongolian&quot;</span>],
+          </div>
+          <div className="code-line">{"}"}</div>
           <div className="code-line" />
           <div className="code-line">
-            <span className="code-comment">{"// ML models for prediction"}</span>
+            <span className="code-function">print</span>(student[
+            <span className="code-string">&quot;focus&quot;</span>])
           </div>
-          <div className="code-line">
-            model = <span className="code-function">train</span>(
-          </div>
-          <div className="code-line">
-            &nbsp;&nbsp;data=<span className="code-string">&quot;financial_timeseries&quot;</span>,
-          </div>
-          <div className="code-line">
-            &nbsp;&nbsp;algo=<span className="code-string">&quot;gradient_boost&quot;</span>
-          </div>
-          <div className="code-line">)</div>
         </div>
       </div>
     </section>
