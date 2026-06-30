@@ -17,7 +17,7 @@ export const URLS = {
     linkedin: "https://www.linkedin.com/in/chinsanaa/",
   },
   projects: {
-    earnio: "https://github.com/Chinsanaa/creator-toolkit",
+    earnio: "https://github.com/Chinsanaa/earnio",
     chatSystem: "https://github.com/Chinsanaa/chatsystem",
   },
   certificates: {
