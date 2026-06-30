@@ -15,6 +15,11 @@ export const IMAGES = {
     photoshopExample1: "/images/work/photoshop-example-1.svg",
     photoshopExample2: "/images/work/photoshop-example-2.svg",
   },
+  certificates: {
+    claudeCodeInAction: "/images/certificates/claude-code-in-action.png",
+    bloombergFinanceFundamentals: "/images/certificates/bloomberg-finance-fundamentals.png",
+    googleAiEssentials: "/images/certificates/google-ai-essentials.png",
+  },
 } as const;
 
 export const URLS = {
