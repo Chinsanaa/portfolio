@@ -1,3 +1,5 @@
+import { URLS } from "@/config/resources";
+
 export function Contact() {
   return (
     <section className="section" id="contact">
@@ -11,13 +13,18 @@ export function Contact() {
         </p>
 
         <div className="contact-links">
-          <a href="mailto:chinsanaa@nyu.edu" className="contact-link">
+          <a href={URLS.socials.email} className="contact-link">
             📧 Email
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="contact-link">
+          <a
+            href={URLS.socials.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="contact-link"
+          >
             💼 LinkedIn
           </a>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="contact-link">
+          <a href={URLS.socials.github} target="_blank" rel="noreferrer" className="contact-link">
             🐙 GitHub
           </a>
         </div>
