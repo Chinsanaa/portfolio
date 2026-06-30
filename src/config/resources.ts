@@ -16,9 +16,9 @@ export const IMAGES = {
     photoshopExample2: "/images/work/photoshop-example-2.svg",
   },
   certificates: {
-    claudeCodeInAction: "/images/certificates/claude-code-in-action.png",
-    bloombergFinanceFundamentals: "/images/certificates/bloomberg-finance-fundamentals.png",
-    googleAiEssentials: "/images/certificates/google-ai-essentials.png",
+    claudeCodeInAction: "/images/certificates/claudecode_in_action.jfif",
+    bloombergFinanceFundamentals: "/images/certificates/bloomberg_finance_fundamentals.jfif",
+    googleAiEssentials: "/images/certificates/google_ai_essentials.jfif",
   },
 } as const;
 
