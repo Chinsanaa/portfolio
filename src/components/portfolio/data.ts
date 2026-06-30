@@ -15,29 +15,20 @@ export const projects: Project[] = [
   {
     title: "Earnio",
     impact:
-      "Full-stack financial platform for income tracking, budgeting, and wealth analytics with real-time data visualization.",
+      "UGC monetization platform connecting Mongolian Gen Z creators with brand sponsorships. Full-stack system for earnings tracking, sponsorship applications, and MNT withdrawals, shipped as both a web app and a native iOS app.",
     emoji: "\u{1F4B0}",
     href: URLS.projects.earnio,
-    tags: ["Web", "Data"],
-    tagLabels: ["Web Dev", "Python", "Finance"],
+    tags: ["Web", "Finance"],
+    tagLabels: ["Next.js", "Express", "Supabase", "SwiftUI (iOS)"],
   },
   {
-    title: "ChatSystem",
+    title: "ICDS Chat System",
     impact:
-      "Real-time messaging application with user authentication, database persistence, and interactive chat interface.",
+      "TCP socket-based distributed chat application with an LLM-powered chatbot and TextBlob sentiment analysis, plus built-in multiplayer games (Snake, Tic-Tac-Toe) and an emoji picker.",
     emoji: "\u{1F4AC}",
     href: URLS.projects.chatSystem,
-    tags: ["Web"],
-    tagLabels: ["Web Dev", "HTML/CSS", "Database"],
-  },
-  {
-    title: "Trading",
-    impact:
-      "Algorithmic trading system with ML-based strategy optimization, backtesting framework, and live market analysis.",
-    emoji: "\u{1F4C8}",
-    href: URLS.projects.trading,
-    tags: ["ML", "Finance"],
-    tagLabels: ["Python", "Machine Learning", "Finance"],
+    tags: ["ML", "Data"],
+    tagLabels: ["Python", "Tkinter", "Ollama", "TextBlob", "TCP Sockets"],
   },
 ];
 
@@ -74,7 +65,7 @@ export const certificates: Certificate[] = [
   },
   {
     title: "Google AI Essentials",
-    issuer: "Google via Coursera",
+    issuer: "Google, via Coursera",
     date: "June 2026",
     href: URLS.certificates.googleAiEssentials,
     emoji: "\u{1F537}",
@@ -89,29 +80,24 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Programming Languages",
+    title: "Languages",
     emoji: "\u{1F4BB}",
-    skills: ["Python", "SQL", "C++", "HTML/CSS"],
+    skills: ["Python", "SQL"],
   },
   {
-    title: "Tools & Platforms",
+    title: "Tools",
     emoji: "\u{1F6E0}\u{FE0F}",
-    skills: ["Excel", "Power BI", "VS Code", "Claude Code"],
+    skills: ["Excel (Financial Modeling)", "Power BI"],
   },
   {
-    title: "Data & Finance",
+    title: "AI Workflows",
     emoji: "\u{1F4CA}",
-    skills: [
-      "Financial Modeling",
-      "Machine Learning",
-      "Data Analysis",
-      "Statistical Analysis",
-    ],
+    skills: ["AI Prompting", "Generative AI Workflows", "Claude Code"],
   },
   {
     title: "Soft Skills",
     emoji: "\u{1F91D}",
-    skills: ["Leadership", "Communication", "Problem Solving", "AI Workflows"],
+    skills: ["Leadership", "Communication", "Problem Solving"],
   },
 ];
 
@@ -124,38 +110,37 @@ export interface ExperienceItem {
 
 export const experience: ExperienceItem[] = [
   {
+    role: "Financial Analyst",
+    company: "Next Group — Ulaanbaatar, Mongolia",
+    date: "May 2026 – Present",
+    description: "Analyzing sales and COGS data using Excel, SQL, and Power BI.",
+  },
+  {
     role: "Administrative Assistant",
-    company: "NYU Shanghai Operations",
-    date: "2023 – 2024",
+    company: "Next Group — “Maybee Pop & Joy” Launch, Ulaanbaatar, Mongolia",
+    date: "June 2025 – Aug 2025",
     description:
-      "Coordinated multi-stakeholder initiatives, built data tracking systems for campus operations, and improved process efficiency through automation and documentation.",
+      "Supported pricing, cashiering, and sales during the company's launch phase. Ran social media marketing and customer support for the new business, and configured operational systems while managing product stocking and inventory.",
   },
   {
-    role: "HR Intern",
-    company: "Corporate Finance Division",
-    date: "2024 – 2025",
+    role: "Sales Analyst",
+    company: "Next Group — Ulaanbaatar, Mongolia",
+    date: "June 2024 – July 2024",
     description:
-      "Optimized recruitment pipeline using data analysis, reducing hiring time by 35%, trained 200+ candidates on financial concepts, and managed stakeholder relations across departments.",
+      "Traveled to multiple Chinese cities (Erenhot, Baoding, Tianjin, Beijing, Shanghai) to meet existing business partners. Visited factories to assess production processes and quality standards, attended exhibitions to evaluate potential new partners, and provided consumer-focused insights that contributed to team decisions on product selection and business strategy.",
   },
   {
-    role: "Data Analysis Intern",
-    company: "Finance Research Lab",
-    date: "Summer 2024",
+    role: "Human Resources Intern",
+    company: "Next Group — Ulaanbaatar, Mongolia",
+    date: "June 2023 – Aug 2023",
     description:
-      "Developed Python-based financial analysis tools, built predictive models for market trends, and automated data pipeline processing 50K+ daily market records.",
-  },
-  {
-    role: "Research Assistant",
-    company: "NYU Shanghai Data Science Lab",
-    date: "2024 – Present",
-    description:
-      "Contributed to machine learning research projects, implemented data visualization dashboards in Power BI, and published findings on financial data analysis methodologies.",
+      "Maintained and updated employee records across the HR database, ensuring data accuracy and confidentiality.",
   },
   {
     role: "President, Entrepreneur Club",
-    company: "NYU Shanghai",
-    date: "2025 – Present",
+    company: "Orchlon International School — Ulaanbaatar, Mongolia",
+    date: "Sept 2024 – June 2025",
     description:
-      "Led cross-functional team building startup culture, organized pitch competitions, and mentored 50+ student entrepreneurs on go-to-market strategy and fundraising.",
+      "Founded and led the school's Entrepreneur Club, organizing fundraisers to finance a charity event at a local orphanage. Facilitated weekly meetings on sales strategy and marketing tactics, allocated responsibilities across club members, and personally handled the majority of the club's planning, logistics, and execution.",
   },
 ];

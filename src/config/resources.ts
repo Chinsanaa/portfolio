@@ -26,7 +26,6 @@ export const URLS = {
   projects: {
     earnio: "https://github.com/Chinsanaa/creator-toolkit",
     chatSystem: "https://github.com/Chinsanaa/chatsystem",
-    trading: "https://github.com/Chinsanaa/Trading",
   },
   certificates: {
     claudeCodeInAction: "https://verify.skilljar.com/c/k6t2seqvaquz",
