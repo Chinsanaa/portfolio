@@ -8,6 +8,14 @@ export const IMAGES = {
     bloombergFinanceFundamentals: "/images/certificates/bloomberg_finance_fundamentals.jfif",
     googleAiEssentials: "/images/certificates/google_ai_essentials.jfif",
   },
+  /* Generated editorial artwork. A null value renders the flat SVG
+     fallback composition in ArtImage — the site never depends on these. */
+  art: {
+    hero: null,
+    earnio: null,
+    chat: null,
+    about: null,
+  } as { hero: string | null; earnio: string | null; chat: string | null; about: string | null },
 } as const;
 
 export const URLS = {

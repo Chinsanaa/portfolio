@@ -1,18 +1,9 @@
-@import "tailwindcss";
+@import "../styles/tokens.css";
 
-:root {
-  --primary: #3b82f6;
-  --primary-dark: #1d4ed8;
-  --secondary: #8b5cf6;
-  --accent: #ec4899;
-  --dark: #0f1419;
-  --dark-light: #1a1f2e;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-}
-
-* {
+/* ----- Reset ------------------------------------------------ */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,17 +12,18 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
-  overflow-x: hidden;
 }
 
 body {
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--dark);
-  color: #e5e7eb;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  line-height: var(--leading-body);
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
 }
 
 img,
@@ -40,47 +32,66 @@ canvas,
 video {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-@keyframes slideInRight {
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+::selection {
+  background: var(--color-cobalt);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 3px;
+}
+
+/* ----- Shared typographic voices ---------------------------- */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* ----- Marquee (pure CSS, GPU-cheap) ------------------------- */
+@keyframes marquee-scroll {
   from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
     transform: translateX(0);
   }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
+  to {
+    transform: translateX(-100%);
   }
 }
 
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.scroll-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* ----- Reduced motion kill-switch ---------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

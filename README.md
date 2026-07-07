@@ -1,10 +1,10 @@
 # Chinsanaa Chuluunbold — Portfolio
 
 Personal portfolio site for Chinsanaa Chuluunbold, a Data Science student at NYU Shanghai
-concentrating in Finance. The site is a single-page, dark-themed showcase covering background,
-projects, certifications, skills, and experience.
+concentrating in Finance. A single-page, editorial-magazine-style showcase ("Cobalt Press")
+covering background, projects, experience, skills, and certificates.
 
-🔗 **Live site:** deployed via Vercel on every push to `main`.
+**Live site:** deployed via Vercel on every push to `main`.
 
 ## Overview
 
@@ -13,68 +13,59 @@ top to bottom:
 
 | Section | Component | Description |
 | --- | --- | --- |
-| Hero | `sections/Hero.tsx` + `sections/HeroCanvas.tsx` | Full-viewport intro with name, tagline, "View Projects" / "Download CV" CTAs, a syntax-highlighted code snippet, and an interactive `<canvas>` particle trail that follows the cursor. |
-| About | `sections/About.tsx` | Bio plus quick facts (education, concentration, languages). |
-| Projects | `sections/Projects.tsx` | Card grid of projects. |
-| Certifications | `sections/Certificates.tsx` | Cards linking out to verified certificates (Claude Code, Bloomberg, Google AI), with photo thumbnails that fall back to an emoji if the image isn't available yet. |
-| Skills | `sections/Skills.tsx` | Grouped skill chips across Programming Languages, Tools & Platforms, Data & Finance, and Soft Skills. |
-| Experience | `sections/Experience.tsx` | Vertical timeline of roles and internships. |
-| Contact | `sections/Contact.tsx` | Email, LinkedIn, and GitHub links. |
-
-All sections reveal on scroll using an `IntersectionObserver` (`hooks/useScrollReveal.ts`).
+| Nav | `Nav.tsx` | Fixed hairline bar with numbered anchor links; hides on scroll-down, returns on scroll-up. |
+| Hero | `sections/Hero.tsx` + `sections/HeroShapes.tsx` | Magazine-cover intro: masthead row, oversized staggered name, scroll-parallaxed SVG shapes, art panel, and a cobalt marquee ticker. |
+| About №01 | `sections/About.tsx` | Asymmetric editorial spread: sticky art aside, large-set bio, "by the numbers" stat rows with count-up animations. |
+| Projects №02 | `sections/Projects.tsx` | Full-width alternating features with ghost numerals, parallax art covers, tag chips, and GitHub links. |
+| Experience №03 | `sections/Experience.tsx` | Timeline whose SVG rail draws itself as you scroll; persimmon node dots spring in per entry. |
+| Skills №04 | `sections/Skills.tsx` | Typographic "spec sheet": four hairline-ruled columns of numbered skills. |
+| Certificates №05 | `sections/Certificates.tsx` | Table-of-contents ledger; rows invert to cobalt on hover and reveal a cursor-following certificate thumbnail. |
+| Contact №06 | `sections/Contact.tsx` | Full-bleed cobalt block: oversized mailto, magnetic social buttons, marquee, and colophon footer. |
 
 ## Tech stack
 
 - **[Next.js 16](https://nextjs.org/)** (App Router, Turbopack)
 - **[React 19](https://react.dev/)**
 - **TypeScript**
-- **CSS** — hand-written, design-token-based stylesheet (`src/components/portfolio/portfolio.css`); no Tailwind utility classes are used on this page
-- **Google Fonts** — [Fraunces](https://fonts.google.com/specimen/Fraunces) (headings) and [Inter](https://fonts.google.com/specimen/Inter) (body), loaded via `next/font/google`
-- **Canvas API** — used directly (no animation library) for the hero particle effect
+- **[framer-motion](https://motion.dev/)** — scroll-linked SVG drawing, parallax, staggered reveals, magnetic buttons, spring-following thumbnails
+- **CSS** — hand-written, token-based (`src/styles/tokens.css` + `src/components/portfolio/editorial.css`); no CSS framework
+- **Google Fonts** — [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) (display), [Inter](https://fonts.google.com/specimen/Inter) (body), [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (labels), via `next/font/google`
 - **ESLint** + **TypeScript** for linting/type-checking
 
 ## Design system
 
-The visual design was originally prototyped in [Claude Design](https://claude.ai/design) and
-implemented pixel-for-pixel as React components. Key tokens:
-
-- **Palette:** near-black background (`#0f1419` / `#0d1117`) with blue (`#3b82f6`) and purple
-  (`#8b5cf6`) accents, used for gradients, borders, and hover states throughout.
-- **Typography:** Fraunces (serif, 600–900 weight) for headings; Inter (300–700 weight) for body
-  text and UI.
-- **Motion:** scroll-reveal fade/slide-up on section content, hover lift/glow on cards, and a
-  live particle trail in the hero.
-- **Components:** pill-shaped filter tags, gradient-bordered project/certificate cards, skill
-  chips, and a dotted timeline for experience entries — all defined as reusable CSS classes in
-  `portfolio.css`.
+See **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** — palette, typography, motion vocabulary,
+primitive component APIs, and the recipe for adding new sections. Headline rules: flat colors
+only (no gradients, no purple), cream paper + cobalt blue + ink black with a persimmon accent,
+icons instead of emojis, and every color sourced from `src/styles/tokens.css`.
 
 ## Project structure
 
 ```
 src/
   app/
-    layout.tsx          # Fonts + global metadata
-    page.tsx             # Renders <Portfolio />
-    globals.css           # Base reset, CSS variables, keyframes
-  components/portfolio/
-    Portfolio.tsx         # Composes all sections
-    content.ts             # Content: projects, certificates, skills, experience
-    portfolio.css           # All section styling
-    sections/
-      Hero.tsx               # Hero copy + CTAs
-      HeroCanvas.tsx          # Particle trail canvas effect
-      About.tsx
-      Projects.tsx
-      Certificates.tsx
-      Skills.tsx
-      Experience.tsx
-      Contact.tsx
-    hooks/
-      useScrollReveal.ts       # IntersectionObserver hook
+    layout.tsx            # Fonts + global metadata
+    page.tsx              # Renders <Portfolio />
+    globals.css           # Reset, base type, marquee keyframes, reduced-motion kill-switch
+  styles/
+    tokens.css            # Design tokens — single source of truth for all values
+  components/
+    icons/index.tsx       # Hand-rolled inline SVG icon set
+    ui/                   # Primitives: SectionHeader, Button, Reveal, Marquee,
+                          # TagChip, ArtImage (+ SVG fallbacks), AnimatedCounter
+    portfolio/
+      Portfolio.tsx       # Composes Nav + all sections inside MotionConfig
+      Nav.tsx
+      content.ts          # Content: projects, certificates, skills, experience
+      editorial.css       # All section styling (token-only)
+      sections/           # Hero, HeroShapes, About, Projects, Experience,
+                          # Skills, Certificates, Contact
   config/
-    resources.ts               # Centralized external URLs and asset paths
+    resources.ts          # External URLs, asset paths, generated-art manifest
 public/
   Chinsanaa_Chuluunbold_CV.pdf
+  images/certificates/    # Certificate photos
+  images/art/             # Generated editorial artwork (optional; SVG fallbacks otherwise)
 ```
 
 ## Local development
@@ -103,9 +94,10 @@ npm run lint    # eslint
 ## Editing content
 
 - **Projects, certificates, skills, experience:** edit `src/components/portfolio/content.ts`.
-- **External links (email, GitHub, LinkedIn, project repos, certificate URLs), asset paths (CV,
-  certificate images), and the CV file path:** edit `src/config/resources.ts`.
+- **External links (email, GitHub, LinkedIn, project repos, certificate URLs), asset paths, and
+  generated artwork:** edit `src/config/resources.ts` (set an `IMAGES.art.*` entry to a path
+  under `public/images/art/` to replace its SVG fallback).
 - **Copy in the Hero/About/Contact sections:** edit the respective component in
   `src/components/portfolio/sections/`.
-- **Styling:** all section styles live in `src/components/portfolio/portfolio.css`; global
-  resets and fonts are in `src/app/globals.css` and `src/app/layout.tsx`.
+- **Styling:** section styles live in `src/components/portfolio/editorial.css`; design tokens in
+  `src/styles/tokens.css`; global resets in `src/app/globals.css`. Follow DESIGN_SYSTEM.md.

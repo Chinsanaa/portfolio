@@ -1,0 +1,72 @@
+/* ============================================================
+   COBALT PRESS — Design Tokens
+   Single source of truth for every color, size, and motion
+   value in the site. No raw hex values outside this file.
+
+   Hard rules of the system:
+   - No gradients. Ever. Flat colors only.
+   - No purple.
+   - Persimmon is a spice, not a main course (~5% of any view).
+   See DESIGN_SYSTEM.md for full usage guidance.
+   ============================================================ */
+
+:root {
+  /* ----- Color ------------------------------------------------
+     ink on paper      ≈ 13:1  (AAA)
+     cobalt on paper   ≈ 6.5:1 (AA all sizes)
+     paper on cobalt   ≈ 6.5:1 (AA all sizes)
+     persimmon on paper ≈ 3.8:1 — large type & decoration ONLY  */
+  --color-paper: #f4efe2; /* page background, warm newsprint cream */
+  --color-paper-2: #ece5d2; /* raised surfaces: art frames, stat blocks */
+  --color-ink: #181611; /* primary text, headings, hard borders */
+  --color-ink-soft: #4e4a3e; /* body copy, secondary text */
+  --color-cobalt: #1c3aee; /* brand blue: accents, links, buttons, inverse blocks */
+  --color-cobalt-deep: #0f1f96; /* hover / pressed states on cobalt */
+  --color-persimmon: #e8542f; /* single warm accent — decoration, large type only */
+  --color-line: #c9c0a6; /* hairline rules */
+
+  /* ----- Typography ------------------------------------------ */
+  --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-body: var(--font-inter), "Inter", -apple-system, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
+
+  --text-display: clamp(2.75rem, 9.5vw, 9rem); /* hero name */
+  --text-h2: clamp(2.25rem, 6vw, 4.5rem); /* section titles, project names */
+  --text-h3: clamp(1.4rem, 2.5vw, 2rem); /* large body / about lede */
+  --text-body: 1.0625rem;
+  --text-small: 0.9375rem;
+  --text-label: 0.75rem; /* mono labels, uppercase */
+
+  --tracking-label: 0.08em;
+  --leading-display: 0.92;
+  --leading-tight: 1.15;
+  --leading-body: 1.65;
+
+  /* ----- Space & layout --------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --container: 1320px;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --section-pad: clamp(4rem, 10vw, 8.5rem);
+
+  /* ----- Shape ------------------------------------------------ */
+  --radius: 2px; /* near-square, editorial. Only tag chips go rounder */
+  --radius-chip: 999px;
+  --border-hair: 1px solid var(--color-line);
+  --border-hard: 1.5px solid var(--color-ink);
+
+  /* ----- Motion ----------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 200ms;
+  --dur-base: 600ms;
+  --dur-slow: 900ms;
+}

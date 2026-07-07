@@ -3,9 +3,11 @@ import { IMAGES, URLS } from "@/config/resources";
 export interface Project {
   title: string;
   impact: string;
-  emoji: string;
   href: string;
   tagLabels: string[];
+  /** ArtImage variant + generated artwork path (null → SVG fallback). */
+  artVariant: "earnio" | "chat";
+  art: string | null;
 }
 
 export const projects: Project[] = [
@@ -13,17 +15,19 @@ export const projects: Project[] = [
     title: "Earnio",
     impact:
       "UGC monetization platform connecting Mongolian Gen Z creators with brand sponsorships. Full-stack system for earnings tracking, sponsorship applications, and MNT withdrawals, shipped as both a web app and a native iOS app.",
-    emoji: "\u{1F4B0}",
     href: URLS.projects.earnio,
     tagLabels: ["Next.js", "Express", "Supabase", "SwiftUI (iOS)"],
+    artVariant: "earnio",
+    art: IMAGES.art.earnio,
   },
   {
     title: "ICDS Chat System",
     impact:
       "TCP socket-based distributed chat application with an LLM-powered chatbot and TextBlob sentiment analysis, plus built-in multiplayer games (Snake, Tic-Tac-Toe) and an emoji picker.",
-    emoji: "\u{1F4AC}",
     href: URLS.projects.chatSystem,
     tagLabels: ["Python", "Tkinter", "Ollama", "TextBlob", "TCP Sockets"],
+    artVariant: "chat",
+    art: IMAGES.art.chat,
   },
 ];
 
@@ -32,7 +36,6 @@ export interface Certificate {
   issuer: string;
   date: string;
   href: string;
-  emoji: string;
   image: string;
 }
 
@@ -42,7 +45,6 @@ export const certificates: Certificate[] = [
     issuer: "Anthropic Education",
     date: "June 2026",
     href: URLS.certificates.claudeCodeInAction,
-    emoji: "\u{1F4DC}",
     image: IMAGES.certificates.claudeCodeInAction,
   },
   {
@@ -50,7 +52,6 @@ export const certificates: Certificate[] = [
     issuer: "Bloomberg for Education",
     date: "May 2026",
     href: URLS.certificates.bloombergFinanceFundamentals,
-    emoji: "\u{1F4BC}",
     image: IMAGES.certificates.bloombergFinanceFundamentals,
   },
   {
@@ -58,36 +59,30 @@ export const certificates: Certificate[] = [
     issuer: "Google, via Coursera",
     date: "June 2026",
     href: URLS.certificates.googleAiEssentials,
-    emoji: "\u{1F537}",
     image: IMAGES.certificates.googleAiEssentials,
   },
 ];
 
 export interface SkillCategory {
   title: string;
-  emoji: string;
   skills: string[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
-    emoji: "\u{1F4BB}",
-    skills: ["Python", "SQL","HTML","CSS","C++", "Git"],
+    skills: ["Python", "SQL", "HTML", "CSS", "C++", "Git"],
   },
   {
     title: "Tools",
-    emoji: "\u{1F6E0}\u{FE0F}",
     skills: ["Excel (Financial Modeling)", "Power BI", "PostgresSQL", "Docker", "VS Code"],
   },
   {
     title: "AI skills",
-    emoji: "\u{1F4CA}",
     skills: ["AI Prompting", "GenAI Workflows", "Claude Code"],
   },
   {
     title: "Soft Skills",
-    emoji: "\u{1F91D}",
     skills: ["Initiative", "Detail-Oriented", "Adaptable"],
   },
 ];

@@ -1,30 +1,29 @@
 "use client";
 
-import "./portfolio.css";
+import { MotionConfig } from "framer-motion";
+import "./editorial.css";
+import { Nav } from "./Nav";
 import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
 import { Projects } from "./sections/Projects";
-import { Certificates } from "./sections/Certificates";
-import { Skills } from "./sections/Skills";
 import { Experience } from "./sections/Experience";
+import { Skills } from "./sections/Skills";
+import { Certificates } from "./sections/Certificates";
 import { Contact } from "./sections/Contact";
-import { useScrollReveal } from "./hooks/useScrollReveal";
 
 export function Portfolio() {
-  useScrollReveal();
-
   return (
-    <>
-      <Hero />
-      <About />
-      <Projects />
-      <Certificates />
-      <Skills />
-      <Experience />
-      <Contact />
-      <footer className="footer">
-        <p>© 2026 Chinsanaa Chuluunbold. Designed with attention to detail. All rights reserved.</p>
-      </footer>
-    </>
+    <MotionConfig reducedMotion="user">
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Experience />
+        <Skills />
+        <Certificates />
+        <Contact />
+      </main>
+    </MotionConfig>
   );
 }
