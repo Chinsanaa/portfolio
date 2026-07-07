@@ -1,25 +1,31 @@
+"use client";
+
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { skillCategories } from "../content";
 
 export function Skills() {
   return (
-    <section className="section" id="skills">
-      <h2 className="section-title">Skills</h2>
-      <div className="skills-grid">
+    <section className="section skills" id="skills">
+      <SectionHeader number="04" title="Skills" kicker="Spec sheet" />
+
+      <Reveal stagger className="skills-grid">
         {skillCategories.map((category) => (
-          <div key={category.title} className="skill-category scroll-reveal">
-            <h3 className="skill-category-title">
-              {category.emoji} {category.title}
-            </h3>
-            <div className="skill-list">
-              {category.skills.map((skill) => (
-                <span key={skill} className="skill-item">
-                  {skill}
-                </span>
+          <RevealItem key={category.title} className="skills-column">
+            <h3 className="skills-category mono-label">{category.title}</h3>
+            <ol className="skills-list">
+              {category.skills.map((skill, i) => (
+                <li key={skill} className="skills-item">
+                  <span className="skills-item-index mono-label">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="skills-item-name">{skill}</span>
+                </li>
               ))}
-            </div>
-          </div>
+            </ol>
+          </RevealItem>
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }
