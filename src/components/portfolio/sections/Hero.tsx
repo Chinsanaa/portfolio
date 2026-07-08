@@ -3,11 +3,12 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArtImage } from "@/components/ui/ArtImage";
+import { Spotlight } from "@/components/ui/Spotlight";
+import { GlowField } from "@/components/ui/GlowField";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { Marquee } from "@/components/ui/Marquee";
 import { ArrowDown, Asterisk, Download } from "@/components/icons";
-import { FILES, IMAGES } from "@/config/resources";
-import { HeroShapes } from "./HeroShapes";
+import { FILES } from "@/config/resources";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -21,6 +22,12 @@ const MARQUEE_ITEMS = [
   "Excel Modeling",
 ];
 
+const STATS = [
+  { label: "Shipped projects", value: 3, prefix: "0" },
+  { label: "Certificates", value: 3, prefix: "0" },
+  { label: "Cities visited (work)", value: 6, prefix: "0" },
+];
+
 const lineReveal = {
   hidden: { y: "110%" },
   visible: (i: number) => ({
@@ -32,8 +39,7 @@ const lineReveal = {
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const headlineY = useTransform(scrollYProgress, [0, 1], [0, -110]);
-  const artY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   const scrollToProjects = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -41,7 +47,7 @@ export function Hero() {
 
   return (
     <section className="hero" id="top" ref={ref}>
-      <HeroShapes scrollProgress={scrollYProgress} />
+      <GlowField />
 
       <motion.div
         className="hero-masthead mono-label"
@@ -49,73 +55,74 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.1 }}
       >
-        <span>Portfolio — Issue 01</span>
-        <span className="hero-masthead-mid">NYU Shanghai &rsquo;29</span>
-        <span>Data × Finance</span>
+        <span>Data Scientist × Finance</span>
+        <span>NYU Shanghai &rsquo;29</span>
       </motion.div>
 
-      <div className="hero-body">
-        <motion.h1 className="hero-name" style={{ y: headlineY }}>
-          <span className="hero-line">
-            <motion.span custom={0} variants={lineReveal} initial="hidden" animate="visible">
-              Chinsanaa
-            </motion.span>
-          </span>
-          <span className="hero-line hero-line-indent">
-            <motion.span custom={1} variants={lineReveal} initial="hidden" animate="visible">
-              Chuluunbold
-            </motion.span>
-          </span>
-        </motion.h1>
+      <Spotlight className="hero-body">
+        <motion.div className="hero-content" style={{ y: contentY }}>
+          <h1 className="hero-name">
+            <span className="hero-line">
+              <motion.span custom={0} variants={lineReveal} initial="hidden" animate="visible">
+                Chinsanaa
+              </motion.span>
+            </span>
+            <span className="hero-line">
+              <motion.span custom={1} variants={lineReveal} initial="hidden" animate="visible">
+                <span className="hero-name-accent">Chuluunbold</span>
+              </motion.span>
+            </span>
+          </h1>
 
-        <div className="hero-row">
-          <div className="hero-intro">
-            <motion.p
-              className="hero-tagline"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.55 }}
-            >
-              Data Scientist + Finance major building data-driven solutions
-            </motion.p>
-
-            <motion.div
-              className="hero-ctas"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.7 }}
-            >
-              <Button variant="solid" onClick={scrollToProjects}>
-                View Projects
-                <ArrowDown size={16} />
-              </Button>
-              <Button variant="outline" href={FILES.cvPdf} download>
-                Download CV
-                <Download size={16} />
-              </Button>
-            </motion.div>
-          </div>
+          <motion.p
+            className="hero-tagline"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.55 }}
+          >
+            Data Scientist + Finance major building data-driven solutions that move markets.
+          </motion.p>
 
           <motion.div
-            className="hero-art"
-            style={{ y: artY }}
-            initial={{ opacity: 0, y: 40 }}
+            className="hero-ctas"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.7 }}
           >
-            <ArtImage
-              src={IMAGES.art.hero}
-              variant="hero"
-              alt="Abstract geometric composition in ink and paper tones"
-              priority
-            />
-            <span className="hero-art-caption mono-label">Fig. 01 — Data × Finance</span>
+            <Button variant="solid" onClick={scrollToProjects}>
+              View Projects
+              <ArrowDown size={16} />
+            </Button>
+            <Button variant="ghost" href={FILES.cvPdf} download>
+              Download CV
+              <Download size={16} />
+            </Button>
           </motion.div>
-        </div>
+
+          <motion.div
+            className="hero-stats"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.85 }}
+          >
+            {STATS.map((stat) => (
+              <div className="hero-stat tilt-card" key={stat.label}>
+                <span className="hero-stat-value">
+                  <AnimatedCounter value={stat.value} prefix={stat.prefix} />
+                </span>
+                <span className="hero-stat-label mono-label">{stat.label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </Spotlight>
+
+      <div className="hero-scroll-cue mono-label">
+        <ArrowDown size={16} />
       </div>
 
       <div className="hero-marquee">
-        <Marquee tone="ink" duration={26}>
+        <Marquee tone="glass" duration={26}>
           {MARQUEE_ITEMS.map((item) => (
             <span key={item} className="marquee-item">
               {item}

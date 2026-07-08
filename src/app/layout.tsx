@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Sora, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const archivoBlack = Archivo_Black({
-  weight: "400",
+const sora = Sora({
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-archivo-black",
+  variable: "--font-sora",
 });
 
 const inter = Inter({
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivoBlack.variable} ${inter.variable} ${plexMono.variable}`}
+      className={`${sora.variable} ${inter.variable} ${plexMono.variable}`}
     >
       <body>{children}</body>
     </html>

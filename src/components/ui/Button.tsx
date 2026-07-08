@@ -7,7 +7,7 @@ const PULL = 8; // max magnetic offset in px
 
 interface ButtonProps {
   children: ReactNode;
-  variant?: "solid" | "outline" | "paper";
+  variant?: "solid" | "ghost" | "subtle";
   href?: string;
   download?: boolean;
   external?: boolean;
@@ -16,10 +16,10 @@ interface ButtonProps {
 }
 
 /**
- * Editorial button with a magnetic hover pull.
- * variant "solid"   — ink fill, paper text
- * variant "outline" — ink border on paper
- * variant "paper"   — paper border, for use on ink backgrounds
+ * Glass-era button with a magnetic hover pull.
+ * variant "solid"  — flat violet fill, soft blurred glow behind it
+ * variant "ghost"  — glass border, transparent fill
+ * variant "subtle" — text-only, underline on hover
  */
 export function Button({
   children,

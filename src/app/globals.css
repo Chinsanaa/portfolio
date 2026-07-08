@@ -12,13 +12,14 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
+  color-scheme: dark;
 }
 
 body {
   font-family: var(--font-body);
   font-size: var(--text-body);
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--bg);
+  color: var(--text);
   line-height: var(--leading-body);
   width: 100%;
   overflow-x: clip;
@@ -54,13 +55,26 @@ ol {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-paper);
+  background: var(--violet);
+  color: var(--bg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--violet);
   outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: var(--radius-chip);
 }
 
 /* ----- Shared typographic voices ---------------------------- */
@@ -70,6 +84,7 @@ ol {
   font-weight: 500;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
+  color: var(--text-dim);
 }
 
 /* ----- Marquee (pure CSS, GPU-cheap) ------------------------- */

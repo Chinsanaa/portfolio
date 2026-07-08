@@ -1,43 +1,53 @@
 /* ============================================================
-   MONOGRAPH — Design Tokens
+   MIDNIGHT STUDIO — Design Tokens
    Single source of truth for every color, size, and motion
    value in the site. No raw hex values outside this file.
 
    Hard rules of the system:
-   - No gradients. Ever. Flat colors only.
-   - Monochrome ink-on-paper. Accent is the ONLY color and is
-     a spice, not a main course (~2% of any view).
+   - No gradients. Ever. Flat colors only — including on text,
+     borders, and buttons. "Glow" comes from filter: blur() on
+     a solid-color shape + opacity, never a gradient fill.
+   - Two flat accents with split roles: violet is for actions
+     (CTAs, headline emphasis), cyan is for data (charts, the
+     route map). They sit side by side — never blended.
    See DESIGN_SYSTEM.md for full usage guidance.
    ============================================================ */
 
 :root {
   /* ----- Color ------------------------------------------------
-     ink on paper     ≈ 15:1  (AAA)
-     paper on ink     ≈ 15:1  (AAA)
-     accent on paper  ≈ 3.5:1 — large type & decoration ONLY  */
-  --color-paper: #f0eee9; /* page background, cool newsprint off-white */
-  --color-paper-2: #e4e2db; /* raised surfaces: art frames, ghost numerals */
-  --color-ink: #141412; /* text, headings, hard borders, inverse blocks */
-  --color-ink-soft: #56544d; /* body copy, secondary text */
-  --color-accent: #f04e23; /* the one color — glyphs, dots, hovers, one block */
-  --color-line: #d3d0c7; /* hairline rules */
+     text on bg        ≈ 14.8:1  (AAA)
+     text-soft on bg    ≈ 6.9:1  (AA)
+     violet on bg        ≈ 5.3:1 — large type & UI only */
+  --bg: #0b0b10; /* page canvas, near-black with a faint blue cast */
+  --bg-2: #12121a; /* raised sections: footer, contact */
+  --surface: rgba(255, 255, 255, 0.035); /* glass card fill */
+  --surface-2: rgba(255, 255, 255, 0.06); /* glass hover fill */
+  --border-glass: rgba(255, 255, 255, 0.09); /* card / hairline borders */
+  --text: #ededf2; /* primary text */
+  --text-soft: #9a9aa8; /* secondary text, body copy */
+  --text-dim: #6b6b78; /* meta, mono labels */
+  --violet: #7c5cff; /* accent A — flat: CTAs, headline emphasis, links */
+  --violet-soft: rgba(124, 92, 255, 0.16); /* flat violet wash for chips/badges */
+  --cyan: #35e0c6; /* accent B — flat: chart series, route-map line/nodes */
+  --cyan-soft: rgba(53, 224, 198, 0.16); /* flat cyan wash */
+  --glow-violet: rgba(124, 92, 255, 0.45); /* blurred orb / spotlight color */
+  --glow-cyan: rgba(53, 224, 198, 0.35); /* blurred orb color */
 
   /* ----- Typography ------------------------------------------ */
-  --font-display: var(--font-archivo-black), "Archivo Black", sans-serif;
+  --font-display: var(--font-sora), "Sora", sans-serif;
   --font-body: var(--font-inter), "Inter", -apple-system, sans-serif;
   --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
 
-  --text-display: clamp(2.5rem, 9.5vw, 8.5rem); /* hero name — sized so
-     "CHULUUNBOLD" + indent fits every viewport in Archivo Black */
-  --text-h2: clamp(2.5rem, 7vw, 5.5rem); /* section titles, project names */
-  --text-h3: clamp(1.4rem, 2.5vw, 2rem); /* large body / about lede */
+  --text-display: clamp(2.75rem, 7.5vw, 6.5rem); /* hero name */
+  --text-h2: clamp(2rem, 4.5vw, 3.5rem); /* section titles */
+  --text-h3: clamp(1.25rem, 2.2vw, 1.75rem); /* card leads / large body */
   --text-body: 1.0625rem;
   --text-small: 0.9375rem;
   --text-label: 0.75rem; /* mono labels, uppercase */
 
-  --tracking-label: 0.08em;
-  --leading-display: 0.85;
-  --leading-tight: 1.1;
+  --tracking-label: 0.09em;
+  --leading-display: 1.05;
+  --leading-tight: 1.2;
   --leading-body: 1.65;
 
   /* ----- Space & layout --------------------------------------- */
@@ -54,13 +64,14 @@
 
   --container: 1320px;
   --gutter: clamp(1.25rem, 4vw, 4rem);
-  --section-pad: clamp(4rem, 10vw, 8.5rem);
+  --section-pad: clamp(4rem, 9vw, 7.5rem);
 
   /* ----- Shape ------------------------------------------------ */
-  --radius: 2px; /* near-square, editorial. Only tag chips go rounder */
+  --radius-card: 18px;
+  --radius-sm: 10px;
   --radius-chip: 999px;
-  --border-hair: 1px solid var(--color-line);
-  --border-hard: 1.5px solid var(--color-ink);
+  --border-hair: 1px solid var(--border-glass);
+  --blur-glass: blur(14px);
 
   /* ----- Motion ----------------------------------------------- */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
