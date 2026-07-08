@@ -14,8 +14,9 @@ export const IMAGES = {
     hero: null,
     earnio: null,
     chat: null,
+    financing: null,
     about: null,
-  } as { hero: string | null; earnio: string | null; chat: string | null; about: string | null },
+  } as { hero: string | null; earnio: string | null; chat: string | null; financing: string | null; about: string | null },
 } as const;
 
 export const URLS = {
@@ -27,6 +28,7 @@ export const URLS = {
   projects: {
     earnio: "https://github.com/Chinsanaa/earnio",
     chatSystem: "https://github.com/Chinsanaa/chatsystem",
+    financing: "https://github.com/Chinsanaa/financing",
   },
   certificates: {
     claudeCodeInAction: "https://verify.skilljar.com/c/k6t2seqvaquz",
