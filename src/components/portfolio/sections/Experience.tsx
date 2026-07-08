@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { experience } from "../content";
+import { RouteMap } from "@/components/ui/RouteMap";
+import { experience, travelCities } from "../content";
 
 export function Experience() {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,13 +22,13 @@ export function Experience() {
 
       <div className="experience-timeline" ref={ref}>
         <svg className="experience-rail" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden>
-          <line x1="1" y1="0" x2="1" y2="100" stroke="var(--color-line)" strokeWidth="2" />
+          <line x1="1" y1="0" x2="1" y2="100" stroke="var(--border-glass)" strokeWidth="2" />
           <motion.line
             x1="1"
             y1="0"
             x2="1"
             y2="100"
-            stroke="var(--color-ink)"
+            stroke="var(--violet)"
             strokeWidth="2"
             style={{ pathLength: drawn }}
           />
@@ -49,6 +50,11 @@ export function Experience() {
                 <h3 className="experience-role">{item.role}</h3>
                 <p className="experience-company mono-label">{item.company}</p>
                 <p className="experience-description">{item.description}</p>
+                {item.role === "Sales Analyst" && (
+                  <div className="experience-route">
+                    <RouteMap cities={travelCities} />
+                  </div>
+                )}
               </Reveal>
             </li>
           ))}

@@ -96,6 +96,16 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
+/** Ordered stops on the Sales Analyst business trip across China. */
+export const travelCities: string[] = [
+  "Ulaanbaatar",
+  "Erenhot",
+  "Baoding",
+  "Tianjin",
+  "Beijing",
+  "Shanghai",
+];
+
 export interface ExperienceItem {
   role: string;
   company: string;

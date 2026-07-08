@@ -4,8 +4,8 @@ interface MarqueeProps {
   children: ReactNode;
   /** Seconds for one full loop. */
   duration?: number;
-  /** "ink" paints the strip black with paper text. */
-  tone?: "paper" | "ink";
+  /** "solid" paints the strip on --bg-2; "glass" is a translucent hairline strip. */
+  tone?: "glass" | "solid";
   reverse?: boolean;
 }
 
@@ -14,7 +14,7 @@ interface MarqueeProps {
  * duplicated aria-hidden track; pauses under prefers-reduced-motion
  * via the global kill-switch.
  */
-export function Marquee({ children, duration = 24, tone = "paper", reverse = false }: MarqueeProps) {
+export function Marquee({ children, duration = 24, tone = "glass", reverse = false }: MarqueeProps) {
   const style = {
     animationDuration: `${duration}s`,
     animationDirection: reverse ? ("reverse" as const) : ("normal" as const),
