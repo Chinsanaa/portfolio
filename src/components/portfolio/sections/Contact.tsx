@@ -3,7 +3,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Marquee } from "@/components/ui/Marquee";
-import { Asterisk, Download, GitHub, LinkedIn, Mail } from "@/components/icons";
+import { ArrowUpRight, Asterisk, Download, GitHub, LinkedIn, Mail } from "@/components/icons";
 import { FILES, URLS } from "@/config/resources";
 
 const TICKER = ["Open to internships", "Data Science", "Finance", "Let's build"];
@@ -12,6 +12,9 @@ export function Contact() {
   return (
     <section className="contact" id="contact">
       <div className="contact-inner">
+        <span className="contact-accent-block" aria-hidden>
+          <ArrowUpRight size={28} />
+        </span>
         <Reveal>
           <p className="contact-kicker mono-label">№06 — Get in touch</p>
         </Reveal>
@@ -65,7 +68,7 @@ export function Contact() {
       <div className="contact-colophon">
         <p>© 2026 Chinsanaa Chuluunbold. Designed with attention to detail. All rights reserved.</p>
         <p className="mono-label">Shanghai / Ulaanbaatar</p>
-        <p className="mono-label">Set in Space Grotesk &amp; Inter</p>
+        <p className="mono-label">Set in Archivo Black &amp; Inter</p>
       </div>
     </section>
   );

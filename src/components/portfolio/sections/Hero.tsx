@@ -62,13 +62,7 @@ export function Hero() {
             </motion.span>
           </span>
           <span className="hero-line hero-line-indent">
-            <motion.span
-              custom={1}
-              variants={lineReveal}
-              initial="hidden"
-              animate="visible"
-              className="hero-line-cobalt"
-            >
+            <motion.span custom={1} variants={lineReveal} initial="hidden" animate="visible">
               Chuluunbold
             </motion.span>
           </span>
@@ -112,7 +106,7 @@ export function Hero() {
             <ArtImage
               src={IMAGES.art.hero}
               variant="hero"
-              alt="Abstract geometric composition in cobalt, ink and persimmon"
+              alt="Abstract geometric composition in ink and paper tones"
               priority
             />
             <span className="hero-art-caption mono-label">Fig. 01 — Data × Finance</span>
@@ -121,7 +115,7 @@ export function Hero() {
       </div>
 
       <div className="hero-marquee">
-        <Marquee tone="cobalt" duration={26}>
+        <Marquee tone="ink" duration={26}>
           {MARQUEE_ITEMS.map((item) => (
             <span key={item} className="marquee-item">
               {item}

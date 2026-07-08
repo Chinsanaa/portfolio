@@ -27,7 +27,7 @@ export function Experience() {
             y1="0"
             x2="1"
             y2="100"
-            stroke="var(--color-cobalt)"
+            stroke="var(--color-ink)"
             strokeWidth="2"
             style={{ pathLength: drawn }}
           />

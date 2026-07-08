@@ -9,7 +9,7 @@ import { IMAGES } from "@/config/resources";
 const STATS = [
   { label: "GPA — Data Science + Finance", value: 3.58, decimals: 2 },
   { label: "Class of, NYU Shanghai", value: 2029 },
-  { label: "Shipped projects", value: 2, prefix: "0" },
+  { label: "Shipped projects", value: 3, prefix: "0" },
   { label: "Certificates", value: 3, prefix: "0" },
 ];
 
@@ -24,7 +24,7 @@ export function About() {
             <ArtImage
               src={IMAGES.art.about}
               variant="about"
-              alt="Small geometric still life in cobalt and ink"
+              alt="Small geometric still life in ink and paper tones"
             />
             <p className="about-aside-caption mono-label">
               English / Mongolian / 中文 (elementary)
