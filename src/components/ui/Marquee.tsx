@@ -4,8 +4,8 @@ interface MarqueeProps {
   children: ReactNode;
   /** Seconds for one full loop. */
   duration?: number;
-  /** "cobalt" paints the strip cobalt with paper text. */
-  tone?: "paper" | "cobalt";
+  /** "ink" paints the strip black with paper text. */
+  tone?: "paper" | "ink";
   reverse?: boolean;
 }
 

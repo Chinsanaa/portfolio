@@ -1,7 +1,7 @@
 # Chinsanaa Chuluunbold — Portfolio
 
 Personal portfolio site for Chinsanaa Chuluunbold, a Data Science student at NYU Shanghai
-concentrating in Finance. A single-page, editorial-magazine-style showcase ("Cobalt Press")
+concentrating in Finance. A single-page, editorial-magazine-style showcase ("Monograph")
 covering background, projects, experience, skills, and certificates.
 
 **Live site:** deployed via Vercel on every push to `main`.
@@ -14,13 +14,13 @@ top to bottom:
 | Section | Component | Description |
 | --- | --- | --- |
 | Nav | `Nav.tsx` | Fixed hairline bar with numbered anchor links; hides on scroll-down, returns on scroll-up. |
-| Hero | `sections/Hero.tsx` + `sections/HeroShapes.tsx` | Magazine-cover intro: masthead row, oversized staggered name, scroll-parallaxed SVG shapes, art panel, and a cobalt marquee ticker. |
-| About №01 | `sections/About.tsx` | Asymmetric editorial spread: sticky art aside, large-set bio, "by the numbers" stat rows with count-up animations. |
-| Projects №02 | `sections/Projects.tsx` | Full-width alternating features with ghost numerals, parallax art covers, tag chips, and GitHub links. |
-| Experience №03 | `sections/Experience.tsx` | Timeline whose SVG rail draws itself as you scroll; persimmon node dots spring in per entry. |
+| Hero | `sections/Hero.tsx` + `sections/HeroShapes.tsx` | Magazine-cover intro: masthead row, oversized name overlapping the art panel, scroll-parallaxed SVG glyphs, and a black marquee ticker. |
+| About №01 | `sections/About.tsx` | Asymmetric editorial spread: sticky art aside with a rotated spine label, large-set bio, "by the numbers" stat rows with count-up animations. |
+| Projects №02 | `sections/Projects.tsx` | Full-width alternating features with ghost numerals, titles riding over parallax art covers, tag chips, and GitHub links. |
+| Experience №03 | `sections/Experience.tsx` | Timeline whose SVG rail draws itself as you scroll; accent node dots spring in per entry. |
 | Skills №04 | `sections/Skills.tsx` | Typographic "spec sheet": four hairline-ruled columns of numbered skills. |
-| Certificates №05 | `sections/Certificates.tsx` | Table-of-contents ledger; rows invert to cobalt on hover and reveal a cursor-following certificate thumbnail. |
-| Contact №06 | `sections/Contact.tsx` | Full-bleed cobalt block: oversized mailto, magnetic social buttons, marquee, and colophon footer. |
+| Certificates №05 | `sections/Certificates.tsx` | Table-of-contents ledger; rows invert to black on hover and reveal a cursor-following grayscale certificate thumbnail. |
+| Contact №06 | `sections/Contact.tsx` | Full-bleed black spread: oversized mailto, magnetic social buttons, the page's one solid accent block, marquee, and colophon footer. |
 
 ## Tech stack
 
@@ -29,14 +29,14 @@ top to bottom:
 - **TypeScript**
 - **[framer-motion](https://motion.dev/)** — scroll-linked SVG drawing, parallax, staggered reveals, magnetic buttons, spring-following thumbnails
 - **CSS** — hand-written, token-based (`src/styles/tokens.css` + `src/components/portfolio/editorial.css`); no CSS framework
-- **Google Fonts** — [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) (display), [Inter](https://fonts.google.com/specimen/Inter) (body), [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (labels), via `next/font/google`
+- **Google Fonts** — [Archivo Black](https://fonts.google.com/specimen/Archivo+Black) (display), [Inter](https://fonts.google.com/specimen/Inter) (body), [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (labels), via `next/font/google`
 - **ESLint** + **TypeScript** for linting/type-checking
 
 ## Design system
 
 See **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** — palette, typography, motion vocabulary,
 primitive component APIs, and the recipe for adding new sections. Headline rules: flat colors
-only (no gradients, no purple), cream paper + cobalt blue + ink black with a persimmon accent,
+only (no gradients), monochrome ink-on-paper with a single orange-red accent at ~2% usage,
 icons instead of emojis, and every color sourced from `src/styles/tokens.css`.
 
 ## Project structure

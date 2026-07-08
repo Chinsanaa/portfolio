@@ -17,9 +17,9 @@ interface ButtonProps {
 
 /**
  * Editorial button with a magnetic hover pull.
- * variant "solid"   — cobalt fill, paper text
+ * variant "solid"   — ink fill, paper text
  * variant "outline" — ink border on paper
- * variant "paper"   — paper border, for use on cobalt/ink backgrounds
+ * variant "paper"   — paper border, for use on ink backgrounds
  */
 export function Button({
   children,

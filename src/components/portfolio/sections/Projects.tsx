@@ -58,6 +58,9 @@ function ProjectFeature({ project, index }: { project: Project; index: number })
 
       <div className="project-info">
         <Reveal>
+          <span className="project-plus mono-label" aria-hidden>
+            ++ {String(index + 1).padStart(2, "0")}
+          </span>
           <h3 className="project-title">{project.title}</h3>
         </Reveal>
         <Reveal delay={0.08}>

@@ -1,45 +1,43 @@
 /* ============================================================
-   COBALT PRESS — Design Tokens
+   MONOGRAPH — Design Tokens
    Single source of truth for every color, size, and motion
    value in the site. No raw hex values outside this file.
 
    Hard rules of the system:
    - No gradients. Ever. Flat colors only.
-   - No purple.
-   - Persimmon is a spice, not a main course (~5% of any view).
+   - Monochrome ink-on-paper. Accent is the ONLY color and is
+     a spice, not a main course (~2% of any view).
    See DESIGN_SYSTEM.md for full usage guidance.
    ============================================================ */
 
 :root {
   /* ----- Color ------------------------------------------------
-     ink on paper      ≈ 13:1  (AAA)
-     cobalt on paper   ≈ 6.5:1 (AA all sizes)
-     paper on cobalt   ≈ 6.5:1 (AA all sizes)
-     persimmon on paper ≈ 3.8:1 — large type & decoration ONLY  */
-  --color-paper: #f4efe2; /* page background, warm newsprint cream */
-  --color-paper-2: #ece5d2; /* raised surfaces: art frames, stat blocks */
-  --color-ink: #181611; /* primary text, headings, hard borders */
-  --color-ink-soft: #4e4a3e; /* body copy, secondary text */
-  --color-cobalt: #1c3aee; /* brand blue: accents, links, buttons, inverse blocks */
-  --color-cobalt-deep: #0f1f96; /* hover / pressed states on cobalt */
-  --color-persimmon: #e8542f; /* single warm accent — decoration, large type only */
-  --color-line: #c9c0a6; /* hairline rules */
+     ink on paper     ≈ 15:1  (AAA)
+     paper on ink     ≈ 15:1  (AAA)
+     accent on paper  ≈ 3.5:1 — large type & decoration ONLY  */
+  --color-paper: #f0eee9; /* page background, cool newsprint off-white */
+  --color-paper-2: #e4e2db; /* raised surfaces: art frames, ghost numerals */
+  --color-ink: #141412; /* text, headings, hard borders, inverse blocks */
+  --color-ink-soft: #56544d; /* body copy, secondary text */
+  --color-accent: #f04e23; /* the one color — glyphs, dots, hovers, one block */
+  --color-line: #d3d0c7; /* hairline rules */
 
   /* ----- Typography ------------------------------------------ */
-  --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-display: var(--font-archivo-black), "Archivo Black", sans-serif;
   --font-body: var(--font-inter), "Inter", -apple-system, sans-serif;
   --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
 
-  --text-display: clamp(2.75rem, 9.5vw, 9rem); /* hero name */
-  --text-h2: clamp(2.25rem, 6vw, 4.5rem); /* section titles, project names */
+  --text-display: clamp(2.5rem, 9.5vw, 8.5rem); /* hero name — sized so
+     "CHULUUNBOLD" + indent fits every viewport in Archivo Black */
+  --text-h2: clamp(2.5rem, 7vw, 5.5rem); /* section titles, project names */
   --text-h3: clamp(1.4rem, 2.5vw, 2rem); /* large body / about lede */
   --text-body: 1.0625rem;
   --text-small: 0.9375rem;
   --text-label: 0.75rem; /* mono labels, uppercase */
 
   --tracking-label: 0.08em;
-  --leading-display: 0.92;
-  --leading-tight: 1.15;
+  --leading-display: 0.85;
+  --leading-tight: 1.1;
   --leading-body: 1.65;
 
   /* ----- Space & layout --------------------------------------- */

@@ -1,4 +1,4 @@
-/* Cobalt Press icon set — hand-rolled inline SVGs.
+/* Monograph icon set — hand-rolled inline SVGs.
    All icons inherit currentColor and use a 1.5px stroke to match
    the hairline aesthetic. See DESIGN_SYSTEM.md before adding more. */
 
