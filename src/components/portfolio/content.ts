@@ -6,7 +6,7 @@ export interface Project {
   href: string;
   tagLabels: string[];
   /** ArtImage variant + generated artwork path (null → SVG fallback). */
-  artVariant: "earnio" | "chat";
+  artVariant: "earnio" | "chat" | "financing";
   art: string | null;
 }
 
@@ -28,6 +28,15 @@ export const projects: Project[] = [
     tagLabels: ["Python", "Tkinter", "Ollama", "TextBlob", "TCP Sockets"],
     artVariant: "chat",
     art: IMAGES.art.chat,
+  },
+  {
+    title: "Financing",
+    impact:
+      "Intelligent transaction categorization system for personal finance. Automatically classifies spending from Alipay and WeChat exports using 554+ merchant rules and ML-powered predictions with calibrated confidence scoring. Includes dashboard with overview, budget planning, and model performance monitoring.",
+    href: URLS.projects.financing,
+    tagLabels: ["Next.js", "FastAPI", "PostgreSQL", "scikit-learn", "Supabase Auth"],
+    artVariant: "financing",
+    art: IMAGES.art.financing,
   },
 ];
 

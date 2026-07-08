@@ -1,11 +1,12 @@
 import Image from "next/image";
 
-export type ArtVariant = "hero" | "earnio" | "chat" | "about";
+export type ArtVariant = "hero" | "earnio" | "chat" | "financing" | "about";
 
 const ASPECT: Record<ArtVariant, string> = {
   hero: "4 / 5",
   earnio: "3 / 2",
   chat: "3 / 2",
+  financing: "3 / 2",
   about: "1 / 1",
 };
 
@@ -83,6 +84,23 @@ function ArtFallback({ variant }: { variant: ArtVariant }) {
         <path d="M490 310l0 44-44-44z" fill="var(--color-ink)" />
         <line x1="260" y1="150" x2="340" y2="250" stroke="var(--color-ink)" strokeWidth="3" />
         <circle cx="300" cy="200" r="12" fill="var(--color-persimmon)" />
+      </svg>
+    );
+  }
+  if (variant === "financing") {
+    return (
+      <svg viewBox="0 0 600 400" className="art-fallback" role="img" aria-hidden>
+        <rect width="600" height="400" fill="var(--color-paper-2)" />
+        <ellipse cx="100" cy="320" rx="45" ry="14" fill="var(--color-cobalt)" />
+        <ellipse cx="100" cy="300" rx="45" ry="14" fill="var(--color-ink)" />
+        <ellipse cx="100" cy="280" rx="45" ry="14" fill="var(--color-cobalt)" />
+        <ellipse cx="100" cy="260" rx="45" ry="14" fill="var(--color-persimmon)" />
+        <rect x="220" y="300" width="48" height="50" fill="var(--color-cobalt)" />
+        <rect x="282" y="240" width="48" height="110" fill="var(--color-ink)" />
+        <rect x="344" y="160" width="48" height="190" fill="var(--color-cobalt)" />
+        <rect x="406" y="80" width="48" height="270" fill="var(--color-persimmon)" />
+        <line x1="180" y1="290" x2="220" y2="290" stroke="var(--color-ink)" strokeWidth="2" />
+        <polyline points="220,290 282,240 344,160 406,80" stroke="var(--color-cobalt)" strokeWidth="3" fill="none" />
       </svg>
     );
   }
