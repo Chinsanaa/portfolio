@@ -68,8 +68,8 @@ export function Contact() {
 
       <div className="contact-colophon">
         <p>© 2026 Chinsanaa Chuluunbold. Designed with attention to detail. All rights reserved.</p>
-        <p className="mono-label">Shanghai / Ulaanbaatar</p>
-        <p className="mono-label">Set in Sora &amp; Inter</p>
+        <p className="mono-label">Shanghai, China / Ulaanbaatar, Mongolia</p>
+        <p className="mono-label">Feel free to reach out!</p>
       </div>
     </section>
   );

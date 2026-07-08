@@ -42,13 +42,6 @@ export function About() {
           </TiltCard>
         </RevealItem>
 
-        <RevealItem className="about-card-chart">
-          <TiltCard className="about-card">
-            <span className="about-card-title mono-label">Skills by category</span>
-            <SkillChart />
-          </TiltCard>
-        </RevealItem>
-
         <RevealItem className="about-card-stats">
           <TiltCard className="about-card">
             <span className="about-card-title mono-label">By the numbers</span>

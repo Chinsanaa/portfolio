@@ -15,17 +15,10 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 const MARQUEE_ITEMS = [
   "Data Science",
   "Finance",
-  "NYU Shanghai",
-  "SQL",
-  "Power BI",
-  "Python",
-  "Excel Modeling",
-];
-
-const STATS = [
-  { label: "Shipped projects", value: 3, prefix: "0" },
-  { label: "Certificates", value: 3, prefix: "0" },
-  { label: "Cities visited (work)", value: 6, prefix: "0" },
+  "Coding",
+  "AI",
+  "Machine Learning",
+  "Trading"
 ];
 
 const lineReveal = {
@@ -80,7 +73,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.55 }}
           >
-            Data Scientist + Finance major building data-driven solutions that move markets.
+            Data Scientist + Finance major building data-driven solutions.
           </motion.p>
 
           <motion.div
