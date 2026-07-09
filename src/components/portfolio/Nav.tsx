@@ -5,9 +5,9 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 const LINKS = [
   { number: "01", label: "About", href: "#about" },
-  { number: "02", label: "Projects", href: "#projects" },
-  { number: "03", label: "Experience", href: "#experience" },
-  { number: "04", label: "Skills", href: "#skills" },
+  { number: "02", label: "Skills", href: "#skills" },
+  { number: "03", label: "Projects", href: "#projects" },
+  { number: "04", label: "Experience", href: "#experience" },
   { number: "05", label: "Certificates", href: "#certificates" },
   { number: "06", label: "Contact", href: "#contact" },
 ];

@@ -11,7 +11,7 @@ import { projects, type Project } from "../content";
 export function Projects() {
   return (
     <section className="section projects" id="projects">
-      <SectionHeader number="02" title="Projects" kicker="Selected work" />
+      <SectionHeader number="03" title="Projects" kicker="Selected work" />
       <Reveal stagger className="projects-grid">
         {projects.map((project, index) => (
           <RevealItem key={project.title}>

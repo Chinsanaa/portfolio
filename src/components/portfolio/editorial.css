@@ -420,9 +420,11 @@
   padding: var(--space-8);
 }
 
+/* art anchors the left column across both rows; lede + highlights
+   stack on the right — a tall square beside two wide rectangles,
+   with no leftover gaps in the 6-column grid */
 .about-card-lede {
   grid-column: span 4;
-  grid-row: span 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -442,12 +444,8 @@
   border-radius: 0;
 }
 
-.about-card-skills {
-  grid-column: span 3;
-}
-
 .about-card-highlights {
-  grid-column: span 3;
+  grid-column: span 4;
 }
 
 .about-lede {
@@ -469,35 +467,16 @@
   display: block;
 }
 
-/* ----- About: skill badges ------------------------------------------ */
-.about-skills-groups {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.about-skills-group-label {
-  display: block;
-  margin-bottom: var(--space-2);
-  color: var(--text-dim);
-}
-
-.about-skills-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
 /* ----- About: hireability highlights --------------------------------- */
 .about-highlights-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4) var(--space-6);
 }
 
 .about-highlights-item {
   position: relative;
-  padding-left: var(--space-5);
+  padding-left: var(--space-6);
   color: var(--text);
   font-weight: 500;
   line-height: 1.5;
@@ -563,14 +542,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
 }
 
 .project-link {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-5);
+  margin-top: var(--space-6);
   color: var(--text);
   transition: color var(--dur-fast) var(--ease-out-expo);
 }
@@ -783,7 +762,7 @@
 }
 
 .cert-body {
-  padding: var(--space-5);
+  padding: var(--space-6);
 }
 
 .cert-index {
@@ -914,7 +893,7 @@
 }
 
 .contact-copy {
-  margin-top: var(--space-5);
+  margin-top: var(--space-4);
   max-width: 48ch;
   color: var(--text-soft);
 }
@@ -964,7 +943,6 @@
 
   .about-card-lede,
   .about-card-art,
-  .about-card-skills,
   .about-card-highlights {
     grid-column: span 2;
     grid-row: auto;
@@ -1001,7 +979,6 @@
 
   .about-card-lede,
   .about-card-art,
-  .about-card-skills,
   .about-card-highlights {
     grid-column: span 1;
   }

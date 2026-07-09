@@ -7,7 +7,7 @@ import { skillCategories } from "../content";
 export function Skills() {
   return (
     <section className="section skills" id="skills">
-      <SectionHeader number="04" title="Skills" kicker="Spec sheet" />
+      <SectionHeader number="02" title="Skills" kicker="Spec sheet" />
 
       <Reveal stagger className="skills-grid">
         {skillCategories.map((category) => (

@@ -5,9 +5,9 @@ import "./editorial.css";
 import { Nav } from "./Nav";
 import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
+import { Skills } from "./sections/Skills";
 import { Projects } from "./sections/Projects";
 import { Experience } from "./sections/Experience";
-import { Skills } from "./sections/Skills";
 import { Certificates } from "./sections/Certificates";
 import { Contact } from "./sections/Contact";
 
@@ -18,9 +18,9 @@ export function Portfolio() {
       <main>
         <Hero />
         <About />
+        <Skills />
         <Projects />
         <Experience />
-        <Skills />
         <Certificates />
         <Contact />
       </main>

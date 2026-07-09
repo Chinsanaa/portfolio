@@ -8,15 +8,18 @@ export const IMAGES = {
     bloombergFinanceFundamentals: "/images/certificates/bloomberg_finance_fundamentals.jfif",
     googleAiEssentials: "/images/certificates/google_ai_essentials.jfif",
   },
-  /* Generated editorial artwork. A null value renders the flat SVG
-     fallback composition in ArtImage — the site never depends on these. */
+  /* Editorial artwork. Each path is a placeholder for a file to be
+     uploaded later — drop matching PNGs into public/images/art/ with
+     these exact filenames and the real photo takes over automatically.
+     Until a file exists at that path, ArtImage falls back to its flat
+     SVG composition (see the onError handler in ArtImage.tsx), so
+     nothing breaks in the meantime. */
   art: {
-    hero: null,
-    earnio: null,
-    chat: null,
-    financing: null,
-    about: null,
-  } as { hero: string | null; earnio: string | null; chat: string | null; financing: string | null; about: string | null },
+    earnio: "/images/art/earnio.png",
+    chat: "/images/art/chat.png",
+    financing: "/images/art/financing.png",
+    about: "/images/art/about.png",
+  } as { earnio: string | null; chat: string | null; financing: string | null; about: string | null },
 } as const;
 
 export const URLS = {

@@ -1,9 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
-export type ArtVariant = "hero" | "earnio" | "chat" | "financing" | "about";
+export type ArtVariant = "earnio" | "chat" | "financing" | "about";
 
 const ASPECT: Record<ArtVariant, string> = {
-  hero: "4 / 5",
   earnio: "3 / 2",
   chat: "3 / 2",
   financing: "3 / 2",
@@ -23,15 +25,19 @@ interface ArtImageProps {
  * Image slot with a fixed editorial aspect ratio and hard ink border.
  * Renders the generated artwork when a path is set in IMAGES.art,
  * otherwise a flat-color geometric SVG composition — so the layout
- * never depends on image availability.
+ * never depends on image availability. A path that 404s (a placeholder
+ * waiting on its real file to be uploaded) falls back to the same SVG
+ * instead of showing a broken image.
  */
 export function ArtImage({ src, variant, alt, priority, className }: ArtImageProps) {
+  const [failed, setFailed] = useState(false);
+
   return (
     <div
       className={`art-frame${className ? ` ${className}` : ""}`}
       style={{ aspectRatio: ASPECT[variant] }}
     >
-      {src ? (
+      {src && !failed ? (
         <Image
           src={src}
           alt={alt}
@@ -39,6 +45,7 @@ export function ArtImage({ src, variant, alt, priority, className }: ArtImagePro
           priority={priority}
           sizes="(max-width: 768px) 100vw, 50vw"
           style={{ objectFit: "cover" }}
+          onError={() => setFailed(true)}
         />
       ) : (
         <ArtFallback variant={variant} />
@@ -51,17 +58,6 @@ export function ArtImage({ src, variant, alt, priority, className }: ArtImagePro
    (violet or cyan, flat color + filter: blur, never a gradient) plus flat
    shapes in text-dim/border-glass tones. Decorative only. */
 function ArtFallback({ variant }: { variant: ArtVariant }) {
-  if (variant === "hero") {
-    return (
-      <svg viewBox="0 0 400 500" className="art-fallback" role="img" aria-hidden>
-        <rect width="400" height="500" fill="var(--bg-2)" />
-        <circle cx="316" cy="96" r="70" fill="var(--violet)" opacity="0.35" style={{ filter: "blur(30px)" }} />
-        <path d="M60 500V300a140 140 0 0 1 280 0v200z" fill="var(--surface-2)" />
-        <circle cx="200" cy="180" r="88" fill="none" stroke="var(--border-glass)" strokeWidth="2" />
-        <circle cx="316" cy="96" r="20" fill="var(--violet)" />
-      </svg>
-    );
-  }
   if (variant === "earnio") {
     return (
       <svg viewBox="0 0 600 400" className="art-fallback" role="img" aria-hidden>

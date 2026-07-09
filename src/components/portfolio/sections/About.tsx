@@ -4,9 +4,8 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { ArtImage } from "@/components/ui/ArtImage";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { TagChip } from "@/components/ui/TagChip";
 import { IMAGES } from "@/config/resources";
-import { skillCategories, highlights } from "../content";
+import { highlights } from "../content";
 
 export function About() {
   return (
@@ -34,24 +33,6 @@ export function About() {
               operations, and HR. I build full-stack projects outside coursework and I&rsquo;m
               fluent in English and Mongolian, with elementary Chinese.
             </p>
-          </TiltCard>
-        </RevealItem>
-
-        <RevealItem className="about-card-skills">
-          <TiltCard className="about-card">
-            <span className="about-card-title mono-label">Skills by category</span>
-            <div className="about-skills-groups">
-              {skillCategories.map((category) => (
-                <div className="about-skills-group" key={category.title}>
-                  <span className="about-skills-group-label mono-label">{category.title}</span>
-                  <div className="about-skills-chips">
-                    {category.skills.map((skill) => (
-                      <TagChip key={skill} label={skill} />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
           </TiltCard>
         </RevealItem>
 
