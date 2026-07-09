@@ -14,10 +14,10 @@ top to bottom:
 | Section | Component | Description |
 | --- | --- | --- |
 | Nav | `Nav.tsx` | Floating glass pill nav; hides on scroll-down, returns on scroll-up. |
-| Hero | `sections/Hero.tsx` | Dark canvas with a cursor-following spotlight glow and a drifting glow-orb background, an oversized name, magnetic CTA buttons, and a small glass stat bento with count-ups. |
-| About №01 | `sections/About.tsx` | Bento grid of glass tilt-cards: bio, an animated skills chart, a "by the numbers" stat card, and portrait art. |
+| Hero | `sections/Hero.tsx` | Dark canvas with a cursor-following spotlight glow and a drifting glow-orb background, an oversized name, and magnetic CTA buttons. |
+| About №01 | `sections/About.tsx` | Bento grid of glass tilt-cards: bio, skills grouped as badge chips by category, a "why hire me" achievement-highlight list, and portrait art. |
 | Projects №02 | `sections/Projects.tsx` | Glass tilt-cards per project — cover art, title, impact, tag chips, GitHub link — that tilt in 3D toward the cursor. |
-| Experience №03 | `sections/Experience.tsx` | Dark timeline whose SVG rail draws itself as you scroll, with a glowing node per role, plus an animated route-map diagram of the cities visited on the business-trip role. |
+| Experience №03 | `sections/Experience.tsx` | Dark timeline whose rail draws itself as you scroll, with a glowing node per role, plus an animated route-map diagram of the cities visited on the business-trip role. |
 | Skills №04 | `sections/Skills.tsx` | Typographic "spec sheet": four hairline-ruled columns of numbered skills. |
 | Certificates №05 | `sections/Certificates.tsx` | Grid of glass cards with full-color, always-visible certificate photos — title, issuer, date, link out. |
 | Contact №06 | `sections/Contact.tsx` | Glass CTA block with a soft violet glow, oversized mailto with an underline draw, magnetic social buttons, marquee, and colophon footer. |
@@ -27,7 +27,7 @@ top to bottom:
 - **[Next.js 16](https://nextjs.org/)** (App Router, Turbopack)
 - **[React 19](https://react.dev/)**
 - **TypeScript**
-- **[framer-motion](https://motion.dev/)** — cursor spotlight glow, pointer 3D tilt, scroll-linked SVG drawing (timeline + route map + skill chart), parallax, staggered reveals, magnetic buttons
+- **[framer-motion](https://motion.dev/)** — cursor spotlight glow, pointer 3D tilt, scroll-linked drawing (timeline rail + route map), parallax, staggered reveals, magnetic buttons
 - **CSS** — hand-written, token-based (`src/styles/tokens.css` + `src/components/portfolio/editorial.css`); no CSS framework
 - **Google Fonts** — [Sora](https://fonts.google.com/specimen/Sora) (display), [Inter](https://fonts.google.com/specimen/Inter) (body), [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (labels), via `next/font/google`
 - **ESLint** + **TypeScript** for linting/type-checking
@@ -53,12 +53,12 @@ src/
   components/
     icons/index.tsx       # Hand-rolled inline SVG icon set
     ui/                   # Primitives: SectionHeader, Button, Reveal, Marquee, TagChip,
-                          # ArtImage (+ SVG fallbacks), AnimatedCounter, Spotlight, TiltCard,
-                          # SkillChart, RouteMap, GlowField
+                          # ArtImage (+ SVG fallbacks), Spotlight, TiltCard, RouteMap, GlowField
     portfolio/
       Portfolio.tsx       # Composes Nav + all sections inside MotionConfig
       Nav.tsx
-      content.ts          # Content: projects, certificates, skills, experience, travelCities
+      content.ts          # Content: projects, certificates, skills, highlights,
+                          # experience, travelCities
       editorial.css       # All section styling (token-only, no gradients)
       sections/           # Hero, About, Projects, Experience, Skills, Certificates, Contact
   config/
@@ -94,7 +94,7 @@ npm run lint    # eslint
 
 ## Editing content
 
-- **Projects, certificates, skills, experience, travel cities:** edit
+- **Projects, certificates, skills, highlights, experience, travel cities:** edit
   `src/components/portfolio/content.ts`.
 - **External links (email, GitHub, LinkedIn, project repos, certificate URLs), asset paths, and
   generated artwork:** edit `src/config/resources.ts` (set an `IMAGES.art.*` entry to a path
