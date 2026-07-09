@@ -295,6 +295,7 @@
 /* ----- Tilt card (glass card primitive) --------------------------- */
 .tilt-card {
   position: relative;
+  overflow: hidden;
   border-radius: var(--radius-card);
   background: var(--surface);
   border: var(--border-hair);
@@ -459,6 +460,7 @@
   grid-row: span 2;
   padding: 0;
   overflow: hidden;
+  border-radius: var(--radius-card);
 }
 
 .about-card-art .art-frame {
@@ -566,11 +568,9 @@
   padding: var(--space-6);
 }
 
-.project-art {
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
+/* no radius/overflow here — .art-frame (inside ArtImage) already owns the
+   border, radius, and clip; a second radius here would double-round the
+   same corner and create a visible seam */
 .project-art-link {
   display: block;
 }
