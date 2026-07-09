@@ -15,12 +15,12 @@ top to bottom:
 | --- | --- | --- |
 | Nav | `Nav.tsx` | Floating glass pill nav; hides on scroll-down, returns on scroll-up. |
 | Hero | `sections/Hero.tsx` | Dark canvas with a cursor-following spotlight glow and a drifting glow-orb background, an oversized name, and magnetic CTA buttons. |
-| About №01 | `sections/About.tsx` | Bento grid of glass tilt-cards: bio, skills grouped as badge chips by category, a "why hire me" achievement-highlight list, and portrait art. |
-| Projects №02 | `sections/Projects.tsx` | Glass tilt-cards per project — cover art, title, impact, tag chips, GitHub link — that tilt in 3D toward the cursor. |
-| Experience №03 | `sections/Experience.tsx` | Dark timeline whose rail draws itself as you scroll, with a glowing node per role, plus an animated route-map diagram of the cities visited on the business-trip role. |
-| Skills №04 | `sections/Skills.tsx` | Typographic "spec sheet": four hairline-ruled columns of numbered skills. |
+| About №01 | `sections/About.tsx` | 3-card bento of glass tilt-cards: a tall portrait art card spanning both rows on the left, bio and a "why hire me" achievement-highlight list stacked as wide cards on the right. |
+| Skills №02 | `sections/Skills.tsx` | Typographic "spec sheet": four hairline-ruled columns of numbered skills. |
+| Projects №03 | `sections/Projects.tsx` | Glass tilt-cards per project — cover art, title, impact, tag chips, GitHub link — that tilt in 3D toward the cursor. |
+| Experience №04 | `sections/Experience.tsx` | Dark timeline whose rail draws itself as you scroll, with a glowing node per role, plus an animated route-map diagram of the cities visited on the business-trip role. |
 | Certificates №05 | `sections/Certificates.tsx` | Grid of glass cards with full-color, always-visible certificate photos — title, issuer, date, link out. |
-| Contact №06 | `sections/Contact.tsx` | Glass CTA block with a soft violet glow, oversized mailto with an underline draw, magnetic social buttons, marquee, and colophon footer. |
+| Contact №06 | `sections/Contact.tsx` | Glass CTA block with a soft violet glow, an oversized mailto paired tightly under the headline, magnetic social buttons, marquee, and colophon footer. |
 
 ## Tech stack
 
@@ -60,13 +60,13 @@ src/
       content.ts          # Content: projects, certificates, skills, highlights,
                           # experience, travelCities
       editorial.css       # All section styling (token-only, no gradients)
-      sections/           # Hero, About, Projects, Experience, Skills, Certificates, Contact
+      sections/           # Hero, About, Skills, Projects, Experience, Certificates, Contact
   config/
-    resources.ts          # External URLs, asset paths, generated-art manifest
+    resources.ts          # External URLs, asset paths, editorial-art manifest
 public/
   Chinsanaa_Chuluunbold_CV.pdf
   images/certificates/    # Certificate photos (rendered full color, always visible)
-  images/art/             # Generated editorial artwork (optional; SVG fallbacks otherwise)
+  images/art/             # Placeholder paths for editorial artwork — see below
 ```
 
 ## Local development
@@ -96,9 +96,13 @@ npm run lint    # eslint
 
 - **Projects, certificates, skills, highlights, experience, travel cities:** edit
   `src/components/portfolio/content.ts`.
-- **External links (email, GitHub, LinkedIn, project repos, certificate URLs), asset paths, and
-  generated artwork:** edit `src/config/resources.ts` (set an `IMAGES.art.*` entry to a path
-  under `public/images/art/` to replace its SVG fallback).
+- **External links (email, GitHub, LinkedIn, project repos, certificate URLs) and asset paths:**
+  edit `src/config/resources.ts`.
+- **Editorial artwork (Earnio, ICDS Chat, Financing, About):** `resources.ts` already points
+  `IMAGES.art.{earnio,chat,financing,about}` at `public/images/art/{name}.png` — just drop a file
+  with the matching name into that folder and it appears automatically, no code changes needed.
+  `ArtImage` renders its flat SVG fallback until a matching file exists (a missing/placeholder
+  path fails gracefully rather than showing a broken image).
 - **Copy in the Hero/About/Contact sections:** edit the respective component in
   `src/components/portfolio/sections/`.
 - **Styling:** section styles live in `src/components/portfolio/editorial.css`; design tokens in
