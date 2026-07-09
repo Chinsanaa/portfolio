@@ -21,6 +21,12 @@ const MARQUEE_ITEMS = [
   "Trading"
 ];
 
+const STATS = [
+  { label: "Shipped projects", value: 3, prefix: "0" },
+  { label: "Certificates", value: 3, prefix: "0" },
+  { label: "Cities visited (work)", value: 6, prefix: "0" },
+];
+
 const lineReveal = {
   hidden: { y: "110%" },
   visible: (i: number) => ({
