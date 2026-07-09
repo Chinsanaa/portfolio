@@ -393,33 +393,6 @@
   margin-top: var(--space-8);
 }
 
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-16);
-  max-width: 640px;
-}
-
-.hero-stat {
-  padding: var(--space-4) var(--space-5);
-}
-
-.hero-stat-value {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-
-.hero-stat-label {
-  display: block;
-  margin-top: var(--space-1);
-  color: var(--text-dim);
-}
-
 .hero-scroll-cue {
   position: relative;
   z-index: 1;
@@ -469,11 +442,11 @@
   border-radius: 0;
 }
 
-.about-card-chart {
+.about-card-skills {
   grid-column: span 3;
 }
 
-.about-card-stats {
+.about-card-highlights {
   grid-column: span 3;
 }
 
@@ -496,63 +469,49 @@
   display: block;
 }
 
-.about-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
-}
-
-.about-stat-value {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-
-.about-stat-label {
-  display: block;
-  margin-top: var(--space-1);
-  color: var(--text-dim);
-}
-
-/* ----- Skill chart ------------------------------------------------- */
-.skill-chart {
+/* ----- About: skill badges ------------------------------------------ */
+.about-skills-groups {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
-.skill-chart-row-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+.about-skills-group-label {
+  display: block;
   margin-bottom: var(--space-2);
-}
-
-.skill-chart-label {
-  color: var(--text-soft);
-  font-size: var(--text-small);
-}
-
-.skill-chart-value {
   color: var(--text-dim);
 }
 
-.skill-chart-track {
-  height: 8px;
-  border-radius: var(--radius-chip);
-  background: var(--surface-2);
-  overflow: hidden;
+.about-skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
 }
 
-.skill-chart-bar {
-  height: 100%;
-  width: 100%;
-  border-radius: var(--radius-chip);
-  background: var(--cyan);
-  transform-origin: left center;
+/* ----- About: hireability highlights --------------------------------- */
+.about-highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.about-highlights-item {
+  position: relative;
+  padding-left: var(--space-5);
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.about-highlights-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--violet);
 }
 
 /* ----- Projects -------------------------------------------------- */
@@ -634,12 +593,24 @@
   padding-left: clamp(2rem, 5vw, 3.5rem);
 }
 
+/* plain CSS-positioned rail (not SVG) so the line and the node dots below
+   are rendered by the same transform/compositing pipeline — keeps them
+   pixel-aligned instead of drifting between SVG stroke rasterization and
+   CSS transform positioning */
 .experience-rail {
   position: absolute;
   left: 0;
   top: 0;
   width: 2px;
   height: 100%;
+  background: var(--border-glass);
+}
+
+.experience-rail-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--violet);
+  transform-origin: top;
 }
 
 .experience-list {
@@ -652,6 +623,11 @@
   position: relative;
 }
 
+/* the -50% horizontal centering is applied via framer-motion's own `x`
+   prop (see Experience.tsx), not CSS transform: a motion.* element that
+   animates any transform value (here, scale) writes its own inline
+   transform and silently overrides a CSS-authored transform on the same
+   property, which was quietly breaking this centering before. */
 .experience-node {
   position: absolute;
   left: calc(-1 * clamp(2rem, 5vw, 3.5rem) + 1px);
@@ -661,7 +637,6 @@
   border-radius: 50%;
   background: var(--violet);
   box-shadow: 0 0 16px 2px var(--glow-violet);
-  transform: translateX(-50%);
 }
 
 .experience-date {
@@ -886,14 +861,20 @@
   pointer-events: none;
 }
 
-.contact-kicker {
+/* single positioned wrapper so every child paints above the glow —
+   avoids repeating position:relative on each element individually */
+.contact-cta-body {
   position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.contact-kicker {
   color: var(--text-dim);
 }
 
 .contact-headline {
-  position: relative;
-  margin-top: var(--space-6);
+  margin-top: var(--space-4);
   font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(2.5rem, 6.5vw, 5.5rem);
@@ -902,20 +883,15 @@
   color: var(--text);
 }
 
-.contact-copy {
-  position: relative;
-  margin-top: var(--space-6);
-  max-width: 48ch;
-  color: var(--text-soft);
-}
-
+/* paired tightly with the headline — reads as one connected statement
+   instead of a stranded line below a full paragraph */
 .contact-email {
   position: relative;
   display: inline-block;
-  margin-top: var(--space-8);
+  margin-top: var(--space-3);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-size: clamp(1.75rem, 4vw, 3rem);
   line-height: 1.2;
   color: var(--violet);
 }
@@ -937,12 +913,17 @@
   transform: scaleX(1);
 }
 
+.contact-copy {
+  margin-top: var(--space-5);
+  max-width: 48ch;
+  color: var(--text-soft);
+}
+
 .contact-actions {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
-  margin-top: var(--space-10);
+  margin-top: var(--space-8);
 }
 
 .contact-marquee {
@@ -983,8 +964,8 @@
 
   .about-card-lede,
   .about-card-art,
-  .about-card-chart,
-  .about-card-stats {
+  .about-card-skills,
+  .about-card-highlights {
     grid-column: span 2;
     grid-row: auto;
   }
@@ -1001,10 +982,6 @@
 
   .nav-link-label {
     display: none;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .cert-grid {
@@ -1024,8 +1001,8 @@
 
   .about-card-lede,
   .about-card-art,
-  .about-card-chart,
-  .about-card-stats {
+  .about-card-skills,
+  .about-card-highlights {
     grid-column: span 1;
   }
 

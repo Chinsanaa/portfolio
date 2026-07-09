@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { GlowField } from "@/components/ui/GlowField";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { Marquee } from "@/components/ui/Marquee";
 import { ArrowDown, Asterisk, Download } from "@/components/icons";
 import { FILES } from "@/config/resources";
@@ -19,12 +18,6 @@ const MARQUEE_ITEMS = [
   "AI",
   "Machine Learning",
   "Trading"
-];
-
-const STATS = [
-  { label: "Shipped projects", value: 3, prefix: "0" },
-  { label: "Certificates", value: 3, prefix: "0" },
-  { label: "Cities visited (work)", value: 6, prefix: "0" },
 ];
 
 const lineReveal = {
@@ -96,22 +89,6 @@ export function Hero() {
               Download CV
               <Download size={16} />
             </Button>
-          </motion.div>
-
-          <motion.div
-            className="hero-stats"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.85 }}
-          >
-            {STATS.map((stat) => (
-              <div className="hero-stat tilt-card" key={stat.label}>
-                <span className="hero-stat-value">
-                  <AnimatedCounter value={stat.value} prefix={stat.prefix} />
-                </span>
-                <span className="hero-stat-label mono-label">{stat.label}</span>
-              </div>
-            ))}
           </motion.div>
         </motion.div>
       </Spotlight>

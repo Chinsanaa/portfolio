@@ -21,18 +21,9 @@ export function Experience() {
       <SectionHeader number="03" title="Experience" kicker="2023 — Present" />
 
       <div className="experience-timeline" ref={ref}>
-        <svg className="experience-rail" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden>
-          <line x1="1" y1="0" x2="1" y2="100" stroke="var(--border-glass)" strokeWidth="2" />
-          <motion.line
-            x1="1"
-            y1="0"
-            x2="1"
-            y2="100"
-            stroke="var(--violet)"
-            strokeWidth="2"
-            style={{ pathLength: drawn }}
-          />
-        </svg>
+        <div className="experience-rail" aria-hidden>
+          <motion.div className="experience-rail-fill" style={{ scaleY: drawn }} />
+        </div>
 
         <ol className="experience-list">
           {experience.map((item) => (
@@ -40,8 +31,8 @@ export function Experience() {
               <motion.span
                 className="experience-node"
                 aria-hidden
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
+                initial={{ scale: 0, x: "-50%" }}
+                whileInView={{ scale: 1, x: "-50%" }}
                 viewport={{ once: true, margin: "-20% 0px" }}
                 transition={{ type: "spring", stiffness: 320, damping: 18 }}
               />

@@ -2,16 +2,11 @@
 
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { ArtImage } from "@/components/ui/ArtImage";
 import { TiltCard } from "@/components/ui/TiltCard";
-import { SkillChart } from "@/components/ui/SkillChart";
+import { TagChip } from "@/components/ui/TagChip";
 import { IMAGES } from "@/config/resources";
-
-const STATS = [
-  { label: "GPA — Data Science + Finance", value: 3.58, decimals: 2 },
-  { label: "Class of, NYU Shanghai", value: 2029 },
-];
+import { skillCategories, highlights } from "../content";
 
 export function About() {
   return (
@@ -42,26 +37,34 @@ export function About() {
           </TiltCard>
         </RevealItem>
 
-        <RevealItem className="about-card-chart">
+        <RevealItem className="about-card-skills">
           <TiltCard className="about-card">
             <span className="about-card-title mono-label">Skills by category</span>
-            <SkillChart />
-          </TiltCard>
-        </RevealItem>
-
-        <RevealItem className="about-card-stats">
-          <TiltCard className="about-card">
-            <span className="about-card-title mono-label">By the numbers</span>
-            <div className="about-stats-grid">
-              {STATS.map((stat) => (
-                <div key={stat.label}>
-                  <span className="about-stat-value">
-                    <AnimatedCounter value={stat.value} decimals={stat.decimals ?? 0} />
-                  </span>
-                  <span className="about-stat-label mono-label">{stat.label}</span>
+            <div className="about-skills-groups">
+              {skillCategories.map((category) => (
+                <div className="about-skills-group" key={category.title}>
+                  <span className="about-skills-group-label mono-label">{category.title}</span>
+                  <div className="about-skills-chips">
+                    {category.skills.map((skill) => (
+                      <TagChip key={skill} label={skill} />
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
+          </TiltCard>
+        </RevealItem>
+
+        <RevealItem className="about-card-highlights">
+          <TiltCard className="about-card">
+            <span className="about-card-title mono-label">Why hire me</span>
+            <ul className="about-highlights-list">
+              {highlights.map((highlight) => (
+                <li key={highlight} className="about-highlights-item">
+                  {highlight}
+                </li>
+              ))}
+            </ul>
           </TiltCard>
         </RevealItem>
       </Reveal>

@@ -14,44 +14,46 @@ export function Contact() {
       <div className="contact-inner">
         <div className="contact-cta">
           <div className="contact-cta-glow" aria-hidden />
-          <Reveal>
-            <p className="contact-kicker mono-label">№06 — Get in touch</p>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className="contact-headline">Let&rsquo;s talk.</h2>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className="contact-copy">
-              Always interested in discussing data science, finance, or building the next big
-              thing. Reach out via email or connect on LinkedIn.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <a className="contact-email" href={URLS.socials.email}>
-              cc9287@nyu.edu
-            </a>
-          </Reveal>
-          <Reveal delay={0.28}>
-            <div className="contact-actions">
-              <Button variant="solid" href={URLS.socials.email}>
-                <Mail size={16} />
-                Email
-              </Button>
-              <Button variant="ghost" href={URLS.socials.github} external>
-                <GitHub size={16} />
-                GitHub
-              </Button>
-              <Button variant="ghost" href={URLS.socials.linkedin} external>
-                <LinkedIn size={16} />
-                LinkedIn
-              </Button>
-              <Button variant="ghost" href={FILES.cvPdf} download>
-                <Download size={16} />
-                CV
-                <ArrowUpRight size={14} />
-              </Button>
-            </div>
-          </Reveal>
+          <div className="contact-cta-body">
+            <Reveal>
+              <p className="contact-kicker mono-label">№06 — Get in touch</p>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <h2 className="contact-headline">Let&rsquo;s talk.</h2>
+            </Reveal>
+            <Reveal delay={0.14}>
+              <a className="contact-email" href={URLS.socials.email}>
+                cc9287@nyu.edu
+              </a>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="contact-copy">
+                Always interested in discussing data science, finance, or building the next big
+                thing. Reach out via email or connect on LinkedIn.
+              </p>
+            </Reveal>
+            <Reveal delay={0.28}>
+              <div className="contact-actions">
+                <Button variant="solid" href={URLS.socials.email}>
+                  <Mail size={16} />
+                  Email
+                </Button>
+                <Button variant="ghost" href={URLS.socials.github} external>
+                  <GitHub size={16} />
+                  GitHub
+                </Button>
+                <Button variant="ghost" href={URLS.socials.linkedin} external>
+                  <LinkedIn size={16} />
+                  LinkedIn
+                </Button>
+                <Button variant="ghost" href={FILES.cvPdf} download>
+                  <Download size={16} />
+                  CV
+                  <ArrowUpRight size={14} />
+                </Button>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
 

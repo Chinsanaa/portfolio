@@ -96,6 +96,14 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
+/** Recruiter-scannable achievement highlights for the About section. */
+export const highlights: string[] = [
+  "3 shipped full-stack projects",
+  "4 roles at Next Group — Finance, Sales, Ops, HR",
+  "Trilingual — English / Mongolian / 中文",
+  "Founded & led a school Entrepreneur Club",
+];
+
 /** Ordered stops on the Sales Analyst business trip across China. */
 export const travelCities: string[] = [
   "Ulaanbaatar",
