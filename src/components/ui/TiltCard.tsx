@@ -14,7 +14,7 @@ interface TiltCardProps {
 /**
  * Glass card with a subtle pointer-driven 3D tilt and a flat-color
  * accent border that fades in on hover. No gradients — the border and
- * glow are solid `--violet` at partial opacity. Reduced-motion collapses
+ * glow are solid `--terracotta` at partial opacity. Reduced-motion collapses
  * to a static card (tilt disabled, hover border still works via CSS).
  */
 export function TiltCard({ children, className, as = "div" }: TiltCardProps) {

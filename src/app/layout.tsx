@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Sora, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Montserrat, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const sora = Sora({
+const montserrat = Montserrat({
   weight: ["600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-montserrat",
 });
 
 const inter = Inter({
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${inter.variable} ${plexMono.variable}`}
+      className={`${montserrat.variable} ${inter.variable} ${plexMono.variable}`}
     >
       <body>{children}</body>
     </html>

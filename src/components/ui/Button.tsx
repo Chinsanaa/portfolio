@@ -17,7 +17,7 @@ interface ButtonProps {
 
 /**
  * Glass-era button with a magnetic hover pull.
- * variant "solid"  — flat violet fill, soft blurred glow behind it
+ * variant "solid"  — flat terracotta fill, soft blurred glow behind it
  * variant "ghost"  — glass border, transparent fill
  * variant "subtle" — text-only, underline on hover
  */

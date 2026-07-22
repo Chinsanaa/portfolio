@@ -7,8 +7,8 @@
    - No gradients. Ever. Flat colors only — including on text,
      borders, and buttons. "Glow" comes from filter: blur() on
      a solid-color shape + opacity, never a gradient fill.
-   - Two flat accents with split roles: violet is for actions
-     (CTAs, headline emphasis), cyan is for data (charts, the
+   - Two flat accents with split roles: terracotta is for actions
+     (CTAs, headline emphasis), amber is for data (charts, the
      route map). They sit side by side — never blended.
    See DESIGN_SYSTEM.md for full usage guidance.
    ============================================================ */
@@ -17,28 +17,29 @@
   /* ----- Color ------------------------------------------------
      text on bg        ≈ 14.8:1  (AAA)
      text-soft on bg    ≈ 6.9:1  (AA)
-     violet on bg        ≈ 5.3:1 — large type & UI only */
-  --bg: #0b0b10; /* page canvas, near-black with a faint blue cast */
-  --bg-2: #12121a; /* raised sections: footer, contact */
+     terracotta on bg        ≈ 5.3:1 — large type & UI only */
+  --bg: #0c0b0a; /* page canvas, near-black with a warm cast */
+  --bg-2: #141210; /* raised sections: footer, contact */
   --surface: rgba(255, 255, 255, 0.035); /* glass card fill */
   --surface-2: rgba(255, 255, 255, 0.06); /* glass hover fill */
   --border-glass: rgba(255, 255, 255, 0.09); /* card / hairline borders */
   --text: #ededf2; /* primary text */
   --text-soft: #9a9aa8; /* secondary text, body copy */
   --text-dim: #6b6b78; /* meta, mono labels */
-  --violet: #7c5cff; /* accent A — flat: CTAs, headline emphasis, links */
-  --violet-soft: rgba(124, 92, 255, 0.16); /* flat violet wash for chips/badges */
-  --cyan: #35e0c6; /* accent B — flat: chart series, route-map line/nodes */
-  --cyan-soft: rgba(53, 224, 198, 0.16); /* flat cyan wash */
-  --glow-violet: rgba(124, 92, 255, 0.45); /* blurred orb / spotlight color */
-  --glow-cyan: rgba(53, 224, 198, 0.35); /* blurred orb color */
+  --terracotta: #e2603a; /* accent A — flat: CTAs, headline emphasis, links */
+  --terracotta-soft: rgba(226, 96, 58, 0.16); /* flat terracotta wash for chips/badges */
+  --amber: #e8a855; /* accent B — flat: chart series, route-map line/nodes */
+  --amber-soft: rgba(232, 168, 85, 0.16); /* flat amber wash */
+  --glow-terracotta: rgba(226, 96, 58, 0.45); /* blurred orb / spotlight color */
+  --glow-amber: rgba(232, 168, 85, 0.35); /* blurred orb color */
 
   /* ----- Typography ------------------------------------------ */
-  --font-display: var(--font-sora), "Sora", sans-serif;
+  --font-display: var(--font-montserrat), "Montserrat", sans-serif;
   --font-body: var(--font-inter), "Inter", -apple-system, sans-serif;
   --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
 
-  --text-display: clamp(2.75rem, 7.5vw, 6.5rem); /* hero name */
+  --text-display: clamp(2.75rem, 7.5vw, 6.5rem); /* section display type */
+  --text-hero-name: clamp(1.75rem, 11vw, 8.25rem); /* hero name — oversized, edge-to-edge; low floor so it keeps shrinking on narrow phones instead of clipping */
   --text-h2: clamp(2rem, 4.5vw, 3.5rem); /* section titles */
   --text-h3: clamp(1.25rem, 2.2vw, 1.75rem); /* card leads / large body */
   --text-body: 1.0625rem;

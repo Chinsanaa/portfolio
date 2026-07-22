@@ -23,8 +23,8 @@ function buildPoints(count: number) {
 /**
  * Stylized (non-geographic) journey diagram: an SVG line connecting each
  * city as an evenly spaced node, drawing itself via pathLength as the
- * section scrolls into view. Nodes are flat cyan; the route line and
- * glow are flat cyan at reduced opacity — no gradients.
+ * section scrolls into view. Nodes are flat amber; the route line and
+ * glow are flat amber at reduced opacity — no gradients.
  */
 export function RouteMap({ cities }: RouteMapProps) {
   const ref = useRef<HTMLDivElement>(null);

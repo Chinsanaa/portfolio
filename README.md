@@ -20,7 +20,7 @@ top to bottom:
 | Projects №03 | `sections/Projects.tsx` | Glass tilt-cards per project — cover art, title, impact, tag chips, GitHub link — that tilt in 3D toward the cursor. |
 | Experience №04 | `sections/Experience.tsx` | Dark timeline whose rail draws itself as you scroll, with a glowing node per role, plus an animated route-map diagram of the cities visited on the business-trip role. |
 | Certificates №05 | `sections/Certificates.tsx` | Grid of glass cards with full-color, always-visible certificate photos — title, issuer, date, link out. |
-| Contact №06 | `sections/Contact.tsx` | Glass CTA block with a soft violet glow, an oversized mailto paired tightly under the headline, magnetic social buttons, marquee, and colophon footer. |
+| Contact №06 | `sections/Contact.tsx` | Glass CTA block with a soft terracotta glow, an oversized mailto paired tightly under the headline, magnetic social buttons, marquee, and colophon footer. |
 
 ## Tech stack
 
@@ -29,7 +29,7 @@ top to bottom:
 - **TypeScript**
 - **[framer-motion](https://motion.dev/)** — cursor spotlight glow, pointer 3D tilt, scroll-linked drawing (timeline rail + route map), parallax, staggered reveals, magnetic buttons
 - **CSS** — hand-written, token-based (`src/styles/tokens.css` + `src/components/portfolio/editorial.css`); no CSS framework
-- **Google Fonts** — [Sora](https://fonts.google.com/specimen/Sora) (display), [Inter](https://fonts.google.com/specimen/Inter) (body), [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (labels), via `next/font/google`
+- **Google Fonts** — [Montserrat](https://fonts.google.com/specimen/Montserrat) (display), [Inter](https://fonts.google.com/specimen/Inter) (body), [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (labels), via `next/font/google`
 - **ESLint** + **TypeScript** for linting/type-checking
 
 ## Design system
@@ -37,7 +37,7 @@ top to bottom:
 See **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** — palette, typography, motion vocabulary,
 primitive component APIs, and the recipe for adding new sections. Headline rules: **no
 gradients, ever** — glow effects are flat solid colors rendered soft via `filter: blur()` — a
-dark canvas with two flat accents split by role (violet for actions, cyan for data), and every
+dark canvas with two flat accents split by role (terracotta for actions, amber for data), and every
 color sourced from `src/styles/tokens.css`.
 
 ## Project structure

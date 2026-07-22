@@ -32,6 +32,8 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const contentY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const nameScale = useTransform(scrollYProgress, [0, 1], [1, 0.82]);
+  const nameOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.35]);
 
   const scrollToProjects = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -53,7 +55,10 @@ export function Hero() {
 
       <Spotlight className="hero-body">
         <motion.div className="hero-content" style={{ y: contentY }}>
-          <h1 className="hero-name">
+          <motion.h1
+            className="hero-name"
+            style={{ scale: nameScale, opacity: nameOpacity }}
+          >
             <span className="hero-line">
               <motion.span custom={0} variants={lineReveal} initial="hidden" animate="visible">
                 Chinsanaa
@@ -61,10 +66,10 @@ export function Hero() {
             </span>
             <span className="hero-line">
               <motion.span custom={1} variants={lineReveal} initial="hidden" animate="visible">
-                <span className="hero-name-accent">Chuluunbold</span>
+                Chuluunbold
               </motion.span>
             </span>
-          </h1>
+          </motion.h1>
 
           <motion.p
             className="hero-tagline"
