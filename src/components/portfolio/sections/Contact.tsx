@@ -69,9 +69,8 @@ export function Contact() {
       </div>
 
       <div className="contact-colophon">
-        <p>© 2026 Chinsanaa Chuluunbold. Designed with attention to detail. All rights reserved.</p>
+        <p>© 2026 Chinsanaa Chuluunbold. All rights reserved.</p>
         <p className="mono-label">Shanghai, China / Ulaanbaatar, Mongolia</p>
-        <p className="mono-label">Feel free to reach out!</p>
       </div>
     </section>
   );

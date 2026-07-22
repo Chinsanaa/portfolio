@@ -24,14 +24,15 @@ export function About() {
         <RevealItem className="about-card-lede">
           <TiltCard className="about-card">
             <p className="about-lede">
-              I&rsquo;m a Data Science student at NYU Shanghai (Finance Concentration, Class of
-              2029) building toward a career that combines data analytics and finance.
+              I&rsquo;m a Data Science student at NYU Shanghai (Finance concentration, Class of
+              &rsquo;29) focused on the analytics side of finance.
             </p>
             <p className="about-body">
-              Currently a Financial Analyst at Next Group, working with Excel, SQL, and Power BI
-              to analyze sales and COGS data, alongside prior roles there in sales analysis,
-              operations, and HR. I build full-stack projects outside coursework and I&rsquo;m
-              fluent in English and Mongolian, with elementary Chinese.
+              As a Financial Analyst at Next Group, I turn sales and COGS data into decisions
+              using Excel, SQL, and Power BI. I also build and deploy full-stack ML products,
+              including a spending classifier that auto-categorizes transactions with a trained
+              model and a live budgeting dashboard. Four roles at one company (Finance, Sales,
+              Operations, HR) taught me how a business runs, not just how to analyze it.
             </p>
           </TiltCard>
         </RevealItem>
