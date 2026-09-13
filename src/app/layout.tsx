@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL, URLS } from "@/config/resources";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -21,7 +22,6 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://chinsanaa.vercel.app";
 const TITLE = "Chinsanaa Chuluunbold | Data Science & Finance";
 const DESCRIPTION =
   "Data Scientist + Finance enthusiast building data-driven solutions that move markets.";
@@ -31,6 +31,13 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   manifest: "/site.webmanifest",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: process.env.VERCEL_ENV === "production" || !process.env.VERCEL_ENV,
+    follow: process.env.VERCEL_ENV === "production" || !process.env.VERCEL_ENV,
+  },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -48,6 +55,20 @@ export const metadata: Metadata = {
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Chinsanaa Chuluunbold",
+  url: SITE_URL,
+  jobTitle: "Data Science Student & Financial Analyst",
+  description: DESCRIPTION,
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "NYU Shanghai",
+  },
+  sameAs: [URLS.socials.github, URLS.socials.linkedin],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,6 +80,10 @@ export default function RootLayout({
       className={`${montserrat.variable} ${inter.variable} ${plexMono.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         {children}
         <Analytics />
       </body>

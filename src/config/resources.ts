@@ -1,3 +1,5 @@
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://chinsanaa.me";
+
 export const FILES = {
   cvPdf: "/Chinsanaa_Chuluunbold_CV.pdf",
 } as const;
