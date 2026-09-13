@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { LinkedIn } from "@/components/icons";
+import { URLS } from "@/config/resources";
 
 const LINKS = [
   { label: "About", href: "#about" },
@@ -35,6 +37,17 @@ export function Nav() {
           </a>
         ))}
       </nav>
+      <div className="nav-social">
+        <a
+          href={URLS.socials.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-link nav-social-link"
+          aria-label="Connect on LinkedIn"
+        >
+          <LinkedIn size={16} />
+        </a>
+      </div>
     </motion.header>
   );
 }

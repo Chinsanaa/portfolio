@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { TiltCard } from "@/components/ui/TiltCard";
@@ -23,8 +24,13 @@ export function Certificates() {
               >
                 <div className="cert-thumb">
                   {/* full-color certificate photo, always visible — no grayscale filter */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={cert.image} alt={`${cert.title} certificate`} loading="lazy" />
+                  <Image
+                    src={cert.image}
+                    alt={`${cert.title} certificate`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    style={{ objectFit: "cover" }}
+                  />
                 </div>
                 <div className="cert-body">
                   <span className="cert-index mono-label">{String(index + 1).padStart(2, "0")}</span>
