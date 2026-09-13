@@ -125,8 +125,8 @@ export const experience: ExperienceItem[] = [
   {
     role: "Financial Analyst",
     company: "Next Group — Ulaanbaatar, Mongolia",
-    date: "May 2026 – Present",
-    description: "Analyzing sales and COGS data using Excel, SQL, and Power BI.",
+    date: "May 2026 – Aug 2026",
+    description: "Analyzed sales and COGS data using Excel, SQL, and Power BI. Executed corporate banking tasks.",
   },
   {
     role: "Administrative Assistant",
