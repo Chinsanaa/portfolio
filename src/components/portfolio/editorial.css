@@ -115,6 +115,22 @@
   background: var(--surface-2);
 }
 
+.nav-social {
+  display: flex;
+  align-items: center;
+  margin-left: var(--space-2);
+  padding-left: var(--space-2);
+  border-left: var(--border-hair);
+}
+
+.nav-social-link {
+  padding: var(--space-2);
+}
+
+.nav-social-link:hover {
+  color: var(--terracotta);
+}
+
 /* ----- Section header ------------------------------------------ */
 .section-header {
   position: relative;
@@ -963,6 +979,10 @@
   }
 
   .nav-link {
+    flex-shrink: 0;
+  }
+
+  .nav-social {
     flex-shrink: 0;
   }
 

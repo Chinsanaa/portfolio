@@ -4,9 +4,9 @@ export const FILES = {
 
 export const IMAGES = {
   certificates: {
-    claudeCodeInAction: "/images/certificates/claudecode_in_action.jfif",
-    bloombergFinanceFundamentals: "/images/certificates/bloomberg_finance_fundamentals.jfif",
-    googleAiEssentials: "/images/certificates/google_ai_essentials.jfif",
+    claudeCodeInAction: "/images/certificates/claudecode_in_action.jpg",
+    bloombergFinanceFundamentals: "/images/certificates/bloomberg_finance_fundamentals.jpg",
+    googleAiEssentials: "/images/certificates/google_ai_essentials.jpg",
   },
   /* Editorial artwork. Each path is a placeholder for a file to be
      uploaded later — drop matching PNGs into public/images/art/ with
@@ -15,10 +15,10 @@ export const IMAGES = {
      SVG composition (see the onError handler in ArtImage.tsx), so
      nothing breaks in the meantime. */
   art: {
-    earnio: "/images/art/earnio.png",
-    chat: "/images/art/chat.png",
-    financing: "/images/art/financing.png",
-    about: "/images/art/about.png",
+    earnio: "/images/art/earnio.webp",
+    chat: "/images/art/chat.webp",
+    financing: "/images/art/financing.webp",
+    about: "/images/art/about.webp",
   } as { earnio: string | null; chat: string | null; financing: string | null; about: string | null },
 } as const;
 

@@ -20,10 +20,31 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://chinsanaa.vercel.app";
+const TITLE = "Chinsanaa Chuluunbold | Data Science & Finance";
+const DESCRIPTION =
+  "Data Scientist + Finance enthusiast building data-driven solutions that move markets.";
+
 export const metadata: Metadata = {
-  title: "Chinsanaa Chuluunbold | Data Science & Finance",
-  description:
-    "Data Scientist + Finance enthusiast building data-driven solutions that move markets.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  manifest: "/site.webmanifest",
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Chinsanaa Chuluunbold",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: TITLE }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
