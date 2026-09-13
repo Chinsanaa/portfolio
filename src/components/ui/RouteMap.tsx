@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { m, useScroll, useSpring } from "framer-motion";
 
 interface RouteMapProps {
   cities: string[];
@@ -44,10 +44,10 @@ export function RouteMap({ cities }: RouteMapProps) {
         aria-label={`Business trip route: ${cities.join(" to ")}`}
       >
         <path d={path} className="route-map-line-bg" fill="none" />
-        <motion.path d={path} className="route-map-line" fill="none" style={{ pathLength: drawn }} />
+        <m.path d={path} className="route-map-line" fill="none" style={{ pathLength: drawn }} />
         {points.map((p, i) => (
           <g key={cities[i]}>
-            <motion.circle
+            <m.circle
               cx={p.x}
               cy={p.y}
               r={7}

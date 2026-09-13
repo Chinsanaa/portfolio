@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type MouseEvent, type ReactNode } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { m, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 
 interface SpotlightProps {
   children?: ReactNode;
@@ -38,7 +38,7 @@ export function Spotlight({ children, className }: SpotlightProps) {
       {/* always rendered (reduced-motion never toggles DOM presence, only whether
           it tracks the pointer) so hydration never mismatches the SSR markup;
           the global reduced-motion kill-switch keeps it static in place */}
-      <motion.div className="spotlight-glow" style={{ left: sx, top: sy }} aria-hidden />
+      <m.div className="spotlight-glow" style={{ left: sx, top: sy }} aria-hidden />
       {children}
     </div>
   );

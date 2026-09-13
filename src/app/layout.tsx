@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { SITE_URL, URLS } from "@/config/resources";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { IS_INDEXABLE, SITE_URL, URLS } from "@/config/resources";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -35,8 +36,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   robots: {
-    index: process.env.VERCEL_ENV === "production" || !process.env.VERCEL_ENV,
-    follow: process.env.VERCEL_ENV === "production" || !process.env.VERCEL_ENV,
+    index: IS_INDEXABLE,
+    follow: IS_INDEXABLE,
   },
   openGraph: {
     title: TITLE,
@@ -86,6 +87,7 @@ export default function RootLayout({
         />
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

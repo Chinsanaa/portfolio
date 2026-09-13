@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { m, useInView, useReducedMotion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -18,10 +18,11 @@ export function SectionHeader({ number, title, kicker }: SectionHeaderProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-15% 0px" });
   const target = parseInt(number, 10) || 0;
+  const reducedMotion = useReducedMotion();
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || reducedMotion) return;
     let frame: number;
     const start = performance.now();
     const duration = 700;
@@ -34,25 +35,25 @@ export function SectionHeader({ number, title, kicker }: SectionHeaderProps) {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [inView, target]);
+  }, [inView, target, reducedMotion]);
 
   return (
     <div className="section-header" ref={ref}>
       <div className="section-header-rule">
         <span className="mono-label section-header-number">
-          №{String(display).padStart(2, "0")}
+          №{String(reducedMotion ? target : display).padStart(2, "0")}
         </span>
         {kicker && <span className="mono-label section-header-kicker">{kicker}</span>}
       </div>
       <h2 className="section-header-title">
-        <motion.span
+        <m.span
           style={{ display: "inline-block" }}
           initial={{ y: "110%" }}
           animate={inView ? { y: "0%" } : undefined}
           transition={{ duration: 0.8, ease: EASE }}
         >
           {title}
-        </motion.span>
+        </m.span>
       </h2>
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { m, useScroll, useMotionValueEvent } from "framer-motion";
 import { LinkedIn } from "@/components/icons";
 import { URLS } from "@/config/resources";
 
@@ -25,7 +25,7 @@ export function Nav() {
   });
 
   return (
-    <motion.header
+    <m.header
       className="nav"
       animate={{ y: hidden ? "calc(-100% - 1rem)" : "0%" }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
@@ -48,6 +48,6 @@ export function Nav() {
           <LinkedIn size={16} />
         </a>
       </div>
-    </motion.header>
+    </m.header>
   );
 }

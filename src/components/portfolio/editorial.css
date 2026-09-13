@@ -76,6 +76,28 @@
 }
 
 /* ----- Nav (floating glass pill) ------------------------------- */
+.skip-link {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 200;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--terracotta);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  translate: 0 -150%;
+  transition: translate var(--dur-fast) var(--ease-out-expo);
+}
+
+.skip-link:focus-visible {
+  translate: 0 0;
+}
+
 .nav {
   position: fixed;
   top: var(--space-4);
@@ -917,6 +939,10 @@
   margin-top: var(--space-8);
 }
 
+.contact-cv-updated {
+  margin-top: var(--space-3);
+}
+
 .contact-marquee {
   margin-top: var(--space-12);
 }
@@ -972,6 +998,8 @@
   .nav-links {
     overflow-x: auto;
     scrollbar-width: none;
+    mask-image: linear-gradient(to right, transparent, black var(--space-4), black calc(100% - var(--space-4)), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black var(--space-4), black calc(100% - var(--space-4)), transparent);
   }
 
   .nav-links::-webkit-scrollbar {

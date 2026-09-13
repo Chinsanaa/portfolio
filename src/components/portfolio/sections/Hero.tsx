@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { GlowField } from "@/components/ui/GlowField";
@@ -43,7 +43,7 @@ export function Hero() {
     <section className="hero" id="top" ref={ref}>
       <GlowField />
 
-      <motion.div
+      <m.div
         className="hero-masthead mono-label"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -51,36 +51,36 @@ export function Hero() {
       >
         <span>Data Scientist × Finance</span>
         <span>NYU Shanghai &rsquo;29</span>
-      </motion.div>
+      </m.div>
 
       <Spotlight className="hero-body">
-        <motion.div className="hero-content" style={{ y: contentY }}>
-          <motion.h1
+        <m.div className="hero-content" style={{ y: contentY }}>
+          <m.h1
             className="hero-name"
             style={{ scale: nameScale, opacity: nameOpacity }}
           >
             <span className="hero-line">
-              <motion.span custom={0} variants={lineReveal} initial="hidden" animate="visible">
+              <m.span custom={0} variants={lineReveal} initial="hidden" animate="visible">
                 Chinsanaa
-              </motion.span>
+              </m.span>
             </span>
             <span className="hero-line">
-              <motion.span custom={1} variants={lineReveal} initial="hidden" animate="visible">
+              <m.span custom={1} variants={lineReveal} initial="hidden" animate="visible">
                 Chuluunbold
-              </motion.span>
+              </m.span>
             </span>
-          </motion.h1>
+          </m.h1>
 
-          <motion.p
+          <m.p
             className="hero-tagline"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.55 }}
           >
             Data Scientist + Finance major building data-driven solutions.
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             className="hero-ctas"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,8 +94,8 @@ export function Hero() {
               Download CV
               <Download size={16} />
             </Button>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </Spotlight>
 
       <div className="hero-scroll-cue mono-label">

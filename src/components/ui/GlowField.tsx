@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { m, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 /**
  * Fixed decorative background: a faint dot-grid plus two or three blurred
@@ -19,8 +19,8 @@ export function GlowField() {
   return (
     <div className="glow-field" ref={ref} aria-hidden>
       <div className="glow-field-grid" />
-      <motion.div className="glow-orb glow-orb-terracotta" style={{ y: orbAY }} />
-      <motion.div className="glow-orb glow-orb-amber" style={{ y: orbBY }} />
+      <m.div className="glow-orb glow-orb-terracotta" style={{ y: orbAY }} />
+      <m.div className="glow-orb glow-orb-amber" style={{ y: orbBY }} />
     </div>
   );
 }

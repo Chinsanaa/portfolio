@@ -1,14 +1,12 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/config/resources";
+import { IS_INDEXABLE, SITE_URL } from "@/config/resources";
 
 export default function robots(): MetadataRoute.Robots {
-  const isProduction = process.env.VERCEL_ENV === "production" || !process.env.VERCEL_ENV;
-
   return {
     rules: {
       userAgent: "*",
-      allow: isProduction ? "/" : undefined,
-      disallow: isProduction ? undefined : "/",
+      allow: IS_INDEXABLE ? "/" : undefined,
+      disallow: IS_INDEXABLE ? undefined : "/",
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
