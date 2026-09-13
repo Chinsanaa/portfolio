@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { m, useScroll, useSpring } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { RouteMap } from "@/components/ui/RouteMap";
@@ -22,13 +22,13 @@ export function Experience() {
 
       <div className="experience-timeline" ref={ref}>
         <div className="experience-rail" aria-hidden>
-          <motion.div className="experience-rail-fill" style={{ scaleY: drawn }} />
+          <m.div className="experience-rail-fill" style={{ scaleY: drawn }} />
         </div>
 
         <ol className="experience-list">
           {experience.map((item) => (
             <li key={`${item.role}-${item.date}`} className="experience-item">
-              <motion.span
+              <m.span
                 className="experience-node"
                 aria-hidden
                 initial={{ scale: 0, x: "-50%" }}

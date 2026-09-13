@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type MouseEvent, type ReactNode } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion, useTransform } from "framer-motion";
+import { m, useMotionValue, useSpring, useReducedMotion, useTransform } from "framer-motion";
 
 const TILT = 8; // max rotation in degrees
 
@@ -50,15 +50,15 @@ export function TiltCard({ children, className, as = "div" }: TiltCardProps) {
 
   if (as === "article") {
     return (
-      <motion.article ref={ref} className={cls} style={style} {...handlers}>
+      <m.article ref={ref} className={cls} style={style} {...handlers}>
         {children}
-      </motion.article>
+      </m.article>
     );
   }
 
   return (
-    <motion.div ref={ref} className={cls} style={style} {...handlers}>
+    <m.div ref={ref} className={cls} style={style} {...handlers}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }

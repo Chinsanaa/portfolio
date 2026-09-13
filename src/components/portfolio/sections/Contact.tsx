@@ -1,5 +1,3 @@
-"use client";
-
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Marquee } from "@/components/ui/Marquee";
@@ -7,6 +5,11 @@ import { ArrowUpRight, Asterisk, Download, GitHub, LinkedIn, Mail } from "@/comp
 import { FILES, URLS } from "@/config/resources";
 
 const TICKER = ["Open to internships", "Data Science", "Finance", "Let's build"];
+
+const cvUpdatedLabel = new Date(FILES.cvUpdated).toLocaleDateString("en-US", {
+  month: "short",
+  year: "numeric",
+});
 
 export function Contact() {
   return (
@@ -52,6 +55,7 @@ export function Contact() {
                   <ArrowUpRight size={14} />
                 </Button>
               </div>
+              <p className="mono-label contact-cv-updated">Resume updated {cvUpdatedLabel}</p>
             </Reveal>
           </div>
         </div>

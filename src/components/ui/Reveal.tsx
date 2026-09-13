@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -27,7 +27,7 @@ interface RevealProps {
 export function Reveal({ children, delay = 0, stagger = false, className }: RevealProps) {
   if (stagger) {
     return (
-      <motion.div
+      <m.div
         className={className}
         initial="hidden"
         whileInView="visible"
@@ -35,11 +35,11 @@ export function Reveal({ children, delay = 0, stagger = false, className }: Reve
         transition={{ staggerChildren: 0.08, delayChildren: delay }}
       >
         {children}
-      </motion.div>
+      </m.div>
     );
   }
   return (
-    <motion.div
+    <m.div
       className={className}
       variants={item}
       initial="hidden"
@@ -48,15 +48,15 @@ export function Reveal({ children, delay = 0, stagger = false, className }: Reve
       transition={{ duration: 0.7, ease: EASE, delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
 /** Child item for use inside <Reveal stagger>. */
 export function RevealItem({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <motion.div className={className} variants={item}>
+    <m.div className={className} variants={item}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }

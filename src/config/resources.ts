@@ -1,7 +1,13 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://chinsanaa.me";
 
+/** True on production deploys and local dev; false on Vercel preview deploys. */
+export const IS_INDEXABLE = process.env.VERCEL_ENV === "production" || !process.env.VERCEL_ENV;
+
 export const FILES = {
   cvPdf: "/Chinsanaa_Chuluunbold_CV.pdf",
+  /* Update this whenever a new CV is uploaded, so the "updated" date on the
+     download buttons stays accurate. */
+  cvUpdated: "2026-07-09",
 } as const;
 
 export const IMAGES = {

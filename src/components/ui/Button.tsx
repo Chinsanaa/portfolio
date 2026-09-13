@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type ReactNode, type MouseEvent } from "react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { m, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 
 const PULL = 8; // max magnetic offset in px
 
@@ -69,7 +69,7 @@ export function Button({
   );
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className="btn-magnet"
       style={{ x: sx, y: sy }}
@@ -77,6 +77,6 @@ export function Button({
       onMouseLeave={onLeave}
     >
       {content}
-    </motion.div>
+    </m.div>
   );
 }
