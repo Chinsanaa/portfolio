@@ -2,6 +2,13 @@
 
 import { useEffect } from "react";
 
+const CHUNK_ERROR_RELOAD_KEY = "chunk-error-reloaded-at";
+const CHUNK_ERROR_RELOAD_WINDOW_MS = 10_000;
+
+function isChunkLoadError(error: Error) {
+  return error.name === "ChunkLoadError" || /Failed to load chunk/i.test(error.message);
+}
+
 export default function Error({
   error,
   reset,
@@ -11,6 +18,15 @@ export default function Error({
 }) {
   useEffect(() => {
     console.error(error);
+
+    if (isChunkLoadError(error)) {
+      const lastReloadedAt = Number(sessionStorage.getItem(CHUNK_ERROR_RELOAD_KEY) ?? 0);
+      const recentlyReloaded = Date.now() - lastReloadedAt < CHUNK_ERROR_RELOAD_WINDOW_MS;
+      if (!recentlyReloaded) {
+        sessionStorage.setItem(CHUNK_ERROR_RELOAD_KEY, String(Date.now()));
+        window.location.reload();
+      }
+    }
   }, [error]);
 
   return (
