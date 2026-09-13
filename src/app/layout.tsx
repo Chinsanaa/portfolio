@@ -24,8 +24,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 const TITLE = "Chinsanaa Chuluunbold | Data Science & Finance";
+const SITE_NAME = "Chinsanaa Portfolio";
 const DESCRIPTION =
-  "Data Scientist + Finance enthusiast building data-driven solutions that move markets.";
+  "This is the portfolio website of Chinsanaa Chuluunbold. She is a Data Science major with a concentration of Finance at NYU Shanghai. Click here to Read more.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: SITE_URL,
-    siteName: "Chinsanaa Chuluunbold",
+    siteName: SITE_NAME,
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: TITLE }],
     locale: "en_US",
     type: "website",
@@ -70,6 +71,13 @@ const personJsonLd = {
   sameAs: [URLS.socials.github, URLS.socials.linkedin],
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -84,6 +92,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         {children}
         <Analytics />
