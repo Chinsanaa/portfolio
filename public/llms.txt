@@ -1,0 +1,34 @@
+# Chinsanaa Chuluunbold
+
+> Data Science student (Finance concentration) at NYU Shanghai, Class of '29. Financial Analyst experience with Excel, SQL, and Power BI. Builds full-stack machine learning and financial analytics products.
+
+## About
+- Data Science major with a concentration in Finance at NYU Shanghai (Class of '29).
+- Experience across four business functions at Next Group (Ulaanbaatar, Mongolia): Financial Analyst, Administrative Assistant, Sales Analyst, and Human Resources Intern.
+- Built 3 full-stack projects covering machine learning, financial analytics, and entrepreneurship.
+- Bilingual: fluent English & Mongolian, learning Chinese.
+
+## Experience
+- Financial Analyst, Next Group (May 2026 – Aug 2026) — Analyzed sales and COGS data using Excel, SQL, and Power BI; executed corporate banking tasks.
+- Administrative Assistant, Next Group — "Maybee Pop & Joy" Launch (June 2025 – Aug 2025)
+- Sales Analyst, Next Group (June 2024 – July 2024) — Business travel across China (Erenhot, Baoding, Tianjin, Beijing, Shanghai) to meet partners and assess production.
+- Human Resources Intern, Next Group (June 2023 – Aug 2023)
+
+## Projects
+- Earnio — UGC monetization platform for Mongolian Gen Z creators (Next.js, Express, Supabase, SwiftUI iOS app). https://github.com/Chinsanaa/earnio
+- ICDS Chat System — TCP socket-based distributed chat with an LLM chatbot and sentiment analysis (Python, Tkinter, Ollama, TextBlob). https://github.com/Chinsanaa/chatsystem
+- Financing — ML-powered personal finance transaction categorizer (Next.js, FastAPI, PostgreSQL, scikit-learn). https://github.com/Chinsanaa/financing
+
+## Certifications
+- Claude Code in Action, Anthropic Education
+- Bloomberg Finance Fundamentals, Bloomberg for Education
+- Google AI Essentials, Google (via Coursera)
+
+## Skills
+Python, SQL, HTML, CSS, C++, Git, Excel (Financial Modeling), Power BI, PostgreSQL, Docker, AI Prompting, GenAI Workflows, Claude Code
+
+## Links
+- Website: https://chinsanaa.me
+- GitHub: https://github.com/Chinsanaa
+- LinkedIn: https://www.linkedin.com/in/chinsanaa/
+- Email: cc9287@nyu.edu

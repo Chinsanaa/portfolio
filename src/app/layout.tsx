@@ -3,6 +3,7 @@ import { Montserrat, Inter, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { IS_INDEXABLE, SITE_URL, URLS } from "@/config/resources";
+import { skillCategories } from "@/components/portfolio/content";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -26,7 +27,7 @@ const plexMono = IBM_Plex_Mono({
 const TITLE = "Chinsanaa Chuluunbold | Data Science & Finance";
 const SITE_NAME = "Chinsanaa Portfolio";
 const DESCRIPTION =
-  "This is the portfolio website of Chinsanaa Chuluunbold. She is a Data Science major with a concentration of Finance at NYU Shanghai. Click here to Read more.";
+  "Portfolio of Chinsanaa Chuluunbold, a Data Science student (Finance concentration) at NYU Shanghai. Financial Analyst experience with Excel, SQL, and Power BI; builder of full-stack machine learning and financial analytics projects.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -62,12 +63,16 @@ const personJsonLd = {
   "@type": "Person",
   name: "Chinsanaa Chuluunbold",
   url: SITE_URL,
+  image: `${SITE_URL}/og-image.png`,
   jobTitle: "Data Science Student & Financial Analyst",
   description: DESCRIPTION,
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "NYU Shanghai",
   },
+  knowsAbout: skillCategories
+    .filter((category) => category.title !== "Soft Skills")
+    .flatMap((category) => category.skills),
   sameAs: [URLS.socials.github, URLS.socials.linkedin],
 };
 
