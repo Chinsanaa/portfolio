@@ -98,3 +98,13 @@ export function Asterisk({ size = 20, className }: IconProps) {
     </svg>
   );
 }
+
+export function Terminal({ size = 20, className }: IconProps) {
+  return (
+    <svg {...base(size)} className={className}>
+      <rect x="3" y="4.5" width="18" height="15" rx="2.5" />
+      <path d="M7 9.5l3 2.5-3 2.5" />
+      <path d="M12.5 15h4.5" />
+    </svg>
+  );
+}

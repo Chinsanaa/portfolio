@@ -35,10 +35,6 @@ export function Hero() {
   const nameScale = useTransform(scrollYProgress, [0, 1], [1, 0.82]);
   const nameOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.35]);
 
-  const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <section className="hero" id="top" ref={ref}>
       <GlowField />
@@ -86,7 +82,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.7 }}
           >
-            <Button variant="solid" onClick={scrollToProjects}>
+            <Button variant="solid" href="#projects">
               View Projects
               <ArrowDown size={16} />
             </Button>

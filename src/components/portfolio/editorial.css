@@ -153,6 +153,25 @@
   color: var(--terracotta);
 }
 
+.nav-palette {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav-palette-kbd {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: var(--border-hair);
+}
+
+@media (max-width: 720px) {
+  .nav-palette-kbd {
+    display: none;
+  }
+}
+
 /* ----- Section header ------------------------------------------ */
 .section-header {
   position: relative;
@@ -679,6 +698,85 @@
 
 .experience-route {
   margin-top: var(--space-6);
+}
+
+/* ----- Route globe (3D) --------------------------------------------- */
+.route-globe {
+  display: grid;
+  grid-template-columns: minmax(0, 460px) auto;
+  justify-content: center;
+  gap: var(--space-6);
+  align-items: center;
+  padding: var(--space-6);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: var(--border-hair);
+}
+
+.route-globe-placeholder {
+  aspect-ratio: 4 / 3;
+}
+
+.route-globe-stage {
+  position: relative;
+  aspect-ratio: 1;
+  max-width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: var(--border-hair);
+  box-shadow: 0 0 90px -20px var(--glow-amber);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.route-globe-stage:active {
+  cursor: grabbing;
+}
+
+.route-globe-stops {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.route-globe-stop {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  transition:
+    color var(--dur-fast) var(--ease-out-expo),
+    transform var(--dur-fast) var(--ease-out-expo);
+}
+
+.route-globe-stop-index {
+  color: var(--text-dim);
+}
+
+.route-globe-stop[data-state="done"] {
+  color: var(--text-soft);
+}
+
+.route-globe-stop[data-state="active"] {
+  color: var(--amber);
+  transform: translateX(6px);
+}
+
+.route-globe-hint {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .route-globe {
+    grid-template-columns: 1fr;
+  }
+  .route-globe-stops {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    justify-content: center;
+  }
 }
 
 /* ----- Route map ---------------------------------------------------- */

@@ -1,6 +1,31 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 @import "../styles/tokens.css";
 
-/* ----- Reset ------------------------------------------------ */
+/* Tailwind preflight is skipped on purpose; this reset replaces it. It sits in
+   the base layer so Tailwind utilities can override it. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-glass: var(--border-glass);
+  --color-text: var(--text);
+  --color-text-soft: var(--text-soft);
+  --color-text-dim: var(--text-dim);
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-soft: var(--terracotta-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --font-display: var(--font-montserrat), "Montserrat", sans-serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
+  --radius-card: 18px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
 *,
 *::before,
 *::after {
@@ -41,6 +66,14 @@ a {
   text-decoration: none;
 }
 
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+}
+
 button {
   font: inherit;
   color: inherit;
@@ -75,6 +108,22 @@ ol {
 ::-webkit-scrollbar-thumb {
   background: var(--surface-2);
   border-radius: var(--radius-chip);
+}
+}
+
+/* ----- Lenis smooth scroll ---------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 /* ----- Shared typographic voices ---------------------------- */

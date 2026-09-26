@@ -105,14 +105,16 @@ export const highlights: string[] = [
 ];
 
 /** Ordered stops on the Sales Analyst business trip across China. */
-export const travelCities: string[] = [
-  "Ulaanbaatar",
-  "Erenhot",
-  "Baoding",
-  "Tianjin",
-  "Beijing",
-  "Shanghai",
+export const travelStops: { city: string; lat: number; lng: number }[] = [
+  { city: "Ulaanbaatar", lat: 47.92, lng: 106.92 },
+  { city: "Erenhot", lat: 43.65, lng: 111.98 },
+  { city: "Baoding", lat: 38.87, lng: 115.46 },
+  { city: "Tianjin", lat: 39.08, lng: 117.2 },
+  { city: "Beijing", lat: 39.9, lng: 116.41 },
+  { city: "Shanghai", lat: 31.23, lng: 121.47 },
 ];
+
+export const travelCities: string[] = travelStops.map((stop) => stop.city);
 
 export interface ExperienceItem {
   role: string;

@@ -4,8 +4,13 @@ import { useRef } from "react";
 import { m, useScroll, useSpring } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { RouteMap } from "@/components/ui/RouteMap";
-import { experience, travelCities } from "../content";
+import dynamic from "next/dynamic";
+import { experience } from "../content";
+
+const RouteGlobe = dynamic(() => import("@/components/demos/RouteGlobe"), {
+  ssr: false,
+  loading: () => <div className="route-globe route-globe-placeholder" aria-hidden />,
+});
 
 export function Experience() {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,7 +23,7 @@ export function Experience() {
 
   return (
     <section className="section experience" id="experience">
-      <SectionHeader number="04" title="Experience" kicker="2023 — Present" />
+      <SectionHeader number="05" title="Experience" kicker="2023 — Present" />
 
       <div className="experience-timeline" ref={ref}>
         <div className="experience-rail" aria-hidden>
@@ -43,7 +48,7 @@ export function Experience() {
                 <p className="experience-description">{item.description}</p>
                 {item.role === "Sales Analyst" && (
                   <div className="experience-route">
-                    <RouteMap cities={travelCities} />
+                    <RouteGlobe />
                   </div>
                 )}
               </Reveal>

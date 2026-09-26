@@ -8,7 +8,7 @@ import { certificates } from "../content";
 export function Certificates() {
   return (
     <section className="section certificates" id="certificates">
-      <SectionHeader number="05" title="Certificates" kicker="Verified" />
+      <SectionHeader number="06" title="Certificates" kicker="Verified" />
 
       <Reveal stagger className="cert-grid">
         {certificates.map((cert, index) => (

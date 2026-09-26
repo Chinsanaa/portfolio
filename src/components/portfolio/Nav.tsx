@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import { m, useScroll, useMotionValueEvent } from "framer-motion";
-import { LinkedIn } from "@/components/icons";
+import { LinkedIn, Terminal } from "@/components/icons";
+import { openPalette } from "@/components/demos/CommandPalette";
 import { URLS } from "@/config/resources";
 
 const LINKS = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Lab", href: "#lab" },
   { label: "Experience", href: "#experience" },
   { label: "Certificates", href: "#certificates" },
   { label: "Contact", href: "#contact" },
@@ -38,6 +40,15 @@ export function Nav() {
         ))}
       </nav>
       <div className="nav-social">
+        <button
+          type="button"
+          onClick={() => openPalette("palette")}
+          className="nav-link nav-social-link nav-palette"
+          aria-label="Open command palette"
+        >
+          <Terminal size={16} />
+          <kbd className="nav-palette-kbd mono-label">⌘K</kbd>
+        </button>
         <a
           href={URLS.socials.linkedin}
           target="_blank"
