@@ -8,7 +8,7 @@ Running log of decisions and state for this portfolio, so future sessions can pi
 - Vercel Deployment Protection (SSO) is on for everything except custom domains, so `*.vercel.app` preview URLs redirect to a Vercel login. That is expected.
 
 ## Stack and conventions
-- Next.js 16 (App Router, Turbopack), React 19, TypeScript, framer-motion, Tailwind v4 (utilities only, no preflight), GSAP + Lenis, three.js via @react-three/fiber, cmdk.
+- Next.js 16 (App Router, Turbopack), React 19, TypeScript, framer-motion, Tailwind v4 (utilities only, no preflight), Lenis (own RAF loop; GSAP was tried and removed as unused weight), three.js via @react-three/fiber, cmdk.
 - Design system "Midnight Studio": dark by default with an opt-in light theme. The no-gradient rule is relaxed to a default (owner's call, Sep 2026). Tokens live in `src/styles/tokens.css`; see `DESIGN_SYSTEM.md`.
 - Heavy pieces are lazy-loaded with `next/dynamic` (`ssr: false`): the globe, the palette dialog, and the Lab categorizer. Keep it that way.
 - Lab categorizer data (`src/components/demos/categorizer-data.ts`) is generated from github.com/Chinsanaa/financing. Regenerate it from that repo instead of hand-editing, and keep personal names (Transfers & Gifts recipients) out.

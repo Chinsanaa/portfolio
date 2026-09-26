@@ -392,7 +392,9 @@ function Terminal({ goTo, close }: { goTo: (id: string) => void; close: () => vo
       cursor.current = next;
       setValue(next === -1 ? "" : history.current[next]);
     } else if (e.key === "Tab") {
+      // Keep Radix's focus trap from moving focus off the input.
       e.preventDefault();
+      e.stopPropagation();
       const match = COMPLETIONS.find((c) => value && c.startsWith(value.toLowerCase()));
       if (match) setValue(match);
     }
