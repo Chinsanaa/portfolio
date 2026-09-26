@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Reveal, RevealItem } from "@/components/ui/Reveal";
+import { m } from "framer-motion";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { ArrowUpRight } from "@/components/icons";
 import { certificates } from "../content";
@@ -10,13 +12,20 @@ export function Certificates() {
     <section className="section certificates" id="certificates">
       <SectionHeader number="06" title="Certificates" kicker="Verified" />
 
-      <Reveal stagger className="cert-grid">
+      <div className="cert-grid">
         {certificates.map((cert, index) => (
-          <RevealItem key={cert.title}>
+          <m.div
+            key={cert.title}
+            initial={{ opacity: 0, x: `${(1 - index) * 70}%`, y: 60, rotate: (index - 1) * 7 }}
+            whileInView={{ opacity: 1, x: "0%", y: 0, rotate: 0 }}
+            viewport={{ once: true, margin: "-15% 0px" }}
+            transition={{ type: "spring", stiffness: 90, damping: 18, delay: 0.1 + index * 0.08 }}
+          >
             <TiltCard as="article">
               <a
                 className="cert-card"
                 href={cert.href}
+                data-cursor="Verify"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -44,9 +53,9 @@ export function Certificates() {
                 </div>
               </a>
             </TiltCard>
-          </RevealItem>
+          </m.div>
         ))}
-      </Reveal>
+      </div>
     </section>
   );
 }

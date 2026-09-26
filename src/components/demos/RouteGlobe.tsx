@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTheme } from "@/components/ui/theme";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Line } from "@react-three/drei";
 import * as THREE from "three";
@@ -52,6 +53,7 @@ interface Colors {
   surface: string;
   land: string;
   route: string;
+  theme: string;
 }
 
 function Globe({
@@ -178,11 +180,17 @@ function supportsWebGL() {
 
 export default function RouteGlobe() {
   const wrapper = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
   // Never server-rendered (loaded with ssr: false), so window is safe here.
-  const [colors] = useState<Colors | null>(() =>
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches || !supportsWebGL()
-      ? null
-      : { surface: token("--bg"), land: token("--text-dim"), route: token("--amber") },
+  const [capable] = useState(
+    () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches && supportsWebGL(),
+  );
+  const colors = useMemo<Colors | null>(
+    () =>
+      capable
+        ? { surface: token("--bg"), land: token("--text-dim"), route: token("--amber"), theme }
+        : null,
+    [capable, theme],
   );
   const [visible, setVisible] = useState(false);
   const [activeStop, setActiveStop] = useState(-1);
@@ -243,6 +251,7 @@ export default function RouteGlobe() {
             gl={{ antialias: true, alpha: true }}
           >
             <Globe
+              key={colors.theme}
               progress={scrollYProgress}
               dragOffset={dragOffset}
               dragging={dragging}

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Marquee } from "@/components/ui/Marquee";
 import { ArrowUpRight, Asterisk, Download, GitHub, LinkedIn, Mail } from "@/components/icons";
 import { FILES, URLS } from "@/config/resources";
+import { CopyEmail } from "@/components/ui/CopyEmail";
 
 const TICKER = ["Open to internships", "Data Science", "Finance", "Let's build"];
 
@@ -25,9 +26,12 @@ export function Contact() {
               <h2 className="contact-headline">Let&rsquo;s talk.</h2>
             </Reveal>
             <Reveal delay={0.14}>
-              <a className="contact-email" href={URLS.socials.email}>
-                cc9287@nyu.edu
-              </a>
+              <div className="contact-email-row">
+                <a className="contact-email" href={URLS.socials.email}>
+                  cc9287@nyu.edu
+                </a>
+                <CopyEmail email="cc9287@nyu.edu" />
+              </div>
             </Reveal>
             <Reveal delay={0.2}>
               <p className="contact-copy">

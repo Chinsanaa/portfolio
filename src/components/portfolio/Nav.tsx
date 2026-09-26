@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { m, useScroll, useMotionValueEvent } from "framer-motion";
-import { LinkedIn, Terminal } from "@/components/icons";
+import { LinkedIn, Moon, Sun, Terminal } from "@/components/icons";
+import { setTheme, useTheme } from "@/components/ui/theme";
 import { openPalette } from "@/components/demos/CommandPalette";
 import { URLS } from "@/config/resources";
 
@@ -20,6 +21,20 @@ const LINKS = [
 export function Nav() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
+  const [active, setActive] = useState("");
+  const theme = useTheme();
+
+  useEffect(() => {
+    const sections = LINKS.map((l) => document.querySelector(l.href)).filter(Boolean) as Element[];
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    sections.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = scrollY.getPrevious() ?? 0;
@@ -34,7 +49,13 @@ export function Nav() {
     >
       <nav className="nav-links" aria-label="Sections">
         {LINKS.map((link) => (
-          <a key={link.href} href={link.href} className="nav-link mono-label">
+          <a
+            key={link.href}
+            href={link.href}
+            className="nav-link mono-label"
+            data-active={active === link.href || undefined}
+            aria-current={active === link.href ? "location" : undefined}
+          >
             <span className="nav-link-label">{link.label}</span>
           </a>
         ))}
@@ -48,6 +69,14 @@ export function Nav() {
         >
           <Terminal size={16} />
           <kbd className="nav-palette-kbd mono-label">⌘K</kbd>
+        </button>
+        <button
+          type="button"
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          className="nav-link nav-social-link"
+          aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
+        >
+          {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
         </button>
         <a
           href={URLS.socials.linkedin}

@@ -8,6 +8,8 @@ import { GlowField } from "@/components/ui/GlowField";
 import { Marquee } from "@/components/ui/Marquee";
 import { ArrowDown, Asterisk, Download } from "@/components/icons";
 import { FILES } from "@/config/resources";
+import { ScrambleText } from "@/components/ui/ScrambleText";
+import { useIntroDone } from "@/components/ui/intro";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -20,11 +22,21 @@ const MARQUEE_ITEMS = [
   "Trading"
 ];
 
-const lineReveal = {
-  hidden: { y: "110%" },
+const BUILDS = [
+  "data-driven solutions.",
+  "ML classifiers.",
+  "financial dashboards.",
+  "full-stack apps.",
+];
+
+const NAME_LINES = ["Chinsanaa", "Chuluunbold"];
+
+const charReveal = {
+  hidden: { y: "115%", rotate: 8 },
   visible: (i: number) => ({
     y: "0%",
-    transition: { duration: 0.9, ease: EASE, delay: 0.15 + i * 0.12 },
+    rotate: 0,
+    transition: { duration: 0.9, ease: EASE, delay: 0.05 + i * 0.035 },
   }),
 };
 
@@ -34,6 +46,8 @@ export function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const nameScale = useTransform(scrollYProgress, [0, 1], [1, 0.82]);
   const nameOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.35]);
+  const ready = useIntroDone();
+  const intro = ready ? "visible" : "hidden";
 
   return (
     <section className="hero" id="top" ref={ref}>
@@ -42,7 +56,7 @@ export function Hero() {
       <m.div
         className="hero-masthead mono-label"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: ready ? 1 : 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
       >
         <span>Data Scientist × Finance</span>
@@ -55,31 +69,42 @@ export function Hero() {
             className="hero-name"
             style={{ scale: nameScale, opacity: nameOpacity }}
           >
-            <span className="hero-line">
-              <m.span custom={0} variants={lineReveal} initial="hidden" animate="visible">
-                Chinsanaa
-              </m.span>
-            </span>
-            <span className="hero-line">
-              <m.span custom={1} variants={lineReveal} initial="hidden" animate="visible">
-                Chuluunbold
-              </m.span>
-            </span>
+            <span className="sr-only">{NAME_LINES.join(" ")}</span>
+            {NAME_LINES.map((line, lineIndex) => (
+              <span key={line} className="hero-line" aria-hidden>
+                {line.split("").map((ch, i) => (
+                  <m.span
+                    key={i}
+                    className="hero-char"
+                    custom={i + lineIndex * 4}
+                    variants={charReveal}
+                    initial="hidden"
+                    animate={intro}
+                  >
+                    {ch}
+                  </m.span>
+                ))}
+              </span>
+            ))}
           </m.h1>
 
           <m.p
             className="hero-tagline"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.55 }}
           >
-            Data Scientist + Finance major building data-driven solutions.
+            <span className="sr-only">
+              Data Scientist + Finance major building data-driven solutions.
+            </span>
+            <span aria-hidden>Data Scientist + Finance major building </span>
+            <ScrambleText phrases={BUILDS} start={ready} className="hero-tagline-accent" />
           </m.p>
 
           <m.div
             className="hero-ctas"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.7, ease: EASE, delay: 0.7 }}
           >
             <Button variant="solid" href="#projects">

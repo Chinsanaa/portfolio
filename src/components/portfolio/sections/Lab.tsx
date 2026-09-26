@@ -4,10 +4,12 @@ import dynamic from "next/dynamic";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { URLS } from "@/config/resources";
+import { LazyMount } from "@/components/ui/LazyMount";
 
+const labPlaceholder = <div className="min-h-[420px]" aria-hidden />;
 const Categorizer = dynamic(() => import("@/components/demos/Categorizer"), {
   ssr: false,
-  loading: () => <div className="min-h-[420px]" aria-hidden />,
+  loading: () => labPlaceholder,
 });
 
 export function Lab() {
@@ -32,7 +34,9 @@ export function Lab() {
         </p>
       </Reveal>
       <Reveal delay={0.1}>
-        <Categorizer />
+        <LazyMount placeholder={labPlaceholder}>
+          <Categorizer />
+        </LazyMount>
       </Reveal>
     </section>
   );

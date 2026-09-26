@@ -8,8 +8,10 @@ Running log of decisions and state for this portfolio, so future sessions can pi
 - Vercel Deployment Protection (SSO) is on for everything except custom domains, so `*.vercel.app` preview URLs redirect to a Vercel login. That is expected.
 
 ## Stack and conventions
-- Next.js 16 (App Router, Turbopack), React 19, TypeScript, framer-motion.
-- Design system "Midnight Studio": dark only, flat colors, no gradients. Tokens live in `src/styles/tokens.css`; see `DESIGN_SYSTEM.md`.
+- Next.js 16 (App Router, Turbopack), React 19, TypeScript, framer-motion, Tailwind v4 (utilities only, no preflight), GSAP + Lenis, three.js via @react-three/fiber, cmdk.
+- Design system "Midnight Studio": dark by default with an opt-in light theme. The no-gradient rule is relaxed to a default (owner's call, Sep 2026). Tokens live in `src/styles/tokens.css`; see `DESIGN_SYSTEM.md`.
+- Heavy pieces are lazy-loaded with `next/dynamic` (`ssr: false`): the globe, the palette dialog, and the Lab categorizer. Keep it that way.
+- Lab categorizer data (`src/components/demos/categorizer-data.ts`) is generated from github.com/Chinsanaa/financing. Regenerate it from that repo instead of hand-editing, and keep personal names (Transfers & Gifts recipients) out.
 - Icons are hand-drawn inline SVGs in `src/components/icons/index.tsx`. Do not add an icon library or third-party widgets.
 - framer-motion runs through `LazyMotion` + `m.*` with `strict` in `Portfolio.tsx`. Using `motion.*` anywhere will throw at runtime.
 - Page copy lives in `src/components/portfolio/content.ts`; URLs and file paths in `src/config/resources.ts`.
@@ -27,6 +29,7 @@ Running log of decisions and state for this portfolio, so future sessions can pi
 - Update `FILES.cvUpdated` in `resources.ts` whenever a new CV PDF is uploaded.
 
 ## History
+- 2026-09-26, interactive redesign (one PR): preloader, custom cursor, scroll progress + back-to-top, Lenis smooth scroll, hero letter reveal + scrambling tagline + interactive dot grid, About scroll-lit words, Skills bento, Projects stacking cards, new Lab section (live Financing categorizer), 3D route globe in Experience, Certificates fan-out, copy-email button, ⌘K palette + terminal, light theme toggle. Also fixed a pre-existing reduced-motion hydration mismatch in `SectionHeader`.
 - 2026-09-26: Owner added https://chinsanaa.me to the LinkedIn "Website" field and GitHub bio (backlinks for search discovery).
 - 2026-09-26, PR #22: added this context.md.
 - 2026-09-16, PR #21: fixed the meta description (removed the "Click here" copy), added `llms.txt`, enriched Person JSON-LD.

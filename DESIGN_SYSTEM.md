@@ -8,12 +8,18 @@ without inventing new values.
 
 ## Hard rules
 
-1. **No gradients. Ever.** `linear-gradient`/`radial-gradient` must never appear in CSS, SVG, `style` props, or generated imagery — not on text, borders, buttons, backgrounds, or masks. "Glow" is a flat-color shape rendered soft via `filter: blur()` + opacity, never a gradient fill.
+> **Relaxed (Sep 2026, owner's call):** rules 1 and 5 are now defaults, not bans. A subtle gradient or an animated `filter`/color is allowed when an effect genuinely needs it (e.g. a pasted Skiper/Vengeance UI component). Rules 2, 3, 4 and 6 still hold, and so do the reduced-motion and hydration-safety rules below.
+
+1. **Prefer no gradients.** `linear-gradient`/`radial-gradient` must never appear in CSS, SVG, `style` props, or generated imagery — not on text, borders, buttons, backgrounds, or masks. "Glow" is a flat-color shape rendered soft via `filter: blur()` + opacity, never a gradient fill.
 2. **Two flat accents, split roles.** `--terracotta` is for actions (CTAs, headline emphasis, links, primary interactive state). `--amber` is for data (chart series, the route-map line/nodes). They sit side by side — never blended into each other.
 3. **No emojis in the UI.** Use the icon set (`src/components/icons`) or typographic marks (numbers, mono labels, `*` glyphs).
 4. **No raw hex outside `src/styles/tokens.css`.** Components reference tokens only.
 5. **Animate `transform`, `opacity`, and SVG `pathLength` only.** Glow/shadow effects are static `filter: blur()` on a solid shape, or a `box-shadow`, and are never scroll-linked to a color change — only position/opacity.
 6. **Certificate and other real photos always render in full color, always visible.** No `filter: grayscale()`, no hover-to-reveal — this was a real bug in a prior version and must not come back.
+
+## Themes
+
+Dark is the default. A light theme is opt-in via the nav toggle: `setTheme()` in `src/components/ui/theme.ts` sets `data-theme="light"` on `<html>` and saves it to `localStorage`; an inline script in `layout.tsx` applies it before first paint. Light values live under `:root[data-theme="light"]` in `tokens.css` and every text token clears WCAG AA on both backgrounds. Canvas/WebGL pieces that read tokens at startup (`DotField`, `RouteGlobe`) re-read them via `useTheme()`.
 
 ## Palette
 
@@ -82,6 +88,24 @@ Fonts load in `src/app/layout.tsx` via `next/font/google`.
 | `SkillChart` | *(reads `skillCategories` from `content.ts`)* | Hand-rolled animated bar chart, flat amber series, one metric — no legend needed (see `dataviz` skill before changing) |
 | `RouteMap` | `cities: string[]` | Stylized (non-geographic) journey diagram; SVG line draws via `pathLength` on scroll, amber nodes spring in |
 | `GlowField` | *(no props)* | Fixed decorative background: flat-dot pattern (SVG data-URI, not a gradient) + two blurred terracotta/amber orbs that drift on scroll |
+
+Added in the Sep 2026 redesign:
+
+| Component | Notes |
+|---|---|
+| `SmoothScroll` | Lenis, driven by the GSAP ticker. Exports `scrollToSection(id)` and `setScrollLocked()`; off under reduced motion |
+| `Preloader` | 0→100 counter + name, curtain wipe, once per tab session; calls `markIntroDone()` (`intro.ts`) so the hero waits for it. CSS fallback hides it after 4s |
+| `Cursor` | Trailing ring, fine pointers only. Put `data-cursor="Label"` on any element to show a label |
+| `ScrollChrome` | Top progress bar + back-to-top button |
+| `DotField` | Canvas dot grid that reacts to the pointer (inside `GlowField`) |
+| `ScrambleText` | Cycles phrases with a decode effect (hero tagline) |
+| `ScrollWords` | Paragraph that brightens word by word on scroll (About) |
+| `CopyEmail` | Copy-to-clipboard button with animated confirmation |
+| `demos/RouteGlobe` | three.js globe for the Sales Analyst trip, lazy-loaded; falls back to `RouteMap` |
+| `demos/CommandPalette` + `PaletteDialog` | ⌘K / `/` palette and terminal, lazy-loaded, content from `content.ts` |
+| `demos/Categorizer` | Lab demo of the Financing classifier. Data in `categorizer-data.ts` is generated from the Financing repo (personal names removed) |
+
+New components use Tailwind v4 utilities (tokens mapped in `globals.css` via `@theme inline`); older sections still use `editorial.css`. Tailwind preflight is intentionally not loaded; the base reset in `globals.css` replaces it.
 
 Icons: `src/components/icons/index.tsx` — 24px viewBox, `currentColor`, 1.5px stroke. Add new icons in the same style; never import an icon library.
 

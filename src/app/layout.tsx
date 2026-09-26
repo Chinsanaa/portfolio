@@ -92,7 +92,16 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${montserrat.variable} ${inter.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* Applies a saved theme before first paint so light mode never flashes dark. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"

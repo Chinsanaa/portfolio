@@ -5,11 +5,13 @@ import { m, useScroll, useSpring } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import dynamic from "next/dynamic";
+import { LazyMount } from "@/components/ui/LazyMount";
 import { experience } from "../content";
 
+const globePlaceholder = <div className="route-globe route-globe-placeholder" aria-hidden />;
 const RouteGlobe = dynamic(() => import("@/components/demos/RouteGlobe"), {
   ssr: false,
-  loading: () => <div className="route-globe route-globe-placeholder" aria-hidden />,
+  loading: () => globePlaceholder,
 });
 
 export function Experience() {
@@ -48,7 +50,9 @@ export function Experience() {
                 <p className="experience-description">{item.description}</p>
                 {item.role === "Sales Analyst" && (
                   <div className="experience-route">
-                    <RouteGlobe />
+                    <LazyMount placeholder={globePlaceholder}>
+                      <RouteGlobe />
+                    </LazyMount>
                   </div>
                 )}
               </Reveal>

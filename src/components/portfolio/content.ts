@@ -8,6 +8,8 @@ export interface Project {
   /** ArtImage variant + generated artwork path (null → SVG fallback). */
   artVariant: "earnio" | "chat" | "financing";
   art: string | null;
+  /** In-page anchor to a live demo of this project. */
+  demo?: string;
 }
 
 export const projects: Project[] = [
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     tagLabels: ["Next.js", "FastAPI", "PostgreSQL", "scikit-learn", "Supabase Auth"],
     artVariant: "financing",
     art: IMAGES.art.financing,
+    demo: "#lab",
   },
 ];
 
