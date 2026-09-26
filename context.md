@@ -24,10 +24,11 @@ Running log of decisions and state for this portfolio, so future sessions can pi
 - Google Search Console is set up by the owner. Sitemap submitted; re-request indexing after big changes.
 
 ## Open items for the owner (cannot be done from code)
-- Add https://chinsanaa.me to the LinkedIn "Website" field and the GitHub profile bio (backlinks help Google find and trust the domain).
 - Update `FILES.cvUpdated` in `resources.ts` whenever a new CV PDF is uploaded.
 
 ## History
+- 2026-09-26: Owner added https://chinsanaa.me to the LinkedIn "Website" field and GitHub bio (backlinks for search discovery).
+- 2026-09-26, PR #22: added this context.md.
 - 2026-09-16, PR #21: fixed the meta description (removed the "Click here" copy), added `llms.txt`, enriched Person JSON-LD.
 - 2026-09-13, PR #19: skip link, reduced-motion fix for `SectionHeader`, `error.tsx`, security headers, Speed Insights, LazyMotion migration, image recompression, "Resume updated" label, fewer `"use client"` files.
 - 2026-09-13, PR #18: Vercel Analytics, robots.txt, sitemap, canonical URL, Person JSON-LD.
