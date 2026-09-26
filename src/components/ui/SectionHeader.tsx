@@ -22,8 +22,12 @@ export function SectionHeader({ number, title, kicker }: SectionHeaderProps) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView || reducedMotion) return;
+    if (!inView) return;
     let frame: number;
+    if (reducedMotion) {
+      frame = requestAnimationFrame(() => setDisplay(target));
+      return () => cancelAnimationFrame(frame);
+    }
     const start = performance.now();
     const duration = 700;
     const tick = (now: number) => {
@@ -41,7 +45,7 @@ export function SectionHeader({ number, title, kicker }: SectionHeaderProps) {
     <div className="section-header" ref={ref}>
       <div className="section-header-rule">
         <span className="mono-label section-header-number">
-          №{String(reducedMotion ? target : display).padStart(2, "0")}
+          №{String(display).padStart(2, "0")}
         </span>
         {kicker && <span className="mono-label section-header-kicker">{kicker}</span>}
       </div>

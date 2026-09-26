@@ -2,9 +2,10 @@
 
 import { useRef } from "react";
 import { m, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { DotField } from "./DotField";
 
 /**
- * Fixed decorative background: a faint dot-grid plus two or three blurred
+ * Fixed decorative background: an interactive dot grid (DotField) plus two or three blurred
  * solid-color orbs (terracotta/amber) that drift slowly on scroll via transform
  * only. No gradients — each orb is a flat-color circle rendered soft by
  * filter: blur(). Purely aria-hidden decoration; off under reduced motion.
@@ -18,7 +19,7 @@ export function GlowField() {
 
   return (
     <div className="glow-field" ref={ref} aria-hidden>
-      <div className="glow-field-grid" />
+      <DotField />
       <m.div className="glow-orb glow-orb-terracotta" style={{ y: orbAY }} />
       <m.div className="glow-orb glow-orb-amber" style={{ y: orbBY }} />
     </div>

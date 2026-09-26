@@ -4,6 +4,10 @@ import { ArtImage } from "@/components/ui/ArtImage";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { IMAGES } from "@/config/resources";
 import { highlights } from "../content";
+import { ScrollWords } from "@/components/ui/ScrollWords";
+
+const ABOUT_BODY =
+  "I have a job experiences in 4 sectors of business: Finance, Human Resources, Sales, and Administration. Through these internship opportunities, I am confident in my future in the tech and finance industry. I have built 3 full stack projects outside my work involving Machine Learning, Financial Analytics, and Entrepreneurship. I’m looking for opportunities to apply what I learn, build useful products, and grow.";
 
 export function About() {
   return (
@@ -25,9 +29,7 @@ export function About() {
               I&rsquo;m a Data Science major with a concentration in Finance, Class of
               &rsquo;29 at NYU Shanghai.
             </p>
-            <p className="about-body">
-              I have a job experiences in 4 sectors of business: Finance, Human Resources, Sales, and Administration. Through these internship opportunities, I am confident in my future in the tech and finance industry. I have built 3 full stack projects outside my work involving Machine Learning, Financial Analytics, and Entrepreneurship. I’m looking for opportunities to apply what I learn, build useful products, and grow.
-            </p>
+            <ScrollWords className="about-body" text={ABOUT_BODY} />
           </TiltCard>
         </RevealItem>
 

@@ -32,6 +32,8 @@
   --amber-soft: rgba(232, 168, 85, 0.16); /* flat amber wash */
   --glow-terracotta: rgba(226, 96, 58, 0.45); /* blurred orb / spotlight color */
   --glow-amber: rgba(232, 168, 85, 0.35); /* blurred orb color */
+  --shadow-stack: 0 -20px 60px -30px rgba(0, 0, 0, 0.9); /* stacked project cards */
+  --orb-opacity: 1;
 
   /* ----- Typography ------------------------------------------ */
   --font-display: var(--font-montserrat), "Montserrat", sans-serif;
@@ -79,4 +81,26 @@
   --dur-fast: 200ms;
   --dur-base: 600ms;
   --dur-slow: 900ms;
+}
+
+/* ----- Light theme ---------------------------------------------------
+   Opt-in via the nav toggle (data-theme="light" on <html>). Every text
+   token clears WCAG AA (4.5:1) on both --bg and --bg-2. */
+:root[data-theme="light"] {
+  --bg: #f4f1ec;
+  --bg-2: #ebe6df;
+  --surface: rgba(22, 20, 15, 0.035);
+  --surface-2: rgba(22, 20, 15, 0.065);
+  --border-glass: rgba(22, 20, 15, 0.13);
+  --text: #16140f;
+  --text-soft: #4f4b48;
+  --text-dim: #645f5a;
+  --terracotta: #a83c16;
+  --terracotta-soft: rgba(168, 60, 22, 0.12);
+  --amber: #8a560b;
+  --amber-soft: rgba(138, 86, 11, 0.13);
+  --glow-terracotta: rgba(226, 96, 58, 0.28);
+  --glow-amber: rgba(232, 168, 85, 0.3);
+  --shadow-stack: 0 -16px 50px -30px rgba(22, 20, 15, 0.28);
+  --orb-opacity: 0.45;
 }
