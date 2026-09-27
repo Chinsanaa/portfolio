@@ -3,16 +3,16 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { AUTO_APPLY_THRESHOLD, classify, type Source } from "./categorizer";
+import { AUTO_APPLY_THRESHOLD, REVIEW_FLOOR, classify, type Source } from "./categorizer";
 import { KEYWORD_RULES, MERCHANT_RULES } from "./categorizer-data";
 
 const PRESETS = [
   "Luckin Coffee ¥18",
   "盒马鲜生",
-  "静安寺 station",
+  "静安寺站",
   "Mcdonalds",
   "CoCo tea",
-  "Uber",
+  "大众点评",
 ];
 
 const STEPS: { source: Source; title: string; detail: string }[] = [
@@ -38,6 +38,7 @@ export default function Categorizer() {
   const result = useMemo(() => classify(input), [input]);
   const answered = result ? STEPS.findIndex((s) => s.source === result.source) : -1;
   const autoApplied = result && (result.source !== "model" || result.confidence >= AUTO_APPLY_THRESHOLD);
+  const unsure = result?.source === "model" && result.confidence < REVIEW_FLOOR;
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
@@ -112,18 +113,28 @@ export default function Categorizer() {
               <p className="mono-label mb-3">Predicted category</p>
               <AnimatePresence mode="wait">
                 <m.p
-                  key={result.category}
+                  key={unsure ? "unsure" : result.category}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.35, ease: EASE }}
-                  className="font-display text-[clamp(1.75rem,3.4vw,2.6rem)] font-bold leading-tight text-text"
+                  className={cn(
+                    "font-display text-[clamp(1.75rem,3.4vw,2.6rem)] font-bold leading-tight",
+                    unsure ? "text-text-soft" : "text-text",
+                  )}
                 >
-                  {result.category}
+                  {unsure ? "Needs review" : result.category}
                 </m.p>
               </AnimatePresence>
               <p className="mt-2 font-mono text-xs text-text-soft">
-                {SOURCE_LABEL[result.source]}
+                {unsure ? (
+                  <>
+                    Not enough evidence · best guess{" "}
+                    <span className="text-amber">{result.category}</span>
+                  </>
+                ) : (
+                  SOURCE_LABEL[result.source]
+                )}
                 {result.match && (
                   <>
                     {" · "}

@@ -12,6 +12,8 @@ export interface Prediction {
 }
 
 export const AUTO_APPLY_THRESHOLD = 0.75;
+/** Below this, the demo shows "Needs review" instead of asserting a category. */
+export const REVIEW_FLOOR = 0.6;
 
 const normalize = (text: string) =>
   text
@@ -60,7 +62,7 @@ function train() {
 let model: ReturnType<typeof train> | null = null;
 
 const K = 7;
-const STRONG_MATCH = 0.45;
+const STRONG_MATCH = 0.7;
 
 function cosine(a: Vector, b: Vector) {
   let dot = 0;
