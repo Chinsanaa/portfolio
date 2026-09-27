@@ -13,11 +13,13 @@
 - Administrative Assistant, Next Group — "Maybee Pop & Joy" Launch (June 2025 – Aug 2025)
 - Sales Analyst, Next Group (June 2024 – July 2024) — Business travel across China (Erenhot, Baoding, Tianjin, Beijing, Shanghai) to meet partners and assess production.
 - Human Resources Intern, Next Group (June 2023 – Aug 2023)
+- President, Entrepreneur Club, Orchlon International School (Sep 2024 – Jun 2025) — Founded and led the club; organized fundraisers for a charity event at a local orphanage.
 
 ## Projects
 - Earnio — UGC monetization platform for Mongolian Gen Z creators (Next.js, Express, Supabase, SwiftUI iOS app). https://github.com/Chinsanaa/earnio
 - ICDS Chat System — TCP socket-based distributed chat with an LLM chatbot and sentiment analysis (Python, Tkinter, Ollama, TextBlob). https://github.com/Chinsanaa/chatsystem
 - Financing — ML-powered personal finance transaction categorizer (Next.js, FastAPI, PostgreSQL, scikit-learn). https://github.com/Chinsanaa/financing
+  - Live in-browser demo of the classifier: https://chinsanaa.me/#lab
 
 ## Certifications
 - Claude Code in Action, Anthropic Education
