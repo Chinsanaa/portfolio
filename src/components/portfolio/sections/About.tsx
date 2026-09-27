@@ -7,7 +7,7 @@ import { highlights } from "../content";
 import { ScrollWords } from "@/components/ui/ScrollWords";
 
 const ABOUT_BODY =
-  "I have a job experiences in 4 sectors of business: Finance, Human Resources, Sales, and Administration. Through these internship opportunities, I am confident in my future in the tech and finance industry. I have built 3 full stack projects outside my work involving Machine Learning, Financial Analytics, and Entrepreneurship. I’m looking for opportunities to apply what I learn, build useful products, and grow.";
+  "I have work experience in 4 areas of business: Finance, Human Resources, Sales, and Administration. These internships have made me confident about my future in tech and finance. I have built 3 full-stack projects outside of work, spanning machine learning, financial analytics, and entrepreneurship. I’m looking for opportunities to apply what I learn, build useful products, and grow.";
 
 export function About() {
   return (
@@ -19,7 +19,7 @@ export function About() {
           <ArtImage
             src={IMAGES.art.about}
             variant="about"
-            alt="Small geometric still life on a dark studio backdrop"
+            alt="Chinsanaa smiling with a medal, a certificate, and basketball trophies"
           />
         </RevealItem>
 

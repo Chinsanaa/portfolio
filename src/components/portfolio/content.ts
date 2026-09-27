@@ -34,7 +34,7 @@ export const projects: Project[] = [
   {
     title: "Financing",
     impact:
-      "Intelligent transaction categorization system for personal finance. Automatically classifies spending from Alipay and WeChat exports using 554+ merchant rules and ML-powered predictions with calibrated confidence scoring. Includes dashboard with overview, budget planning, and model performance monitoring.",
+      "Intelligent transaction categorization system for personal finance. Automatically classifies spending from Alipay and WeChat exports using 554+ merchant rules and ML-powered predictions with calibrated confidence scoring. Includes a dashboard with an overview, budget planning, and model performance monitoring.",
     href: URLS.projects.financing,
     tagLabels: ["Next.js", "FastAPI", "PostgreSQL", "scikit-learn", "Supabase Auth"],
     artVariant: "financing",
@@ -87,7 +87,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "Tools",
-    skills: ["Excel (Financial Modeling)", "Power BI", "PostgresSQL", "Docker", "VS Code"],
+    skills: ["Excel (Financial Modeling)", "Power BI", "PostgreSQL", "Docker", "VS Code"],
   },
   {
     title: "AI skills",
@@ -101,10 +101,10 @@ export const skillCategories: SkillCategory[] = [
 
 /** Recruiter-scannable achievement highlights for the About section. */
 export const highlights: string[] = [
-  "Built 3 full-stack apps live, including an ML classifier",
-  "Experienced across 4 sectors of business: Finance, HR, Sales, and Administration",
+  "Built and shipped 3 full-stack apps, including an ML classifier",
+  "Experience across 4 areas of business: Finance, HR, Sales, and Administration",
   "Bilingual: fluent English & Mongolian, learning Chinese",
-  "Founded and ran Entrepreneur Club in high school",
+  "Founded and ran the Entrepreneur Club in high school",
 ];
 
 /** Ordered stops on the Sales Analyst business trip across China. */
@@ -136,28 +136,28 @@ export const experience: ExperienceItem[] = [
   {
     role: "Administrative Assistant",
     company: "Next Group — “Maybee Pop & Joy” Launch, Ulaanbaatar, Mongolia",
-    date: "June 2025 – Aug 2025",
+    date: "Jun 2025 – Aug 2025",
     description:
       "Supported pricing, cashiering, and sales during the company's launch phase. Ran social media marketing and customer support for the new business, and configured operational systems while managing product stocking and inventory.",
   },
   {
     role: "Sales Analyst",
     company: "Next Group — Ulaanbaatar, Mongolia",
-    date: "June 2024 – July 2024",
+    date: "Jun 2024 – Jul 2024",
     description:
       "Traveled to multiple Chinese cities (Erenhot, Baoding, Tianjin, Beijing, Shanghai) to meet existing business partners. Visited factories to assess production processes and quality standards, attended exhibitions to evaluate potential new partners, and provided consumer-focused insights that contributed to team decisions on product selection and business strategy.",
   },
   {
     role: "Human Resources Intern",
     company: "Next Group — Ulaanbaatar, Mongolia",
-    date: "June 2023 – Aug 2023",
+    date: "Jun 2023 – Aug 2023",
     description:
       "Maintained and updated employee records across the HR database, ensuring data accuracy and confidentiality.",
   },
   {
     role: "President, Entrepreneur Club",
     company: "Orchlon International School — Ulaanbaatar, Mongolia",
-    date: "Sept 2024 – June 2025",
+    date: "Sep 2024 – Jun 2025",
     description:
       "Founded and led the school's Entrepreneur Club, organizing fundraisers to finance a charity event at a local orphanage. Facilitated weekly meetings on sales strategy and marketing tactics, allocated responsibilities across club members, and personally handled the majority of the club's planning, logistics, and execution.",
   },
