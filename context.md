@@ -29,6 +29,7 @@ Running log of decisions and state for this portfolio, so future sessions can pi
 - Update `FILES.cvUpdated` in `resources.ts` whenever a new CV PDF is uploaded.
 
 ## History
+- 2026-09-27, Lab presets: replaced "Uber" (not in mainland China, and it misread as Shopping) with 大众点评; "静安寺 station" → "静安寺站". Model now needs stronger evidence (STRONG_MATCH 0.7) and anything under 60% shows "Needs review" with a best guess, so junk input never looks like a confident answer. Pick future presets from real China merchants and test them first.
 - 2026-09-27, text polish: About grammar, correct About photo alt text, "PostgreSQL" typo, highlight wording, consistent month abbreviations, llms.txt gains the Entrepreneur Club role and the Lab demo link. "554+ merchant rules" is correct (554 global seeds in Financing) and stays.
 - 2026-09-26, interactive redesign (one PR): preloader, custom cursor, scroll progress + back-to-top, Lenis smooth scroll, hero letter reveal + scrambling tagline + interactive dot grid, About scroll-lit words, Skills bento, Projects stacking cards, new Lab section (live Financing categorizer), 3D route globe in Experience, Certificates fan-out, copy-email button, ⌘K palette + terminal, light theme toggle. Also fixed a pre-existing reduced-motion hydration mismatch in `SectionHeader`.
 - 2026-09-26: Owner added https://chinsanaa.me to the LinkedIn "Website" field and GitHub bio (backlinks for search discovery).
