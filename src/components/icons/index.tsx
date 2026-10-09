@@ -1,6 +1,6 @@
-/* Monograph icon set — hand-rolled inline SVGs.
-   All icons inherit currentColor and use a 1.5px stroke to match
-   the hairline aesthetic. See DESIGN_SYSTEM.md before adding more. */
+/* Icon set: hand-rolled inline SVGs that inherit currentColor.
+   Line icons use a 1.5px stroke; the two Mongolian marks (Ulzii,
+   Soyombo) at the bottom have their own rules in DESIGN_SYSTEM.md. */
 
 interface IconProps {
   size?: number;
@@ -49,79 +49,61 @@ export function Download({ size = 20, className }: IconProps) {
   );
 }
 
-export function Mail({ size = 20, className }: IconProps) {
-  return (
-    <svg {...base(size)} className={className}>
-      <rect x="3" y="5" width="18" height="14" rx="1" />
-      <path d="M3 7l9 6 9-6" />
-    </svg>
-  );
-}
-
-export function GitHub({ size = 20, className }: IconProps) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-      className={className}
-    >
-      <path d="M12 1.5A10.5 10.5 0 0 0 8.68 21.96c.53.1.72-.23.72-.5v-1.96c-2.92.63-3.54-1.24-3.54-1.24-.48-1.21-1.17-1.54-1.17-1.54-.95-.65.07-.64.07-.64 1.06.08 1.61 1.08 1.61 1.08.94 1.6 2.46 1.14 3.06.87.1-.68.37-1.14.66-1.4-2.33-.27-4.79-1.17-4.79-5.2 0-1.14.41-2.08 1.08-2.81-.1-.27-.47-1.34.1-2.79 0 0 .89-.28 2.9 1.08a10.1 10.1 0 0 1 5.28 0c2-1.36 2.89-1.08 2.89-1.08.58 1.45.22 2.52.11 2.79.67.73 1.08 1.67 1.08 2.81 0 4.04-2.46 4.92-4.81 5.18.38.33.72.97.72 1.96v2.9c0 .28.19.6.73.5A10.5 10.5 0 0 0 12 1.5z" />
-    </svg>
-  );
-}
-
-export function LinkedIn({ size = 20, className }: IconProps) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-      className={className}
-    >
-      <path d="M4.98 3.5A2.49 2.49 0 1 1 5 8.48a2.49 2.49 0 0 1-.02-4.98zM3 9.75h4v10.75H3zM9.5 9.75h3.83v1.47h.05c.53-1.01 1.84-2.07 3.79-2.07 4.05 0 4.8 2.67 4.8 6.13v5.22h-4v-4.63c0-1.1-.02-2.52-1.54-2.52-1.54 0-1.77 1.2-1.77 2.44v4.71h-4z" />
-    </svg>
-  );
-}
-
 /* Editorial asterisk — the marquee separator and decorative mark. */
-export function Asterisk({ size = 20, className }: IconProps) {
+
+
+const ULZII_PATH =
+  "M-1 -3V3A1.58 1.58 0 1 1-3 1H3A1.58 1.58 0 1 1 1 3V-3A1.58 1.58 0 1 1 3-1H-3A1.58 1.58 0 1 1-1-3Z";
+
+/**
+ * Ölzii, the Mongolian endless knot (luck, long life). One closed strand:
+ * two vertical and two horizontal runs joined by four corner loops,
+ * turned 45°. At small sizes the over/under breaks are left out;
+ * `interlaced` draws them with a page-colored gap behind each "over" run.
+ */
+export function Ulzii({ size = 20, className, interlaced = false }: IconProps & { interlaced?: boolean }) {
   return (
-    <svg {...base(size)} className={className}>
-      <path d="M12 3v18" />
-      <path d="M4.2 7.5l15.6 9" />
-      <path d="M19.8 7.5l-15.6 9" />
+    <svg width={size} height={size} viewBox="-5.6 -5.6 11.2 11.2" fill="none" aria-hidden className={className}>
+      <g transform="rotate(45)" stroke="currentColor" strokeWidth={interlaced ? 0.7 : 0.9}>
+        <path d={ULZII_PATH} strokeLinejoin="round" />
+        {interlaced && (
+          <>
+            <path d="M-1-1.6V-.4M1.6-1H.4M1 .4V1.6M-.4 1H-1.6" stroke="var(--bg)" strokeWidth={1.5} />
+            <path d="M-1-1.8V-.2M1.8-1H.2M1 .2V1.8M-.2 1H-1.8" />
+          </>
+        )}
+      </g>
     </svg>
   );
 }
 
-export function Terminal({ size = 20, className }: IconProps) {
+/**
+ * Soyombo, the national emblem as drawn on the flag. Paths are taken from
+ * the public-domain "Flag of Mongolia.svg" on Wikimedia Commons (state
+ * insignia, public domain under Article 7 of Mongolia's copyright law).
+ * The emblem fills with currentColor; the flag's red cut-outs become the
+ * page color. Keep it small and in gold; never use it as decoration.
+ */
+export function Soyombo({ size = 20, className }: IconProps) {
   return (
-    <svg {...base(size)} className={className}>
-      <rect x="3" y="4.5" width="18" height="15" rx="2.5" />
-      <path d="M7 9.5l3 2.5-3 2.5" />
-      <path d="M12.5 15h4.5" />
-    </svg>
-  );
-}
-
-export function Sun({ size = 20, className }: IconProps) {
-  return (
-    <svg {...base(size)} className={className}>
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2.5v2M12 19.5v2M4.6 4.6L6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4" />
-    </svg>
-  );
-}
-
-export function Moon({ size = 20, className }: IconProps) {
-  return (
-    <svg {...base(size)} className={className}>
-      <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" />
+    <svg
+      height={size}
+      width={(size * 230) / 490}
+      viewBox="85 55 230 490"
+      fill="currentColor"
+      aria-hidden
+      className={className}
+    >
+      <circle cx="200" cy="205" r="55" />
+      <circle cx="200" cy="180" r="60" fill="var(--bg)" />
+      <circle cx="200" cy="190" r="40" />
+      <path d="M204.2035 60c-4.97 2.255-6.827 6.321-7.227 10.371-.25 3.41 1.255 7.251 1.405 10.586 0 5.739-5.938 7.629-5.938 15.82 0 2.815 2.6 5.917 2.6 13.223-.45 3.835-2.59 4.7-5 5a5 5 0 0 1-5-5 5 5 0 0 1 1.385-3.44 5 5 0 0 1 .51-.5c1.14-1.15 2.705-1.595 2.695-4.63 0-1.56-1.01-2.98-1.975-5.742-.91-2.68-.25-7.16 1.915-9.805-3.5 1.35-5.657 4.705-6.757 7.715-1.16 3.7-.15 5.831-1.74 8.906-.97 1.99-2.125 2.815-3.22 4.475-1.295 1.81-2.815 6.043-2.815 8.008a25 25 0 0 0 50 0c0-1.965-1.5-6.198-2.795-8.008-1.095-1.66-2.27-2.485-3.24-4.475-1.57-3.075-.56-5.206-1.72-8.906-1.1-3.01-3.26-6.364-6.758-7.715 2.165 2.645 2.825 7.125 1.915 9.805-.97 2.76-1.99 4.18-1.99 5.742 0 3.035 1.555 3.48 2.695 4.63a5 5 0 0 1 .51.5 5 5 0 0 1 1.385 3.44 5 5 0 0 1-5 5c-2.765-.35-4.75-1.64-5-5 0-9.626 4.12-10.24 4.12-17.363 0-10.171-9.121-14.986-9.121-22.422 0-2.52.59-6.815 4.16-10.2275zM90 270h50v240H90zm170 0h50v240h-50zm-110 0h100l-50 30zm0 40h100v20H150zm0 140h100v20H150zm0 30h100l-50 30z" />
+      <circle cx="200" cy="390" r="50" />
+      <g fill="var(--bg)">
+        <circle cx="200" cy="363.5" r="10" />
+        <circle cx="200" cy="416.5" r="10" />
+        <path d="M200 334a29.5 29.5 0 0 1 0 59 23.5 23.5 0 0 0 0 47v6a29.5 29.5 0 0 1 0-59 23.5 23.5 0 0 0 0-47z" />
+      </g>
     </svg>
   );
 }

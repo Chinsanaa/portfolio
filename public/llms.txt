@@ -19,7 +19,6 @@
 - Earnio — UGC monetization platform for Mongolian Gen Z creators (Next.js, Express, Supabase, SwiftUI iOS app). https://github.com/Chinsanaa/earnio
 - ICDS Chat System — TCP socket-based distributed chat with an LLM chatbot and sentiment analysis (Python, Tkinter, Ollama, TextBlob). https://github.com/Chinsanaa/chatsystem
 - Financing — ML-powered personal finance transaction categorizer (Next.js, FastAPI, PostgreSQL, scikit-learn). https://github.com/Chinsanaa/financing
-  - Live in-browser demo of the classifier: https://chinsanaa.me/#lab
 
 ## Certifications
 - Claude Code in Action, Anthropic Education
@@ -27,7 +26,7 @@
 - Google AI Essentials, Google (via Coursera)
 
 ## Skills
-Python, SQL, HTML, CSS, C++, Git, Excel (Financial Modeling), Power BI, PostgreSQL, Docker, AI Prompting, GenAI Workflows, Claude Code
+Python, SQL, C++, HTML, CSS, Next.js, SwiftUI, Excel (financial modeling), Power BI, PostgreSQL, Docker, Git, Claude Code, prompting, GenAI workflows
 
 ## Links
 - Website: https://chinsanaa.me

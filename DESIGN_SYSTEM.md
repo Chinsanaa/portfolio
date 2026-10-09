@@ -1,128 +1,99 @@
-# Midnight Studio — Design System
+# Editorial ink: design system
 
-The visual language of this portfolio: a dark, premium, high-motion tech
-aesthetic — near-black canvas, glassy cards, cursor spotlight glow, tilt-on-
-hover, magnetic buttons, and two flat accent colors (terracotta for actions,
-amber for data). Every future addition should be buildable from this document
-without inventing new values.
+Paper and ink. The page reads like a well-set finance journal, not a SaaS template: big confident type, hairline rules instead of cards, one accent, and one signature motion moment. Any future addition should be buildable from this document without inventing new values.
+
+The rules below come from the installed design skills (`.claude/skills/frontend-design` from Anthropic, `.claude/skills/impeccable`, `.claude/skills/design-taste-frontend`, `.claude/skills/redesign-existing-projects`). Read them before changing the UI.
 
 ## Hard rules
 
-> **Relaxed (Sep 2026, owner's call):** rules 1 and 5 are now defaults, not bans. A subtle gradient or an animated `filter`/color is allowed when an effect genuinely needs it (e.g. a pasted Skiper/Vengeance UI component). Rules 2, 3, 4 and 6 still hold, and so do the reduced-motion and hydration-safety rules below.
-
-1. **Prefer no gradients.** `linear-gradient`/`radial-gradient` must never appear in CSS, SVG, `style` props, or generated imagery — not on text, borders, buttons, backgrounds, or masks. "Glow" is a flat-color shape rendered soft via `filter: blur()` + opacity, never a gradient fill.
-2. **Two flat accents, split roles.** `--terracotta` is for actions (CTAs, headline emphasis, links, primary interactive state). `--amber` is for data (chart series, the route-map line/nodes). They sit side by side — never blended into each other.
-3. **No emojis in the UI.** Use the icon set (`src/components/icons`) or typographic marks (numbers, mono labels, `*` glyphs).
-4. **No raw hex outside `src/styles/tokens.css`.** Components reference tokens only.
-5. **Animate `transform`, `opacity`, and SVG `pathLength` only.** Glow/shadow effects are static `filter: blur()` on a solid shape, or a `box-shadow`, and are never scroll-linked to a color change — only position/opacity.
-6. **Certificate and other real photos always render in full color, always visible.** No `filter: grayscale()`, no hover-to-reveal — this was a real bug in a prior version and must not come back.
+1. **No AI tells.** None of these: section numbers (01/02), eyebrows or kickers above headings, floating corner labels, glow orbs, gradient text, glassmorphism, custom cursors, preloaders, scroll cues, progress bars, marquees, tilt cards, magnetic buttons, fake terminals.
+2. **No cards as layout.** Separate content with hairline rules (`--hair`) and whitespace. Nested cards are never allowed.
+3. **Flag colors in fixed roles.** Blue for interaction, red for the one primary action, gold for the route and Mongolian marks. Never decorate with them or put them in stripes.
+4. **One radius.** `--radius` (6px) everywhere. No pills.
+5. **No monospace.** Dates and indexes use Geist with `font-variant-numeric: tabular-nums`.
+6. **No dashes in visible copy.** No em or en dashes; use commas, periods, "to", or parentheses.
+7. **No raw hex outside `src/styles/tokens.css`** (the error page is the one exception, since it renders without the app styles).
+8. **Real photos stay in full color, always visible.** No grayscale or hover-to-reveal.
 
 ## Themes
 
-Dark is the default. A light theme is opt-in via the nav toggle: `setTheme()` in `src/components/ui/theme.ts` sets `data-theme="light"` on `<html>` and saves it to `localStorage`; an inline script in `layout.tsx` applies it before first paint. Light values live under `:root[data-theme="light"]` in `tokens.css` and every text token clears WCAG AA on both backgrounds. Canvas/WebGL pieces that read tokens at startup (`DotField`, `RouteGlobe`) re-read them via `useTheme()`.
+Light ("bone paper") is the designed default; dark follows the OS (`prefers-color-scheme`). A visitor can force either, or return to system, from ⌘K → Theme. `setTheme()` in `src/components/ui/theme.ts` sets `data-theme` on `<html>` and saves the choice; an inline script in `layout.tsx` applies it before first paint. `useTheme()` returns the resolved theme, so WebGL pieces (`RouteGlobe`) re-read tokens when it changes.
 
 ## Palette
 
-| Token | Value | Use for |
-|---|---|---|
-| `--bg` | `#0C0B0A` | Page canvas (near-black, warm cast) |
-| `--bg-2` | `#141210` | Raised sections: footer/contact |
-| `--surface` | `rgba(255,255,255,0.035)` | Glass card fill |
-| `--surface-2` | `rgba(255,255,255,0.06)` | Glass hover fill |
-| `--border-glass` | `rgba(255,255,255,0.09)` | Card / hairline borders |
-| `--text` | `#EDEDF2` | Primary text |
-| `--text-soft` | `#9A9AA8` | Secondary text, body copy |
-| `--text-dim` | `#6B6B78` | Meta, mono labels |
-| `--terracotta` | `#E2603A` | Accent A (flat) — CTAs, headline emphasis, links, primary interactive states |
-| `--terracotta-soft` | `rgba(226,96,58,0.16)` | Flat terracotta wash for chips/badges |
-| `--amber` | `#E8A855` | Accent B (flat) — chart series, route-map line/nodes, data visuals |
-| `--amber-soft` | `rgba(232,168,85,0.16)` | Flat amber wash |
-| `--glow-terracotta` / `--glow-amber` | translucent rgba | Blurred orb / spotlight / box-shadow glow color only |
-
-Contrast: text/bg ≈ 14.8:1 (AAA), text-soft/bg ≈ 6.9:1 (AA), terracotta/bg ≈ 5.6:1, amber/bg ≈ 9.5:1 (large type & UI only — never small body text).
-
-**Text always wears text tokens** (`--text`/`--text-soft`/`--text-dim`), never the accent color, except for a deliberate emphasis word/link (contact email) — accent-colored body text is the exception, not the rule. The hero name is a single uppercase block in `--text`, no accent split — its emphasis comes from oversized scale and scroll motion instead.
-
-## Typography
-
-| Role | Font | Weights | Used for |
+| Token | Light | Dark | Use for |
 |---|---|---|---|
-| Display | Montserrat (`--font-display`) | 600–800 | Headlines, section titles, project/role names, stat values |
-| Body | Inter (`--font-body`) | 400–600 | Paragraphs, descriptions, ledes (600) |
-| Meta | IBM Plex Mono (`--font-mono`) | 400, 500 | Labels, dates, tags, section numbers, nav. Always via `.mono-label` (uppercase, +0.09em tracking, 0.75rem, `--text-dim`) |
+| `--bg` | `#eceeed` | `#111317` | Page (cool paper / blue-black ink) |
+| `--bg-2` | `#e1e4e3` | `#1a1d22` | Image mats, globe sphere |
+| `--hover` | ink 5% | paper 6% | Hovered rows, palette selection |
+| `--rule` | ink 14% | paper 13% | Hairlines |
+| `--rule-strong` | ink 40% | paper 40% | Underlines, hovered borders |
+| `--text` | `#17191c` | `#eceeed` | Headings, primary text (≈15:1) |
+| `--text-soft` | `#43474d` | `#b0b3b5` | Body copy (≈8:1) |
+| `--text-dim` | `#5a5f66` | `#8c9095` | Meta, captions (≥5:1) |
+| `--accent` (flag blue) | `#0b5aa6` | `#6fb0ff` | Links, hover, focus, selection, active nav (≥6:1) |
+| `--red` (flag red) | `#b81c2c` | `#ff6b73` | The primary button, project-title hover, open-row toggle, "Copied" (≥5.5:1) |
+| `--gold` (Soyombo gold) | `#9a6c00` | `#f2c230` | Travel route, Ulzii, Soyombo. Graphics only on paper (≥3.6:1) |
+| `--accent-ink` / `--red-ink` | `#f7f8fb` | `#111317` | Text on a blue or red fill |
 
-Scale (tokens): `--text-hero-name` `clamp(1.75rem, 11vw, 8.25rem)` (hero name only, uppercase, full-bleed, centered) · `--text-display` `clamp(2.75rem, 7.5vw, 6.5rem)` · `--text-h2` `clamp(2rem, 4.5vw, 3.5rem)` · `--text-h3` `clamp(1.25rem, 2.2vw, 1.75rem)` · body `1.0625rem` · `--text-label` `0.75rem`.
+Why not cream and terracotta: Anthropic's `frontend-design` skill lists a warm cream page with a terracotta accent as the most common AI-generated look, so the palette was moved off it on purpose.
 
-Fonts load in `src/app/layout.tsx` via `next/font/google`.
+Every text token clears WCAG AA on both `--bg` and `--bg-2`.
 
-## Shape & glass
+## Mongolian identity
 
-- Cards use `--radius-card` (18px) and are **glass**: `background: var(--surface)`, `border: var(--border-hair)`, `backdrop-filter: blur(14px)` (see `.tilt-card` in `editorial.css`). Hover raises to `--surface-2` with a terracotta border + soft box-shadow glow.
-- The only pill shape is `.tag-chip` / nav links (`--radius-chip`, 999px).
-- Glow is always a flat-color circle rendered soft via `filter: blur()`, positioned absolutely behind or within content, never a CSS gradient.
+Flag colors are **roles, not stripes** (table above). Cultural marks each have one job and fixed places; none of them may become a background, a repeated wallpaper, or an animation.
 
-## Motion vocabulary
-
-- One easing: `--ease-out-expo` (`cubic-bezier(0.16, 1, 0.3, 1)`). Durations: `--dur-fast` 200ms (hovers), `--dur-base` 600ms (reveals), `--dur-slow` 900ms (hero).
-- **Spotlight** (`Spotlight.tsx`): a blurred terracotta glow that follows the cursor via motion values + `useSpring`. Always rendered in the DOM (never conditionally omitted) so reduced-motion never causes a hydration mismatch — only the pointer-tracking behavior is gated by `useReducedMotion()`.
-- **Tilt** (`TiltCard.tsx`): subtle pointer-driven 3D `rotateX`/`rotateY` on glass cards, spring-eased. The `style` object is always the same shape (values just stay at 0deg under reduced motion) — never toggle `style`/children presence based on `useReducedMotion()`, for the same hydration-safety reason as Spotlight.
-- Scroll reveals: `Reveal` / `RevealItem` (framer-motion `whileInView`, fires once, -10% margin).
-- Scroll-linked: `useScroll` + `useTransform`/`useSpring` (hero content drift, Experience rail + `RouteMap` `pathLength` draw, `GlowField` orb drift, `SkillChart` bar draw-in).
-- Pointer-driven: motion values + `useSpring`, never React state per-frame (magnetic `Button`, `TiltCard`, `Spotlight`).
-- Marquees are pure CSS (`marquee-scroll` keyframes in `globals.css`).
-- Reduced motion: root `<MotionConfig reducedMotion="user">` plus a global CSS kill-switch in `globals.css`. Any component using `useReducedMotion()` must gate *behavior* (pointer tracking, transform ranges), never DOM structure or the shape of a `style`/attribute — see the hydration-safety note above.
-
-## Primitives (`src/components/ui/`)
-
-| Component | API | Notes |
+| Mark | What it is | Where it may appear |
 |---|---|---|
-| `SectionHeader` | `number, title, kicker?` | Mono kicker + counting terracotta № + clip-revealed title, no hard rule underneath |
-| `Button` | `variant: "solid" \| "ghost" \| "subtle"`, `href?/onClick`, `download?`, `external?` | Magnetic hover. `solid` = flat terracotta fill + soft glow on hover; `ghost` = glass border; `subtle` = text-only underline |
-| `Reveal` / `RevealItem` | `delay?`, `stagger?` | Wrap any block; use `stagger` + `RevealItem` for lists/grids |
-| `Marquee` | `tone: "glass" \| "solid"`, `duration?`, `reverse?` | Children render twice (second `aria-hidden`) |
-| `TagChip` | `label` | Mono glass hairline pill |
-| `ArtImage` | `src: string \| null`, `variant`, `alt`, `priority?` | Bordered frame with fixed aspect; `null` renders the flat SVG fallback (dark surface + one blurred terracotta/amber glow + flat geometric shapes) |
-| `AnimatedCounter` | `value`, `decimals?`, `prefix?`, `suffix?` | Expo-out count-up on first view |
-| `Spotlight` | `children`, `className?` | Cursor-following blurred terracotta glow inside its container |
-| `TiltCard` | `children`, `className?`, `as?: "div" \| "article"` | Glass card, pointer 3D tilt, terracotta border+glow on hover |
-| `SkillChart` | *(reads `skillCategories` from `content.ts`)* | Hand-rolled animated bar chart, flat amber series, one metric — no legend needed (see `dataviz` skill before changing) |
-| `RouteMap` | `cities: string[]` | Stylized (non-geographic) journey diagram; SVG line draws via `pathLength` on scroll, amber nodes spring in |
-| `GlowField` | *(no props)* | Fixed decorative background: flat-dot pattern (SVG data-URI, not a gradient) + two blurred terracotta/amber orbs that drift on scroll |
+| Ölzii knot (`Ulzii` icon) | Endless knot, luck and long life; hand-authored geometry | Favicon/app icons, nav wordmark, empty palette state, OG image |
+| Alkhan khee (`KheeBand`) | Traditional hammer border in red, blue, red | Under the hero and above the colophon. Only there |
+| Soyombo (`Soyombo` icon) | National emblem; paths from the public-domain flag SVG on Wikimedia Commons | Footer, 20px, gold. Only there |
+| Mongol script (`HeroScript`) | The owner's name in Mongol bichig, vertical | Beside the hero portrait. Off until the owner supplies the spelling (`NAME_MONG`) |
+| Cyrillic name | Чинсанаа Чулуунболд | Colophon |
 
-Added in the Sep 2026 redesign:
+## Type
+
+| Role | Face | Token |
+|---|---|---|
+| Display (name, section titles, roles, project titles) | Archivo, bold neo-grotesque (variable weight, 700 to 900) | `--font-display` |
+| Body and UI | Geist | `--font-body` |
+
+Scale: `--text-hero` (max 6rem), `--text-h2`, `--text-h3`, `--text-lede`, `--text-body`, `--text-small`, `--text-meta`. Display tracking is `-0.025em` (never below `-0.04em`). Headings use `text-wrap: balance`, body uses `pretty`, and body measure stays under about 65ch. Sentence case everywhere.
+
+## Layout
+
+- Container `--container` (1200px) with `--gutter` side padding; sections are separated by a hairline aligned to the content column.
+- `.section-split`: sticky title in a 4/12 left column, content in 8/12 (About, Skills, Experience). Projects, Certificates, and Contact run full width so the page doesn't repeat one layout.
+- Breakpoints: 860px (split → stacked), 560px (rows → single column).
+
+## Motion
+
+One authored moment, everything else is feedback.
+
+| Where | What | Why |
+|---|---|---|
+| Hero name | Each line rises out of a mask once; letters gain weight near the pointer (`ProximityText`, after React Bits "Variable Proximity") | The signature moment |
+| Nav | Hides on scroll-down, returns on scroll-up | Gets out of the way |
+| Projects | Rows expand inline (height + opacity); a cover preview follows the mouse over closed rows | Disclosure and a quick visual |
+| Experience | The globe traces the route as you scroll | Tells the travel story |
+| Copy email | "Copy" swaps to "Copied" | State change |
+| Links and buttons | Color and underline transitions, 1px press | Feedback |
+
+Easing is `--ease-out` (`cubic-bezier(0.16, 1, 0.3, 1)`). `MotionConfig reducedMotion="user"` turns transforms off; `ProximityText` and the project preview disable themselves; the globe falls back to the flat `RouteMap`.
+
+## Components
 
 | Component | Notes |
 |---|---|
-| `SmoothScroll` | Lenis, driven by the GSAP ticker. Exports `scrollToSection(id)` and `setScrollLocked()`; off under reduced motion |
-| `Preloader` | 0→100 counter + name, curtain wipe, once per tab session; calls `markIntroDone()` (`intro.ts`) so the hero waits for it. CSS fallback hides it after 4s |
-| `Cursor` | Trailing ring, fine pointers only. Put `data-cursor="Label"` on any element to show a label |
-| `ScrollChrome` | Top progress bar + back-to-top button |
-| `DotField` | Canvas dot grid that reacts to the pointer (inside `GlowField`) |
-| `ScrambleText` | Cycles phrases with a decode effect (hero tagline) |
-| `ScrollWords` | Paragraph that brightens word by word on scroll (About) |
-| `CopyEmail` | Copy-to-clipboard button with animated confirmation |
-| `demos/RouteGlobe` | three.js globe for the Sales Analyst trip, lazy-loaded; falls back to `RouteMap` |
-| `demos/CommandPalette` + `PaletteDialog` | ⌘K / `/` palette and terminal, lazy-loaded, content from `content.ts` |
-| `demos/Categorizer` | Lab demo of the Financing classifier. Data in `categorizer-data.ts` is generated from the Financing repo (personal names removed) |
+| `Button` | `solid` (one per view, ink fill that turns accent on hover) or `link` (underlined text) |
+| `SectionHeader` | A plain `h2`. No numbers or kickers |
+| `ProximityText` | Variable-weight letters; rAF loop writes styles directly, so React never re-renders |
+| `CopyEmail` | Text swap with an `aria-live` announcement |
+| `ArtImage` | Fixed-ratio image with a flat SVG fallback if a file is missing |
+| `RouteGlobe` / `RouteMap` | Lazy-loaded three.js globe (behind `LazyMount`), flat SVG fallback |
+| `CommandPalette` | ⌘K or `/`: sections, projects, actions, theme. No terminal |
 
-New components use Tailwind v4 utilities (tokens mapped in `globals.css` via `@theme inline`); older sections still use `editorial.css`. Tailwind preflight is intentionally not loaded; the base reset in `globals.css` replaces it.
+## Hydration safety
 
-Icons: `src/components/icons/index.tsx` — 24px viewBox, `currentColor`, 1.5px stroke. Add new icons in the same style; never import an icon library.
-
-## Adding a new section — recipe
-
-1. Create `src/components/portfolio/sections/YourSection.tsx` (`"use client"`).
-2. Structure: `<section className="section your-section" id="your-section">` → `<SectionHeader number="07" title="…" kicker="…" />` → content wrapped in `Reveal`/`RevealItem`, using `TiltCard` for any card-shaped content.
-3. Style in `editorial.css` under a new `/* ----- YourSection ----- */` block, tokens only, no gradients. Ask "does this need an accent?" — terracotta for an action, amber only if it's genuinely data.
-4. Compose it in `Portfolio.tsx` and add the anchor to `Nav.tsx` `LINKS`.
-5. Verify: `npm run lint && npm run build`, then a fresh production server (`npm run start`, killing any prior instance first — a stale server serving an old `.next` build is the most common false-positive source) and screenshot desktop + 390px mobile + a reduced-motion pass (watch for horizontal overflow and hydration console errors).
-
-## Generated imagery spec
-
-Artwork lands in `public/images/art/` and is wired through `IMAGES.art` in `src/config/resources.ts` (`null` → SVG fallback, so the site never depends on it).
-
-Prompt template — append to any subject description:
-
-> flat color illustration, matte solid colors only, absolutely no gradients, dark palette: near-black #0C0B0A background, one soft blurred terracotta #E2603A or amber #E8A855 glow accent, muted glass-gray geometric primitives, minimal bauhaus-inspired shapes, clean negative space, premium dark UI editorial art, no text
-
-Aspect ratios in use: hero 4:5, project covers 3:2, about 1:1. Reject any output containing gradients or more than one accent-colored element. Real photographs (certificates) always render in full color — never desaturated or gated behind hover.
+Never branch rendered output on `useReducedMotion()`, `window`, or `matchMedia`. Render the server-safe state first and opt in from an effect or an event handler.

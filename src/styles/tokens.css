@@ -1,59 +1,97 @@
 /* ============================================================
-   MIDNIGHT STUDIO — Design Tokens
-   Single source of truth for every color, size, and motion
-   value in the site. No raw hex values outside this file.
+   EDITORIAL INK: design tokens
+   Single source of truth for color, type, space, and motion.
+   No raw hex values outside this file.
 
-   Hard rules of the system:
-   - No gradients. Ever. Flat colors only — including on text,
-     borders, and buttons. "Glow" comes from filter: blur() on
-     a solid-color shape + opacity, never a gradient fill.
-   - Two flat accents with split roles: terracotta is for actions
-     (CTAs, headline emphasis), amber is for data (charts, the
-     route map). They sit side by side — never blended.
-   See DESIGN_SYSTEM.md for full usage guidance.
+   Rules of the system (see DESIGN_SYSTEM.md):
+   - Paper and ink, plus the Mongolian flag's blue, red, and gold in fixed roles.
+   - Hairline rules separate content. No cards, glows, or gradients.
+   - One radius (6px). Pills are not part of the system.
+   - No monospace. Dates and numbers use tabular figures instead.
    ============================================================ */
 
+/* ----- Light (default): cool paper, slate ink, flag colors -------
+   Flag colors have roles, never stripes (see DESIGN_SYSTEM.md):
+   blue (--accent) = links and interaction, red = the primary action,
+   gold = the travel route and the Mongolian marks (graphics only).
+   text on bg ≈ 15.1:1, text-soft ≈ 8:1, text-dim ≈ 5.5:1,
+   accent ≈ 6:1, red ≈ 5.6:1, gold ≈ 4:1 (graphics, 3:1 bar) */
 :root {
-  /* ----- Color ------------------------------------------------
-     text on bg        ≈ 14.8:1  (AAA)
-     text-soft on bg    ≈ 6.9:1  (AA)
-     terracotta on bg        ≈ 5.3:1 — large type & UI only */
-  --bg: #0c0b0a; /* page canvas, near-black with a warm cast */
-  --bg-2: #141210; /* raised sections: footer, contact */
-  --surface: rgba(255, 255, 255, 0.035); /* glass card fill */
-  --surface-2: rgba(255, 255, 255, 0.06); /* glass hover fill */
-  --border-glass: rgba(255, 255, 255, 0.09); /* card / hairline borders */
-  --text: #ededf2; /* primary text */
-  --text-soft: #9a9aa8; /* secondary text, body copy */
-  --text-dim: #6b6b78; /* meta, mono labels */
-  --terracotta: #e2603a; /* accent A — flat: CTAs, headline emphasis, links */
-  --terracotta-soft: rgba(226, 96, 58, 0.16); /* flat terracotta wash for chips/badges */
-  --amber: #e8a855; /* accent B — flat: chart series, route-map line/nodes */
-  --amber-soft: rgba(232, 168, 85, 0.16); /* flat amber wash */
-  --glow-terracotta: rgba(226, 96, 58, 0.45); /* blurred orb / spotlight color */
-  --glow-amber: rgba(232, 168, 85, 0.35); /* blurred orb color */
-  --shadow-stack: 0 -20px 60px -30px rgba(0, 0, 0, 0.9); /* stacked project cards */
-  --orb-opacity: 1;
+  --bg: #eceeed;
+  --bg-2: #e1e4e3;
+  --hover: rgba(23, 25, 28, 0.05);
+  --rule: rgba(23, 25, 28, 0.14);
+  --rule-strong: rgba(23, 25, 28, 0.4);
+  --text: #17191c;
+  --text-soft: #43474d;
+  --text-dim: #5a5f66;
+  --accent: #0b5aa6; /* flag blue, deepened */
+  --accent-ink: #f7f8fb; /* text on an accent fill */
+  --red: #b81c2c; /* flag red, deepened */
+  --red-ink: #f7f8fb;
+  --gold: #9a6c00; /* Soyombo gold, deepened; graphics only on paper */
+  --shadow: 0 18px 40px -18px rgba(23, 25, 28, 0.35);
+}
 
-  /* ----- Typography ------------------------------------------ */
-  --font-display: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-body: var(--font-inter), "Inter", -apple-system, sans-serif;
-  --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
+/* ----- Dark: blue-black ink, lightened flag colors -------------------
+   Follows the OS setting unless the visitor picks a theme in ⌘K.
+   text ≈ 16:1, text-soft ≈ 8.8:1, text-dim ≈ 5.8:1, accent ≈ 8.3:1,
+   red ≈ 6.7:1, gold ≈ 11:1 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111317;
+    --bg-2: #1a1d22;
+    --hover: rgba(236, 238, 237, 0.06);
+    --rule: rgba(236, 238, 237, 0.13);
+    --rule-strong: rgba(236, 238, 237, 0.4);
+    --text: #eceeed;
+    --text-soft: #b0b3b5;
+    --text-dim: #8c9095;
+    --accent: #6fb0ff;
+    --accent-ink: #111317;
+    --red: #ff6b73;
+    --red-ink: #111317;
+    --gold: #f2c230;
+    --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+  }
+}
 
-  --text-display: clamp(2.75rem, 7.5vw, 6.5rem); /* section display type */
-  --text-hero-name: clamp(1.75rem, 11vw, 8.25rem); /* hero name — oversized, edge-to-edge; low floor so it keeps shrinking on narrow phones instead of clipping */
-  --text-h2: clamp(2rem, 4.5vw, 3.5rem); /* section titles */
-  --text-h3: clamp(1.25rem, 2.2vw, 1.75rem); /* card leads / large body */
+:root[data-theme="dark"] {
+  --bg: #111317;
+  --bg-2: #1a1d22;
+  --hover: rgba(236, 238, 237, 0.06);
+  --rule: rgba(236, 238, 237, 0.13);
+  --rule-strong: rgba(236, 238, 237, 0.4);
+  --text: #eceeed;
+  --text-soft: #b0b3b5;
+  --text-dim: #8c9095;
+  --accent: #6fb0ff;
+  --accent-ink: #111317;
+  --red: #ff6b73;
+  --red-ink: #111317;
+  --gold: #f2c230;
+  --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+}
+
+:root {
+  /* ----- Type --------------------------------------------------- */
+  --font-display: var(--font-archivo), "Archivo", Arial, sans-serif;
+  --font-body: var(--font-geist), "Geist", -apple-system, sans-serif;
+
+  --text-hero: clamp(3rem, 8.4vw, 6rem); /* hero name, capped at 6rem */
+  --text-h2: clamp(2rem, 4vw, 3.25rem); /* section titles */
+  --text-h3: clamp(1.25rem, 1.8vw, 1.5rem); /* roles, project titles */
+  --text-lede: clamp(1.25rem, 2.1vw, 1.625rem);
   --text-body: 1.0625rem;
   --text-small: 0.9375rem;
-  --text-label: 0.75rem; /* mono labels, uppercase */
+  --text-meta: 0.8125rem;
 
-  --tracking-label: 0.09em;
-  --leading-display: 1.05;
+  --tracking-display: -0.025em;
+  --leading-display: 1;
   --leading-tight: 1.2;
-  --leading-body: 1.65;
+  --leading-body: 1.6;
 
-  /* ----- Space & layout --------------------------------------- */
+  /* ----- Space (4px base) ---------------------------------------- */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -63,44 +101,23 @@
   --space-12: 3rem;
   --space-16: 4rem;
   --space-24: 6rem;
-  --space-32: 8rem;
 
-  --container: 1320px;
-  --gutter: clamp(1.25rem, 4vw, 4rem);
-  --section-pad: clamp(4rem, 9vw, 7.5rem);
+  --container: 1200px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-pad: clamp(4.5rem, 10vw, 8rem);
+  --nav-h: 64px;
 
-  /* ----- Shape ------------------------------------------------ */
-  --radius-card: 18px;
-  --radius-sm: 10px;
-  --radius-chip: 999px;
-  --border-hair: 1px solid var(--border-glass);
-  --blur-glass: blur(14px);
+  /* ----- Shape ---------------------------------------------------- */
+  --radius: 6px;
+  --hair: 1px solid var(--rule);
 
-  /* ----- Motion ----------------------------------------------- */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 200ms;
-  --dur-base: 600ms;
-  --dur-slow: 900ms;
-}
+  /* ----- Layers --------------------------------------------------- */
+  --z-preview: 40;
+  --z-nav: 100;
+  --z-skip: 200;
 
-/* ----- Light theme ---------------------------------------------------
-   Opt-in via the nav toggle (data-theme="light" on <html>). Every text
-   token clears WCAG AA (4.5:1) on both --bg and --bg-2. */
-:root[data-theme="light"] {
-  --bg: #f4f1ec;
-  --bg-2: #ebe6df;
-  --surface: rgba(22, 20, 15, 0.035);
-  --surface-2: rgba(22, 20, 15, 0.065);
-  --border-glass: rgba(22, 20, 15, 0.13);
-  --text: #16140f;
-  --text-soft: #4f4b48;
-  --text-dim: #645f5a;
-  --terracotta: #a83c16;
-  --terracotta-soft: rgba(168, 60, 22, 0.12);
-  --amber: #8a560b;
-  --amber-soft: rgba(138, 86, 11, 0.13);
-  --glow-terracotta: rgba(226, 96, 58, 0.28);
-  --glow-amber: rgba(232, 168, 85, 0.3);
-  --shadow-stack: 0 -16px 50px -30px rgba(22, 20, 15, 0.28);
-  --orb-opacity: 0.45;
+  /* ----- Motion --------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-base: 450ms;
 }

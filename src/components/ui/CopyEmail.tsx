@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
 
+/** Text button that swaps "Copy" for "Copied" in place. */
 export function CopyEmail({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
 
@@ -17,18 +18,23 @@ export function CopyEmail({ email }: { email: string }) {
   };
 
   return (
-    <button type="button" className="copy-email mono-label" onClick={copy} aria-live="polite">
-      <AnimatePresence mode="wait" initial={false}>
+    <button type="button" className="copy-email" onClick={copy} aria-label={`Copy ${email}`}>
+      <AnimatePresence mode="popLayout" initial={false}>
         <m.span
           key={copied ? "done" : "idle"}
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -10, opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          className="copy-email-label"
+          data-done={copied || undefined}
+          initial={{ y: "70%", opacity: 0 }}
+          animate={{ y: "0%", opacity: 1 }}
+          exit={{ y: "-70%", opacity: 0 }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
         >
-          {copied ? "Copied ✓" : "Copy email"}
+          {copied ? "Copied" : "Copy"}
         </m.span>
       </AnimatePresence>
+      <span className="sr-only" aria-live="polite">
+        {copied ? "Email copied to clipboard" : ""}
+      </span>
     </button>
   );
 }

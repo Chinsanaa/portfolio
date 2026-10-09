@@ -38,23 +38,23 @@ export default function Error({
         alignItems: "center",
         justifyContent: "center",
         gap: "1rem",
-        background: "#0c0b0a",
-        color: "#ededf2",
+        background: "#eceeed",
+        color: "#17191c",
         fontFamily: "system-ui, sans-serif",
         textAlign: "center",
         padding: "1.5rem",
       }}
     >
       <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>Something went wrong</h1>
-      <p style={{ color: "#9a9aa8" }}>Please try refreshing the page.</p>
+      <p style={{ color: "#43474d" }}>Please try refreshing the page.</p>
       <button
         onClick={reset}
         style={{
           padding: "0.6rem 1.2rem",
-          borderRadius: "999px",
-          border: "1px solid rgba(255,255,255,0.09)",
-          background: "#e2603a",
-          color: "#0c0b0a",
+          borderRadius: "6px",
+          border: "0",
+          background: "#17191c",
+          color: "#eceeed",
           fontWeight: 600,
           cursor: "pointer",
         }}

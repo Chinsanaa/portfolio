@@ -4,24 +4,20 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { setScrollLocked } from "@/components/ui/SmoothScroll";
 
-export type PaletteMode = "palette" | "terminal";
-
 const OPEN_EVENT = "palette:open";
 
-export function openPalette(mode: PaletteMode = "palette") {
-  window.dispatchEvent(new CustomEvent<PaletteMode>(OPEN_EVENT, { detail: mode }));
+export function openPalette() {
+  window.dispatchEvent(new Event(OPEN_EVENT));
 }
 
 const PaletteDialog = dynamic(() => import("./PaletteDialog"), { ssr: false });
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
-  const [mode, setMode] = useState<PaletteMode>("palette");
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const show = (next: PaletteMode) => {
-      setMode(next);
+    const show = () => {
       setLoaded(true);
       setOpen(true);
     };
@@ -31,23 +27,22 @@ export function CommandPalette() {
       );
       if (e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        show("palette");
+        show();
       } else if (e.key === "/" && !typing) {
         e.preventDefault();
-        show("terminal");
+        show();
       }
     };
-    const onOpen = (e: Event) => show((e as CustomEvent<PaletteMode>).detail);
     window.addEventListener("keydown", onKey);
-    window.addEventListener(OPEN_EVENT, onOpen);
+    window.addEventListener(OPEN_EVENT, show);
     return () => {
       window.removeEventListener("keydown", onKey);
-      window.removeEventListener(OPEN_EVENT, onOpen);
+      window.removeEventListener(OPEN_EVENT, show);
     };
   }, []);
 
   useEffect(() => setScrollLocked(open), [open]);
 
   if (!loaded) return null;
-  return <PaletteDialog open={open} onOpenChange={setOpen} mode={mode} onModeChange={setMode} />;
+  return <PaletteDialog open={open} onOpenChange={setOpen} />;
 }

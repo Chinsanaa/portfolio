@@ -1,138 +1,78 @@
 "use client";
 
-import { useRef } from "react";
-import { m, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { m } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { Spotlight } from "@/components/ui/Spotlight";
-import { GlowField } from "@/components/ui/GlowField";
-import { Marquee } from "@/components/ui/Marquee";
-import { ArrowDown, Asterisk, Download } from "@/components/icons";
-import { FILES } from "@/config/resources";
-import { ScrambleText } from "@/components/ui/ScrambleText";
-import { useIntroDone } from "@/components/ui/intro";
+import { ProximityText } from "@/components/ui/ProximityText";
+import { KheeBand } from "@/components/ui/KheeBand";
+import { HeroScript } from "@/components/ui/HeroScript";
+import { ArrowDown, Download } from "@/components/icons";
+import { FILES, IMAGES } from "@/config/resources";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-
-const MARQUEE_ITEMS = [
-  "Data Science",
-  "Finance",
-  "Coding",
-  "AI",
-  "Machine Learning",
-  "Trading"
-];
-
-const BUILDS = [
-  "data-driven solutions.",
-  "ML classifiers.",
-  "financial dashboards.",
-  "full-stack apps.",
-];
-
 const NAME_LINES = ["Chinsanaa", "Chuluunbold"];
 
-const charReveal = {
-  hidden: { y: "115%", rotate: 8 },
-  visible: (i: number) => ({
-    y: "0%",
-    rotate: 0,
-    transition: { duration: 0.9, ease: EASE, delay: 0.05 + i * 0.035 },
-  }),
-};
+/** Each name line rises out of its own mask once, then holds still. */
+const rise = (delay: number) => ({
+  initial: { y: "105%" },
+  animate: { y: "0%" },
+  transition: { duration: 1, ease: EASE, delay },
+});
+
+const fade = (delay: number) => ({
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: EASE, delay },
+});
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const nameScale = useTransform(scrollYProgress, [0, 1], [1, 0.82]);
-  const nameOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.35]);
-  const ready = useIntroDone();
-  const intro = ready ? "visible" : "hidden";
-
   return (
-    <section className="hero" id="top" ref={ref}>
-      <GlowField />
-
-      <m.div
-        className="hero-masthead mono-label"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: ready ? 1 : 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-      >
-        <span>Data Scientist × Finance</span>
-        <span>NYU Shanghai &rsquo;29</span>
-      </m.div>
-
-      <Spotlight className="hero-body">
-        <m.div className="hero-content" style={{ y: contentY }}>
-          <m.h1
-            className="hero-name"
-            style={{ scale: nameScale, opacity: nameOpacity }}
-          >
-            <span className="sr-only">{NAME_LINES.join(" ")}</span>
-            {NAME_LINES.map((line, lineIndex) => (
-              <span key={line} className="hero-line" aria-hidden>
-                {line.split("").map((ch, i) => (
-                  <m.span
-                    key={i}
-                    className="hero-char"
-                    custom={i + lineIndex * 4}
-                    variants={charReveal}
-                    initial="hidden"
-                    animate={intro}
-                  >
-                    {ch}
-                  </m.span>
-                ))}
-              </span>
-            ))}
-          </m.h1>
-
-          <m.p
-            className="hero-tagline"
-            initial={{ opacity: 0, y: 20 }}
-            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.55 }}
-          >
-            <span className="sr-only">
-              Data Scientist + Finance major building data-driven solutions.
-            </span>
-            <span aria-hidden>Data Scientist + Finance major building </span>
-            <ScrambleText phrases={BUILDS} start={ready} className="hero-tagline-accent" />
-          </m.p>
-
-          <m.div
-            className="hero-ctas"
-            initial={{ opacity: 0, y: 20 }}
-            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.7 }}
-          >
-            <Button variant="solid" href="#projects">
-              View Projects
-              <ArrowDown size={16} />
-            </Button>
-            <Button variant="ghost" href={FILES.cvPdf} download>
-              Download CV
-              <Download size={16} />
-            </Button>
-          </m.div>
-        </m.div>
-      </Spotlight>
-
-      <div className="hero-scroll-cue mono-label">
-        <ArrowDown size={16} />
-      </div>
-
-      <div className="hero-marquee">
-        <Marquee tone="glass" duration={26}>
-          {MARQUEE_ITEMS.map((item) => (
-            <span key={item} className="marquee-item">
-              {item}
-              <Asterisk size={14} className="marquee-star" />
+    <section className="hero" id="top">
+      <div className="hero-copy">
+        <h1 className="hero-name">
+          <span className="sr-only">{NAME_LINES.join(" ")}</span>
+          {NAME_LINES.map((line, i) => (
+            <span key={line} className="hero-line" aria-hidden>
+              <m.span className="hero-line-inner" {...rise(0.08 + i * 0.1)}>
+                <ProximityText text={line} />
+              </m.span>
             </span>
           ))}
-        </Marquee>
+        </h1>
+
+        <m.p className="hero-sub" {...fade(0.45)}>
+          Data Science and Finance student at NYU Shanghai. I build software that turns messy
+          financial data into clear decisions.
+        </m.p>
+
+        <m.div className="hero-actions" {...fade(0.55)}>
+          <Button href="#projects">
+            See projects
+            <ArrowDown size={16} />
+          </Button>
+          <Button variant="link" href={FILES.cvPdf} download>
+            Download CV
+            <Download size={16} />
+          </Button>
+        </m.div>
       </div>
+
+      {/* Static on purpose: it is the LCP element, so it paints with the HTML. */}
+      <div className="hero-visual">
+        <HeroScript />
+        <figure className="hero-portrait">
+          <Image
+            src={IMAGES.art.about ?? ""}
+            alt="Chinsanaa smiling with a medal, a certificate, and basketball trophies"
+            width={900}
+            height={1073}
+            priority
+            sizes="(max-width: 860px) 70vw, 34vw"
+          />
+        </figure>
+      </div>
+
+      <KheeBand className="hero-band" />
     </section>
   );
 }

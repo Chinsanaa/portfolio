@@ -1,27 +1,30 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Archivo, Geist, Noto_Sans_Mongolian } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { IS_INDEXABLE, SITE_URL, URLS } from "@/config/resources";
 import { skillCategories } from "@/components/portfolio/content";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  weight: ["600", "700", "800"],
+// Bold neo-grotesque for display. Its variable weight axis drives the
+// hero's pointer-proximity effect.
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-archivo",
 });
 
-const inter = Inter({
-  weight: ["400", "500", "600"],
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
 });
 
-const plexMono = IBM_Plex_Mono({
-  weight: ["400", "500"],
-  subsets: ["latin"],
-  variable: "--font-plex-mono",
+// Traditional Mongol script for the hero name. Not preloaded: the browser
+// only downloads it if Mongolian text is actually on the page.
+const mongolian = Noto_Sans_Mongolian({
+  weight: "400",
+  subsets: ["mongolian"],
+  preload: false,
+  variable: "--font-mongolian",
 });
 
 const TITLE = "Chinsanaa Chuluunbold | Data Science & Finance";
@@ -70,9 +73,7 @@ const personJsonLd = {
     "@type": "CollegeOrUniversity",
     name: "NYU Shanghai",
   },
-  knowsAbout: skillCategories
-    .filter((category) => category.title !== "Soft Skills")
-    .flatMap((category) => category.skills),
+  knowsAbout: skillCategories.flatMap((category) => category.skills),
   sameAs: [URLS.socials.github, URLS.socials.linkedin],
 };
 
@@ -91,14 +92,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${inter.variable} ${plexMono.variable}`}
+      className={`${archivo.variable} ${geist.variable} ${mongolian.variable}`}
       suppressHydrationWarning
     >
       <head>
-        {/* Applies a saved theme before first paint so light mode never flashes dark. */}
+        {/* Applies a theme picked in ⌘K before first paint; otherwise the OS setting wins. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`,
+            __html: `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`,
           }}
         />
       </head>

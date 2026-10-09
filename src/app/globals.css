@@ -3,116 +3,125 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "../styles/tokens.css";
 
-/* Tailwind preflight is skipped on purpose; this reset replaces it. It sits in
-   the base layer so Tailwind utilities can override it. */
+/* Tailwind preflight is skipped on purpose; the reset below replaces it. It
+   sits in the base layer so Tailwind utilities can override it. */
 @theme inline {
   --color-bg: var(--bg);
   --color-bg-2: var(--bg-2);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-border-glass: var(--border-glass);
+  --color-hover: var(--hover);
+  --color-rule: var(--rule);
   --color-text: var(--text);
   --color-text-soft: var(--text-soft);
   --color-text-dim: var(--text-dim);
-  --color-terracotta: var(--terracotta);
-  --color-terracotta-soft: var(--terracotta-soft);
-  --color-amber: var(--amber);
-  --color-amber-soft: var(--amber-soft);
-  --font-display: var(--font-montserrat), "Montserrat", sans-serif;
-  --font-body: var(--font-inter), "Inter", sans-serif;
-  --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
-  --radius-card: 18px;
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --color-accent: var(--accent);
+  --color-red: var(--red);
+  --color-gold: var(--gold);
+  --font-display: var(--font-archivo), "Archivo", Arial, sans-serif;
+  --font-body: var(--font-geist), "Geist", sans-serif;
+  --radius-ui: 6px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-  width: 100%;
-  color-scheme: dark;
-}
+  html {
+    scroll-behavior: smooth;
+    width: 100%;
+    color-scheme: light dark;
+    scrollbar-color: var(--rule-strong) var(--bg);
+    scroll-padding-top: var(--nav-h);
+  }
 
-html[data-theme="light"] {
-  color-scheme: light;
-}
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
 
-body {
-  font-family: var(--font-body);
-  font-size: var(--text-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: var(--leading-body);
-  width: 100%;
-  overflow-x: clip;
-  overflow-wrap: break-word;
-  -webkit-font-smoothing: antialiased;
-}
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
 
-img,
-svg,
-canvas,
-video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+  body {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: var(--leading-body);
+    width: 100%;
+    overflow-x: clip;
+    overflow-wrap: break-word;
+    caret-color: var(--accent);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01" on;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
 
-input,
-textarea {
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: 0;
-}
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
 
-button {
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+  img,
+  svg,
+  canvas,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
-ul,
-ol {
-  list-style: none;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-::selection {
-  background: var(--terracotta);
-  color: var(--bg);
-}
+  input,
+  textarea {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--terracotta);
-  outline-offset: 3px;
-}
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
+  ul,
+  ol {
+    list-style: none;
+  }
 
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
+  kbd {
+    font-family: inherit;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: var(--surface-2);
-  border-radius: var(--radius-chip);
-}
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
 /* ----- Lenis smooth scroll ---------------------------------- */
@@ -128,26 +137,6 @@ html.lenis body {
 }
 .lenis.lenis-stopped {
   overflow: clip;
-}
-
-/* ----- Shared typographic voices ---------------------------- */
-.mono-label {
-  font-family: var(--font-mono);
-  font-size: var(--text-label);
-  font-weight: 500;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-/* ----- Marquee (pure CSS, GPU-cheap) ------------------------- */
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
 }
 
 /* ----- Reduced motion kill-switch ---------------------------- */
