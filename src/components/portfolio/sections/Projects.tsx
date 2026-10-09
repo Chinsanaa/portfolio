@@ -77,12 +77,6 @@ function ProjectCard({
               <span className="mono-label">View on GitHub</span>
               <ArrowUpRight size={18} className="project-link-arrow" />
             </a>
-            {project.demo && (
-              <a className="project-link project-link-demo" href={project.demo}>
-                <span className="mono-label">Try the live demo</span>
-                <ArrowUpRight size={18} className="project-link-arrow" />
-              </a>
-            )}
           </div>
         </div>
         <m.div className="project-dim" style={{ opacity: dim }} aria-hidden />

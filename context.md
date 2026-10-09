@@ -10,8 +10,7 @@ Running log of decisions and state for this portfolio, so future sessions can pi
 ## Stack and conventions
 - Next.js 16 (App Router, Turbopack), React 19, TypeScript, framer-motion, Tailwind v4 (utilities only, no preflight), Lenis (own RAF loop; GSAP was tried and removed as unused weight), three.js via @react-three/fiber, cmdk.
 - Design system "Midnight Studio": dark by default with an opt-in light theme. The no-gradient rule is relaxed to a default (owner's call, Sep 2026). Tokens live in `src/styles/tokens.css`; see `DESIGN_SYSTEM.md`.
-- Heavy pieces are lazy-loaded with `next/dynamic` (`ssr: false`): the globe, the palette dialog, and the Lab categorizer. Keep it that way.
-- Lab categorizer data (`src/components/demos/categorizer-data.ts`) is generated from github.com/Chinsanaa/financing. Regenerate it from that repo instead of hand-editing, and keep personal names (Transfers & Gifts recipients) out.
+- Heavy pieces are lazy-loaded with `next/dynamic` (`ssr: false`): the globe and the palette dialog. Keep it that way.
 - Icons are hand-drawn inline SVGs in `src/components/icons/index.tsx`. Do not add an icon library or third-party widgets.
 - framer-motion runs through `LazyMotion` + `m.*` with `strict` in `Portfolio.tsx`. Using `motion.*` anywhere will throw at runtime.
 - Page copy lives in `src/components/portfolio/content.ts`; URLs and file paths in `src/config/resources.ts`.
@@ -29,6 +28,7 @@ Running log of decisions and state for this portfolio, so future sessions can pi
 - Update `FILES.cvUpdated` in `resources.ts` whenever a new CV PDF is uploaded.
 
 ## History
+- 2026-10-09: removed the Lab section (Financing classifier demo) at the owner's request; it didn't fit the portfolio. Deleted its components and data, the nav/palette entries, the "Try the live demo" link, and the llms.txt link; renumbered Experience 04, Certificates 05, Contact 06. Recover from git history (PR #24/#26) if ever wanted again.
 - 2026-09-27, Lab presets: replaced "Uber" (not in mainland China, and it misread as Shopping) with 大众点评; "静安寺 station" → "静安寺站". Model now needs stronger evidence (STRONG_MATCH 0.7) and anything under 60% shows "Needs review" with a best guess, so junk input never looks like a confident answer. Pick future presets from real China merchants and test them first.
 - 2026-09-27, text polish: About grammar, correct About photo alt text, "PostgreSQL" typo, highlight wording, consistent month abbreviations, llms.txt gains the Entrepreneur Club role and the Lab demo link. "554+ merchant rules" is correct (554 global seeds in Financing) and stays.
 - 2026-09-26, interactive redesign (one PR): preloader, custom cursor, scroll progress + back-to-top, Lenis smooth scroll, hero letter reveal + scrambling tagline + interactive dot grid, About scroll-lit words, Skills bento, Projects stacking cards, new Lab section (live Financing categorizer), 3D route globe in Experience, Certificates fan-out, copy-email button, ⌘K palette + terminal, light theme toggle. Also fixed a pre-existing reduced-motion hydration mismatch in `SectionHeader`.

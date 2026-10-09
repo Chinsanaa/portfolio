@@ -103,7 +103,6 @@ Added in the Sep 2026 redesign:
 | `CopyEmail` | Copy-to-clipboard button with animated confirmation |
 | `demos/RouteGlobe` | three.js globe for the Sales Analyst trip, lazy-loaded; falls back to `RouteMap` |
 | `demos/CommandPalette` + `PaletteDialog` | ⌘K / `/` palette and terminal, lazy-loaded, content from `content.ts` |
-| `demos/Categorizer` | Lab demo of the Financing classifier. Data in `categorizer-data.ts` is generated from the Financing repo (personal names removed) |
 
 New components use Tailwind v4 utilities (tokens mapped in `globals.css` via `@theme inline`); older sections still use `editorial.css`. Tailwind preflight is intentionally not loaded; the base reset in `globals.css` replaces it.
 

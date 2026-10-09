@@ -25,7 +25,7 @@ export function Experience() {
 
   return (
     <section className="section experience" id="experience">
-      <SectionHeader number="05" title="Experience" kicker="2023 — Present" />
+      <SectionHeader number="04" title="Experience" kicker="2023 — Present" />
 
       <div className="experience-timeline" ref={ref}>
         <div className="experience-rail" aria-hidden>

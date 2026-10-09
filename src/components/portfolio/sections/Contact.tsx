@@ -20,7 +20,7 @@ export function Contact() {
           <div className="contact-cta-glow" aria-hidden />
           <div className="contact-cta-body">
             <Reveal>
-              <p className="contact-kicker mono-label">№07 — Get in touch</p>
+              <p className="contact-kicker mono-label">№06 — Get in touch</p>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 className="contact-headline">Let&rsquo;s talk.</h2>

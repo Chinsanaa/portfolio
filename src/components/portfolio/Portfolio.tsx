@@ -12,7 +12,6 @@ import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
 import { Skills } from "./sections/Skills";
 import { Projects } from "./sections/Projects";
-import { Lab } from "./sections/Lab";
 import { Experience } from "./sections/Experience";
 import { Certificates } from "./sections/Certificates";
 import { Contact } from "./sections/Contact";
@@ -35,7 +34,6 @@ export function Portfolio() {
           <About />
           <Skills />
           <Projects />
-          <Lab />
           <Experience />
           <Certificates />
           <Contact />
