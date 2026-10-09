@@ -1,10 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { m, useScroll, useSpring } from "framer-motion";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Reveal } from "@/components/ui/Reveal";
 import dynamic from "next/dynamic";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { LazyMount } from "@/components/ui/LazyMount";
 import { experience } from "../content";
 
@@ -15,51 +12,29 @@ const RouteGlobe = dynamic(() => import("@/components/demos/RouteGlobe"), {
 });
 
 export function Experience() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 0.8", "end 0.6"],
-  });
-  // the rail line draws as the section scrolls through the viewport
-  const drawn = useSpring(scrollYProgress, { stiffness: 90, damping: 25 });
-
   return (
-    <section className="section experience" id="experience">
-      <SectionHeader number="04" title="Experience" kicker="2023 — Present" />
+    <section className="section section-split experience" id="experience">
+      <SectionHeader title="Experience" />
 
-      <div className="experience-timeline" ref={ref}>
-        <div className="experience-rail" aria-hidden>
-          <m.div className="experience-rail-fill" style={{ scaleY: drawn }} />
-        </div>
-
-        <ol className="experience-list">
-          {experience.map((item) => (
-            <li key={`${item.role}-${item.date}`} className="experience-item">
-              <m.span
-                className="experience-node"
-                aria-hidden
-                initial={{ scale: 0, x: "-50%" }}
-                whileInView={{ scale: 1, x: "-50%" }}
-                viewport={{ once: true, margin: "-20% 0px" }}
-                transition={{ type: "spring", stiffness: 320, damping: 18 }}
-              />
-              <Reveal>
-                <p className="experience-date mono-label">{item.date}</p>
-                <h3 className="experience-role">{item.role}</h3>
-                <p className="experience-company mono-label">{item.company}</p>
-                <p className="experience-description">{item.description}</p>
-                {item.role === "Sales Analyst" && (
-                  <div className="experience-route">
-                    <LazyMount placeholder={globePlaceholder}>
-                      <RouteGlobe />
-                    </LazyMount>
-                  </div>
-                )}
-              </Reveal>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <ol className="section-body experience-list">
+        {experience.map((item) => (
+          <li key={`${item.role}-${item.date}`} className="experience-item">
+            <p className="experience-date">{item.date}</p>
+            <div className="experience-main">
+              <h3 className="experience-role">{item.role}</h3>
+              <p className="experience-company">{item.company}</p>
+              <p className="experience-description">{item.description}</p>
+              {item.role === "Sales Analyst" && (
+                <div className="experience-route">
+                  <LazyMount placeholder={globePlaceholder}>
+                    <RouteGlobe />
+                  </LazyMount>
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }

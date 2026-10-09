@@ -1,11 +1,8 @@
-import { Reveal } from "@/components/ui/Reveal";
-import { Button } from "@/components/ui/Button";
-import { Marquee } from "@/components/ui/Marquee";
-import { ArrowUpRight, Asterisk, Download, GitHub, LinkedIn, Mail } from "@/components/icons";
+import { ArrowUpRight, Download } from "@/components/icons";
 import { FILES, URLS } from "@/config/resources";
 import { CopyEmail } from "@/components/ui/CopyEmail";
 
-const TICKER = ["Open to internships", "Data Science", "Finance", "Let's build"];
+const EMAIL = URLS.socials.email.replace("mailto:", "");
 
 const cvUpdatedLabel = new Date(FILES.cvUpdated).toLocaleDateString("en-US", {
   month: "short",
@@ -14,72 +11,45 @@ const cvUpdatedLabel = new Date(FILES.cvUpdated).toLocaleDateString("en-US", {
 
 export function Contact() {
   return (
-    <section className="contact" id="contact">
-      <div className="contact-inner">
-        <div className="contact-cta">
-          <div className="contact-cta-glow" aria-hidden />
-          <div className="contact-cta-body">
-            <Reveal>
-              <p className="contact-kicker mono-label">№06 — Get in touch</p>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className="contact-headline">Let&rsquo;s talk.</h2>
-            </Reveal>
-            <Reveal delay={0.14}>
-              <div className="contact-email-row">
-                <a className="contact-email" href={URLS.socials.email}>
-                  cc9287@nyu.edu
-                </a>
-                <CopyEmail email="cc9287@nyu.edu" />
-              </div>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="contact-copy">
-                Always interested in discussing data science, finance, or building the next big
-                thing. Reach out via email or connect on LinkedIn.
-              </p>
-            </Reveal>
-            <Reveal delay={0.28}>
-              <div className="contact-actions">
-                <Button variant="solid" href={URLS.socials.email}>
-                  <Mail size={16} />
-                  Email
-                </Button>
-                <Button variant="ghost" href={URLS.socials.github} external>
-                  <GitHub size={16} />
-                  GitHub
-                </Button>
-                <Button variant="ghost" href={URLS.socials.linkedin} external>
-                  <LinkedIn size={16} />
-                  LinkedIn
-                </Button>
-                <Button variant="ghost" href={FILES.cvPdf} download>
-                  <Download size={16} />
-                  CV
-                  <ArrowUpRight size={14} />
-                </Button>
-              </div>
-              <p className="mono-label contact-cv-updated">Resume updated {cvUpdatedLabel}</p>
-            </Reveal>
-          </div>
-        </div>
+    <section className="section contact" id="contact">
+      <h2 className="contact-title">Contact</h2>
+      <p className="contact-copy">
+        I&rsquo;m looking for internships in data and finance. Email is the fastest way to reach
+        me.
+      </p>
+
+      <div className="contact-email-row">
+        <a className="contact-email" href={URLS.socials.email}>
+          {EMAIL}
+        </a>
+        <CopyEmail email={EMAIL} />
       </div>
 
-      <div className="contact-marquee">
-        <Marquee tone="solid" duration={30} reverse>
-          {TICKER.map((item) => (
-            <span key={item} className="marquee-item">
-              {item}
-              <Asterisk size={14} className="marquee-star" />
-            </span>
-          ))}
-        </Marquee>
-      </div>
+      <ul className="contact-links">
+        <li>
+          <a className="text-link" href={URLS.socials.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+            <ArrowUpRight size={16} />
+          </a>
+        </li>
+        <li>
+          <a className="text-link" href={URLS.socials.github} target="_blank" rel="noopener noreferrer">
+            GitHub
+            <ArrowUpRight size={16} />
+          </a>
+        </li>
+        <li>
+          <a className="text-link" href={FILES.cvPdf} download>
+            CV, updated {cvUpdatedLabel}
+            <Download size={16} />
+          </a>
+        </li>
+      </ul>
 
-      <div className="contact-colophon">
-        <p>© 2026 Chinsanaa Chuluunbold. All rights reserved.</p>
-        <p className="mono-label">Shanghai, China / Ulaanbaatar, Mongolia</p>
-      </div>
+      <footer className="colophon">
+        <p>© 2026 Chinsanaa Chuluunbold</p>
+        <p>Shanghai and Ulaanbaatar</p>
+      </footer>
     </section>
   );
 }

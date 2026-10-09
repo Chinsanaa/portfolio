@@ -2,6 +2,8 @@ import { IMAGES, URLS } from "@/config/resources";
 
 export interface Project {
   title: string;
+  /** One line for the collapsed project row. */
+  summary: string;
   impact: string;
   href: string;
   tagLabels: string[];
@@ -13,6 +15,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Earnio",
+    summary: "Creator sponsorship platform for Mongolian Gen Z, on web and iOS.",
     impact:
       "UGC monetization platform connecting Mongolian Gen Z creators with brand sponsorships. Full-stack system for earnings tracking, sponsorship applications, and MNT withdrawals, shipped as both a web app and a native iOS app.",
     href: URLS.projects.earnio,
@@ -22,6 +25,7 @@ export const projects: Project[] = [
   },
   {
     title: "ICDS Chat System",
+    summary: "Socket chat app with an LLM chatbot, sentiment analysis, and games.",
     impact:
       "TCP socket-based distributed chat application with an LLM-powered chatbot and TextBlob sentiment analysis, plus built-in multiplayer games (Snake, Tic-Tac-Toe) and an emoji picker.",
     href: URLS.projects.chatSystem,
@@ -31,6 +35,7 @@ export const projects: Project[] = [
   },
   {
     title: "Financing",
+    summary: "Sorts Alipay and WeChat spending with merchant rules and ML.",
     impact:
       "Intelligent transaction categorization system for personal finance. Automatically classifies spending from Alipay and WeChat exports using 554+ merchant rules and ML-powered predictions with calibrated confidence scoring. Includes a dashboard with an overview, budget planning, and model performance monitoring.",
     href: URLS.projects.financing,
@@ -80,19 +85,19 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
-    skills: ["Python", "SQL", "HTML", "CSS", "C++", "Git"],
+    skills: ["Python", "SQL", "C++"],
   },
   {
-    title: "Tools",
-    skills: ["Excel (Financial Modeling)", "Power BI", "PostgreSQL", "Docker", "VS Code"],
+    title: "Web",
+    skills: ["HTML", "CSS", "Next.js", "SwiftUI"],
   },
   {
-    title: "AI skills",
-    skills: ["AI Prompting", "GenAI Workflows", "Claude Code"],
+    title: "Data and tools",
+    skills: ["Excel (financial modeling)", "Power BI", "PostgreSQL", "Docker", "Git"],
   },
   {
-    title: "Soft Skills",
-    skills: ["Initiative", "Detail-Oriented", "Adaptable"],
+    title: "AI",
+    skills: ["Claude Code", "Prompting", "GenAI workflows"],
   },
 ];
 
@@ -126,35 +131,35 @@ export interface ExperienceItem {
 export const experience: ExperienceItem[] = [
   {
     role: "Financial Analyst",
-    company: "Next Group — Ulaanbaatar, Mongolia",
-    date: "May 2026 – Aug 2026",
+    company: "Next Group, Ulaanbaatar, Mongolia",
+    date: "May to Aug 2026",
     description: "Analyzed sales and COGS data using Excel, SQL, and Power BI. Executed corporate banking tasks.",
   },
   {
     role: "Administrative Assistant",
-    company: "Next Group — “Maybee Pop & Joy” Launch, Ulaanbaatar, Mongolia",
-    date: "Jun 2025 – Aug 2025",
+    company: "Next Group, “Maybee Pop & Joy” launch, Ulaanbaatar",
+    date: "Jun to Aug 2025",
     description:
       "Supported pricing, cashiering, and sales during the company's launch phase. Ran social media marketing and customer support for the new business, and configured operational systems while managing product stocking and inventory.",
   },
   {
     role: "Sales Analyst",
-    company: "Next Group — Ulaanbaatar, Mongolia",
-    date: "Jun 2024 – Jul 2024",
+    company: "Next Group, Ulaanbaatar, Mongolia",
+    date: "Jun to Jul 2024",
     description:
       "Traveled to multiple Chinese cities (Erenhot, Baoding, Tianjin, Beijing, Shanghai) to meet existing business partners. Visited factories to assess production processes and quality standards, attended exhibitions to evaluate potential new partners, and provided consumer-focused insights that contributed to team decisions on product selection and business strategy.",
   },
   {
     role: "Human Resources Intern",
-    company: "Next Group — Ulaanbaatar, Mongolia",
-    date: "Jun 2023 – Aug 2023",
+    company: "Next Group, Ulaanbaatar, Mongolia",
+    date: "Jun to Aug 2023",
     description:
       "Maintained and updated employee records across the HR database, ensuring data accuracy and confidentiality.",
   },
   {
     role: "President, Entrepreneur Club",
-    company: "Orchlon International School — Ulaanbaatar, Mongolia",
-    date: "Sep 2024 – Jun 2025",
+    company: "Orchlon International School, Ulaanbaatar",
+    date: "Sep 2024 to Jun 2025",
     description:
       "Founded and led the school's Entrepreneur Club, organizing fundraisers to finance a charity event at a local orphanage. Facilitated weekly meetings on sales strategy and marketing tactics, allocated responsibilities across club members, and personally handled the majority of the club's planning, logistics, and execution.",
   },

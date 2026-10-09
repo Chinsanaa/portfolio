@@ -188,7 +188,7 @@ export default function RouteGlobe() {
   const colors = useMemo<Colors | null>(
     () =>
       capable
-        ? { surface: token("--bg"), land: token("--text-dim"), route: token("--amber"), theme }
+        ? { surface: token("--bg-2"), land: token("--text-dim"), route: token("--accent"), theme }
         : null,
     [capable, theme],
   );
@@ -235,7 +235,7 @@ export default function RouteGlobe() {
     <div className="route-globe" ref={wrapper}>
       <div
         className="route-globe-stage"
-        data-cursor="Drag"
+       
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
@@ -263,7 +263,7 @@ export default function RouteGlobe() {
         {travelStops.map((stop, i) => (
           <li
             key={stop.city}
-            className="route-globe-stop mono-label"
+            className="route-globe-stop"
             data-state={i < activeStop ? "done" : i === activeStop ? "active" : "idle"}
           >
             <span className="route-globe-stop-index">{String(i + 1).padStart(2, "0")}</span>
@@ -271,7 +271,7 @@ export default function RouteGlobe() {
           </li>
         ))}
       </ol>
-      <p className="route-globe-hint mono-label">Scroll to trace · drag to spin</p>
+      <p className="route-globe-hint">Scroll to trace the route, drag to spin</p>
     </div>
   );
 }
