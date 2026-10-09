@@ -8,7 +8,7 @@ The rules below come from the installed design skills (`.claude/skills/frontend-
 
 1. **No AI tells.** None of these: section numbers (01/02), eyebrows or kickers above headings, floating corner labels, glow orbs, gradient text, glassmorphism, custom cursors, preloaders, scroll cues, progress bars, marquees, tilt cards, magnetic buttons, fake terminals.
 2. **No cards as layout.** Separate content with hairline rules (`--hair`) and whitespace. Nested cards are never allowed.
-3. **One accent.** `--accent` is for interaction feedback (hover, active nav, focus, selection) and the travel route line. Do not decorate with it.
+3. **Flag colors in fixed roles.** Blue for interaction, red for the one primary action, gold for the route and Mongolian marks. Never decorate with them or put them in stripes.
 4. **One radius.** `--radius` (6px) everywhere. No pills.
 5. **No monospace.** Dates and indexes use Geist with `font-variant-numeric: tabular-nums`.
 6. **No dashes in visible copy.** No em or en dashes; use commas, periods, "to", or parentheses.
@@ -31,21 +31,35 @@ Light ("bone paper") is the designed default; dark follows the OS (`prefers-colo
 | `--text` | `#17191c` | `#eceeed` | Headings, primary text (≈15:1) |
 | `--text-soft` | `#43474d` | `#b0b3b5` | Body copy (≈8:1) |
 | `--text-dim` | `#5a5f66` | `#8c9095` | Meta, captions (≥5:1) |
-| `--accent` | `#2b44c4` | `#8fa2ff` | Interaction, route line (≥6:1). A nod to the blue of the Mongolian flag |
-| `--accent-ink` | `#f7f8fb` | `#111317` | Text on an accent fill |
+| `--accent` (flag blue) | `#0b5aa6` | `#6fb0ff` | Links, hover, focus, selection, active nav (≥6:1) |
+| `--red` (flag red) | `#b81c2c` | `#ff6b73` | The primary button, project-title hover, open-row toggle, "Copied" (≥5.5:1) |
+| `--gold` (Soyombo gold) | `#9a6c00` | `#f2c230` | Travel route, Ulzii, Soyombo. Graphics only on paper (≥3.6:1) |
+| `--accent-ink` / `--red-ink` | `#f7f8fb` | `#111317` | Text on a blue or red fill |
 
 Why not cream and terracotta: Anthropic's `frontend-design` skill lists a warm cream page with a terracotta accent as the most common AI-generated look, so the palette was moved off it on purpose.
 
 Every text token clears WCAG AA on both `--bg` and `--bg-2`.
 
+## Mongolian identity
+
+Flag colors are **roles, not stripes** (table above). Cultural marks each have one job and fixed places; none of them may become a background, a repeated wallpaper, or an animation.
+
+| Mark | What it is | Where it may appear |
+|---|---|---|
+| Ölzii knot (`Ulzii` icon) | Endless knot, luck and long life; hand-authored geometry | Favicon/app icons, nav wordmark, empty palette state, OG image |
+| Alkhan khee (`KheeBand`) | Traditional hammer border in red, blue, red | Under the hero and above the colophon. Only there |
+| Soyombo (`Soyombo` icon) | National emblem; paths from the public-domain flag SVG on Wikimedia Commons | Footer, 20px, gold. Only there |
+| Mongol script (`HeroScript`) | The owner's name in Mongol bichig, vertical | Beside the hero portrait. Off until the owner supplies the spelling (`NAME_MONG`) |
+| Cyrillic name | Чинсанаа Чулуунболд | Colophon |
+
 ## Type
 
 | Role | Face | Token |
 |---|---|---|
-| Display (name, section titles, roles, project titles) | Bricolage Grotesque (variable weight) | `--font-display` |
+| Display (name, section titles, roles, project titles) | Archivo, bold neo-grotesque (variable weight, 700 to 900) | `--font-display` |
 | Body and UI | Geist | `--font-body` |
 
-Scale: `--text-hero` (max 6rem), `--text-h2`, `--text-h3`, `--text-lede`, `--text-body`, `--text-small`, `--text-meta`. Display tracking is `-0.03em` (never below `-0.04em`). Headings use `text-wrap: balance`, body uses `pretty`, and body measure stays under about 65ch. Sentence case everywhere.
+Scale: `--text-hero` (max 6rem), `--text-h2`, `--text-h3`, `--text-lede`, `--text-body`, `--text-small`, `--text-meta`. Display tracking is `-0.025em` (never below `-0.04em`). Headings use `text-wrap: balance`, body uses `pretty`, and body measure stays under about 65ch. Sentence case everywhere.
 
 ## Layout
 

@@ -4,17 +4,18 @@
    No raw hex values outside this file.
 
    Rules of the system (see DESIGN_SYSTEM.md):
-   - Paper and ink. One sky-blue accent, used for interaction and the route line.
+   - Paper and ink, plus the Mongolian flag's blue, red, and gold in fixed roles.
    - Hairline rules separate content. No cards, glows, or gradients.
    - One radius (6px). Pills are not part of the system.
    - No monospace. Dates and numbers use tabular figures instead.
    ============================================================ */
 
-/* ----- Light (default): cool paper, slate ink, sky-blue accent ---
-   The accent nods to the blue of the Mongolian flag (the "eternal
-   blue sky"), shifted toward ultramarine for text contrast.
+/* ----- Light (default): cool paper, slate ink, flag colors -------
+   Flag colors have roles, never stripes (see DESIGN_SYSTEM.md):
+   blue (--accent) = links and interaction, red = the primary action,
+   gold = the travel route and the Mongolian marks (graphics only).
    text on bg ≈ 15.1:1, text-soft ≈ 8:1, text-dim ≈ 5.5:1,
-   accent ≈ 6.6:1 */
+   accent ≈ 6:1, red ≈ 5.6:1, gold ≈ 4:1 (graphics, 3:1 bar) */
 :root {
   --bg: #eceeed;
   --bg-2: #e1e4e3;
@@ -24,14 +25,18 @@
   --text: #17191c;
   --text-soft: #43474d;
   --text-dim: #5a5f66;
-  --accent: #2b44c4;
+  --accent: #0b5aa6; /* flag blue, deepened */
   --accent-ink: #f7f8fb; /* text on an accent fill */
+  --red: #b81c2c; /* flag red, deepened */
+  --red-ink: #f7f8fb;
+  --gold: #9a6c00; /* Soyombo gold, deepened; graphics only on paper */
   --shadow: 0 18px 40px -18px rgba(23, 25, 28, 0.35);
 }
 
-/* ----- Dark: blue-black ink, pale sky accent -------------------
+/* ----- Dark: blue-black ink, lightened flag colors -------------------
    Follows the OS setting unless the visitor picks a theme in ⌘K.
-   text ≈ 16:1, text-soft ≈ 8.8:1, text-dim ≈ 5.8:1, accent ≈ 7.8:1 */
+   text ≈ 16:1, text-soft ≈ 8.8:1, text-dim ≈ 5.8:1, accent ≈ 8.3:1,
+   red ≈ 6.7:1, gold ≈ 11:1 */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #111317;
@@ -42,8 +47,11 @@
     --text: #eceeed;
     --text-soft: #b0b3b5;
     --text-dim: #8c9095;
-    --accent: #8fa2ff;
+    --accent: #6fb0ff;
     --accent-ink: #111317;
+    --red: #ff6b73;
+    --red-ink: #111317;
+    --gold: #f2c230;
     --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
   }
 }
@@ -57,14 +65,17 @@
   --text: #eceeed;
   --text-soft: #b0b3b5;
   --text-dim: #8c9095;
-  --accent: #8fa2ff;
+  --accent: #6fb0ff;
   --accent-ink: #111317;
+  --red: #ff6b73;
+  --red-ink: #111317;
+  --gold: #f2c230;
   --shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
 }
 
 :root {
   /* ----- Type --------------------------------------------------- */
-  --font-display: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  --font-display: var(--font-archivo), "Archivo", Arial, sans-serif;
   --font-body: var(--font-geist), "Geist", -apple-system, sans-serif;
 
   --text-hero: clamp(3rem, 8.4vw, 6rem); /* hero name, capped at 6rem */
@@ -75,7 +86,7 @@
   --text-small: 0.9375rem;
   --text-meta: 0.8125rem;
 
-  --tracking-display: -0.03em;
+  --tracking-display: -0.025em;
   --leading-display: 1;
   --leading-tight: 1.2;
   --leading-body: 1.6;

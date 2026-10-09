@@ -14,7 +14,9 @@
   --color-text-soft: var(--text-soft);
   --color-text-dim: var(--text-dim);
   --color-accent: var(--accent);
-  --font-display: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  --color-red: var(--red);
+  --color-gold: var(--gold);
+  --font-display: var(--font-archivo), "Archivo", Arial, sans-serif;
   --font-body: var(--font-geist), "Geist", sans-serif;
   --radius-ui: 6px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { m } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ProximityText } from "@/components/ui/ProximityText";
+import { KheeBand } from "@/components/ui/KheeBand";
+import { HeroScript } from "@/components/ui/HeroScript";
 import { ArrowDown, Download } from "@/components/icons";
 import { FILES, IMAGES } from "@/config/resources";
 
@@ -56,16 +58,21 @@ export function Hero() {
       </div>
 
       {/* Static on purpose: it is the LCP element, so it paints with the HTML. */}
-      <figure className="hero-portrait">
-        <Image
-          src={IMAGES.art.about ?? ""}
-          alt="Chinsanaa smiling with a medal, a certificate, and basketball trophies"
-          width={900}
-          height={1073}
-          priority
-          sizes="(max-width: 860px) 70vw, 34vw"
-        />
-      </figure>
+      <div className="hero-visual">
+        <HeroScript />
+        <figure className="hero-portrait">
+          <Image
+            src={IMAGES.art.about ?? ""}
+            alt="Chinsanaa smiling with a medal, a certificate, and basketball trophies"
+            width={900}
+            height={1073}
+            priority
+            sizes="(max-width: 860px) 70vw, 34vw"
+          />
+        </figure>
+      </div>
+
+      <KheeBand className="hero-band" />
     </section>
   );
 }

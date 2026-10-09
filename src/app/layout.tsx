@@ -1,21 +1,30 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Geist } from "next/font/google";
+import { Archivo, Geist, Noto_Sans_Mongolian } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { IS_INDEXABLE, SITE_URL, URLS } from "@/config/resources";
 import { skillCategories } from "@/components/portfolio/content";
 import "./globals.css";
 
-// Variable weight axis drives the hero's pointer-proximity effect.
-const bricolage = Bricolage_Grotesque({
+// Bold neo-grotesque for display. Its variable weight axis drives the
+// hero's pointer-proximity effect.
+const archivo = Archivo({
   subsets: ["latin"],
-  axes: ["opsz"],
-  variable: "--font-bricolage",
+  variable: "--font-archivo",
 });
 
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist",
+});
+
+// Traditional Mongol script for the hero name. Not preloaded: the browser
+// only downloads it if Mongolian text is actually on the page.
+const mongolian = Noto_Sans_Mongolian({
+  weight: "400",
+  subsets: ["mongolian"],
+  preload: false,
+  variable: "--font-mongolian",
 });
 
 const TITLE = "Chinsanaa Chuluunbold | Data Science & Finance";
@@ -83,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${geist.variable}`}
+      className={`${archivo.variable} ${geist.variable} ${mongolian.variable}`}
       suppressHydrationWarning
     >
       <head>

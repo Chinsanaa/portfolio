@@ -6,6 +6,7 @@ import { Command } from "cmdk";
 import { scrollToSection } from "@/components/ui/SmoothScroll";
 import { setTheme, type ThemeChoice } from "@/components/ui/theme";
 import { projects } from "@/components/portfolio/content";
+import { Ulzii } from "@/components/icons";
 import { FILES, URLS } from "@/config/resources";
 
 const EMAIL = URLS.socials.email.replace("mailto:", "");
@@ -76,7 +77,8 @@ export default function PaletteDialog({
               className="w-full border-b border-rule bg-transparent px-5 py-4 text-base text-text placeholder:text-text-dim focus:outline-none"
             />
             <Command.List data-lenis-prevent className="max-h-[min(420px,60vh)] overflow-y-auto p-2">
-              <Command.Empty className="px-3 py-6 text-center text-sm text-text-dim">
+              <Command.Empty className="flex flex-col items-center gap-3 px-3 py-8 text-center text-sm text-text-dim">
+                <Ulzii size={28} interlaced className="text-gold" />
                 Nothing matches that. Try a section name or a project.
               </Command.Empty>
               <Command.Group heading="Go to" className={groupClass}>

@@ -1,4 +1,5 @@
-import { ArrowUpRight, Download } from "@/components/icons";
+import { ArrowUpRight, Download, Soyombo } from "@/components/icons";
+import { KheeBand } from "@/components/ui/KheeBand";
 import { FILES, URLS } from "@/config/resources";
 import { CopyEmail } from "@/components/ui/CopyEmail";
 
@@ -46,9 +47,17 @@ export function Contact() {
         </li>
       </ul>
 
+      <KheeBand />
       <footer className="colophon">
-        <p>© 2026 Chinsanaa Chuluunbold</p>
-        <p>Shanghai and Ulaanbaatar</p>
+        <p>
+          © 2026 Chinsanaa Chuluunbold
+          <br />
+          <span lang="mn">Чинсанаа Чулуунболд</span>
+        </p>
+        <p className="colophon-place">
+          <Soyombo size={20} className="colophon-soyombo" />
+          Shanghai and Ulaanbaatar
+        </p>
       </footer>
     </section>
   );

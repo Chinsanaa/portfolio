@@ -23,6 +23,7 @@ export function CopyEmail({ email }: { email: string }) {
         <m.span
           key={copied ? "done" : "idle"}
           className="copy-email-label"
+          data-done={copied || undefined}
           initial={{ y: "70%", opacity: 0 }}
           animate={{ y: "0%", opacity: 1 }}
           exit={{ y: "-70%", opacity: 0 }}

@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const MIN_WEIGHT = 380;
-const MAX_WEIGHT = 800;
+const MIN_WEIGHT = 700;
+const MAX_WEIGHT = 900;
 const RADIUS = 240; // px of pointer influence
 
 /**

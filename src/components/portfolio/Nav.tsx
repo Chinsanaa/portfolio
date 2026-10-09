@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { m, useScroll, useMotionValueEvent } from "framer-motion";
 import { openPalette } from "@/components/demos/CommandPalette";
+import { Ulzii } from "@/components/icons";
 
 const LINKS = [
   { label: "About", href: "#about" },
@@ -47,6 +48,7 @@ export function Nav() {
     >
       <div className="nav-inner">
         <a href="#top" className="nav-mark">
+          <Ulzii size={18} className="nav-mark-knot" />
           Chinsanaa C.
         </a>
         <nav className="nav-links" aria-label="Sections">

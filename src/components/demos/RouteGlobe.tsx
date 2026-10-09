@@ -188,7 +188,7 @@ export default function RouteGlobe() {
   const colors = useMemo<Colors | null>(
     () =>
       capable
-        ? { surface: token("--bg-2"), land: token("--text-dim"), route: token("--accent"), theme }
+        ? { surface: token("--bg-2"), land: token("--text-dim"), route: token("--gold"), theme }
         : null,
     [capable, theme],
   );
@@ -271,7 +271,7 @@ export default function RouteGlobe() {
           </li>
         ))}
       </ol>
-      <p className="route-globe-hint">Scroll to trace the route, drag to spin</p>
+      <p className="route-globe-hint">Ulaanbaatar to Shanghai, June to July 2024. Scroll to trace the route, drag to spin</p>
     </div>
   );
 }
